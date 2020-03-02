@@ -12,6 +12,12 @@ class Room extends Draft {
     this.spectators = [];
   }
 
+  static checkAdmin(ele, socket) {
+    let index = this.ROOMS.findIndex(data => data.pin === ele);
+    if (index === -1) return false;
+    return this.ROOMS[index].admin === socket.id ? index : false;
+  }
+
   static newPin() {
     const characters = "ABCDEFGHIJKLMNPQRSTUVWXYZ123456789";
     let result = "";

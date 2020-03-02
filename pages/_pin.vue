@@ -5,12 +5,14 @@
       placeholder="TEAM A"
       v-model="team1Name"
       :disabled="!admin"
+      @input="teamName()"
     />
     <input
       type="text"
       placeholder="TEAM B"
       v-model="team2Name"
       :disabled="!admin"
+      @input="teamName()"
     />
   </div>
 </template>
@@ -25,6 +27,10 @@ export default {
       } else {
         this.$router.push("/");
       }
+    },
+    RES_CHANGE_TEAM_NAME: function(ele) {
+      this.team1Name = ele[0];
+      this.team2Name = ele[1];
     }
   },
   data() {
@@ -34,8 +40,19 @@ export default {
       team2Name: ""
     };
   },
+  methods: {
+    teamName() {
+      this.$socket.emit("CHANGE_TEAM_NAME", {
+        path: this.$route.params.pin,
+        teamName: [this.team1Name, this.team2Name]
+      });
+    }
+  },
   mounted() {
     this.$socket.emit("CHECK_ROOM", this.$route.params.pin);
+  },
+  beforeDestroy() {
+    this.$socket.emit("DISCONNECT_ROOM");
   }
 };
 </script>
