@@ -42,6 +42,7 @@ export default {
   },
   methods: {
     teamName() {
+      console.log("oui");
       this.$socket.emit("CHANGE_TEAM_NAME", {
         path: this.$route.params.pin,
         teamName: [this.team1Name, this.team2Name]

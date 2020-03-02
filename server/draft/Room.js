@@ -13,7 +13,7 @@ class Room extends Draft {
   }
 
   static checkAdmin(ele, socket) {
-    let index = this.ROOMS.findIndex(data => data.pin === ele);
+    let index = this.ROOMS.findIndex(data => data.pin === ele.toUpperCase());
     if (index === -1) return false;
     return this.ROOMS[index].admin === socket.id ? index : false;
   }
