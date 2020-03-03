@@ -15,8 +15,6 @@
       @input="teamName()"
     />
 
-    <hr style="margin-top: 100px;" />
-    <Search @update="maps = $event" />
     <div class="wrapper">
       <div class="card" v-for="(map, index) in maps" :key="index">
         <!-- <img :src="map.img" /> -->
@@ -24,6 +22,10 @@
         <p>{{ map.type }}</p>
       </div>
     </div>
+    <hr style="margin-top: 50px;" />
+    <h1>Timer</h1>
+    <button @click="startDraft()">Start draft</button>
+    <p>Temps avant la prochaine étape : {{ timeLeft }}</p>
   </div>
 </template>
 
@@ -52,6 +54,7 @@ export default {
       admin: false,
       team1Name: "",
       team2Name: "",
+      timeLeft: 30,
       maps: []
     };
   },
@@ -62,6 +65,17 @@ export default {
         path: this.$route.params.pin,
         teamName: [this.team1Name, this.team2Name]
       });
+    },
+    startDraft() {
+      this.$socket.emit("START_DRAFT");
+      setInterval(() => {
+        if (this.timeLeft > 0) {
+          this.timeLeft--;
+        } else {
+          console.log("Next turn");
+          this.timeLeft = 30;
+        }
+      }, 1000);
     }
   },
   mounted() {
