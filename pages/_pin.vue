@@ -14,6 +14,26 @@
       :disabled="!admin"
       @input="teamName()"
     />
+
+    <hr style="margin-top: 100px;" />
+
+    <h1>Draft maps</h1>
+    <input type="text" v-model="search" />
+    <ul class="filters">
+      <li @click="researchByMapType('CTR')">CTR</li>
+      <li @click="researchByMapType('CNK')">CNK</li>
+      <li @click="researchByMapType('BONUS')">BONUS</li>
+      <li @click="researchByMapType('')">RESET</li>
+    </ul>
+    <p>Current map type : {{ mapType }}</p>
+
+    <div class="wrapper">
+      <div class="card" v-for="(map, index) in mapsFilteredList" :key="index">
+        <!-- <img :src="map.img" /> -->
+        <p>{{ map.title }}</p>
+        <p>{{ map.type }}</p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -37,7 +57,47 @@ export default {
     return {
       admin: false,
       team1Name: "",
-      team2Name: ""
+      team2Name: "",
+      search: "",
+      mapType: "",
+      maps: [
+        {
+          title: "Crash Cove",
+          type: "CTR"
+        },
+        {
+          title: "Mystery Caves",
+          type: "CTR"
+        },
+        {
+          title: "Sewer Speedway",
+          type: "CTR"
+        },
+        {
+          title: "Turbo Track/Retro Stadium",
+          type: "CNK"
+        },
+        {
+          title: "Coco Park",
+          type: "CNK"
+        },
+        {
+          title: "Tiger Temple",
+          type: "CNK"
+        },
+        {
+          title: "Polar Pass",
+          type: "BONUS"
+        },
+        {
+          title: "Tiny Arena",
+          type: "BONUS"
+        },
+        {
+          title: "Dragon Mines",
+          type: "BONUS"
+        }
+      ]
     };
   },
   methods: {
@@ -47,6 +107,9 @@ export default {
         path: this.$route.params.pin,
         teamName: [this.team1Name, this.team2Name]
       });
+    },
+    researchByMapType: function(newType) {
+      this.mapType = newType;
     }
   },
   mounted() {
@@ -54,8 +117,40 @@ export default {
   },
   beforeDestroy() {
     this.$socket.emit("DISCONNECT_ROOM");
+  },
+  computed: {
+    mapsFilteredList() {
+      return this.maps.filter(map => {
+        if (this.mapType === map.type || this.mapType === "") {
+          return (
+            map.title.toLowerCase().indexOf(this.search.toLowerCase()) >= 0
+          );
+        }
+      });
+    }
   }
 };
 </script>
 
-<style></style>
+<style>
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: 0 auto;
+}
+.card {
+  border: 2px solid #3366cc;
+  width: 200px;
+  height: 150px;
+  margin: 20px 20px 0 0;
+}
+.filters {
+  padding-left: 0;
+  margin-top: 8px;
+}
+.filters li {
+  display: inline-block;
+  border: 1px solid blue;
+}
+</style>
