@@ -6,8 +6,14 @@ const changeTeamName = (ele, socket) => {
     Room.ROOMS[index].changeTeamName(ele.path, ele.teamName, socket);
 };
 
+const changeDraftMode = (ele, socket) => {
+  let index = Room.checkAdmin(ele.path, socket);
+  if (index || index === 0)
+    Room.ROOMS[index].changeDraftMode(ele.path, ele.value, socket);
+};
+
 const startDraft = (ele, socket, io) => {
   let index = Room.checkAdmin(ele, socket);
   if (index || index === 0) Room.ROOMS[index].startDraft(ele, io);
 };
-module.exports = { changeTeamName, startDraft };
+module.exports = { changeTeamName, changeDraftMode, startDraft };

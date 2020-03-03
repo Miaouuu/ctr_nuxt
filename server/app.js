@@ -14,6 +14,7 @@ io.on("connection", socket => {
   // socket.on("DELETE_ROOM"); CHECK SI ADMIN EST DANS USER
 
   socket.on("CHANGE_TEAM_NAME", ele => Controller.changeTeamName(ele, socket));
+  socket.on("CHANGE_DRAFT_MODE", el => Controller.changeDraftMode(el, socket));
   socket.on("START_DRAFT", ele => Controller.startDraft(ele, socket, io));
 });
 
