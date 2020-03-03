@@ -14,7 +14,8 @@
       :disabled="!admin"
       @input="teamName()"
     />
-
+    <hr style="margin-top: 100px;" />
+    <Search @update="maps = $event" />
     <div class="wrapper">
       <div class="card" v-for="(map, index) in maps" :key="index">
         <!-- <img :src="map.img" /> -->
@@ -44,6 +45,9 @@ export default {
     RES_CHANGE_TEAM_NAME: function(ele) {
       this.team1Name = ele[0];
       this.team2Name = ele[1];
+    },
+    RES_START_DRAFT: function(ele) {
+      this.timeLeft = ele;
     }
   },
   components: {
@@ -54,7 +58,7 @@ export default {
       admin: false,
       team1Name: "",
       team2Name: "",
-      timeLeft: 30,
+      timeLeft: 0,
       maps: []
     };
   },
@@ -67,15 +71,7 @@ export default {
       });
     },
     startDraft() {
-      this.$socket.emit("START_DRAFT");
-      setInterval(() => {
-        if (this.timeLeft > 0) {
-          this.timeLeft--;
-        } else {
-          console.log("Next turn");
-          this.timeLeft = 30;
-        }
-      }, 1000);
+      this.$socket.emit("START_DRAFT", this.$route.params.pin);
     }
   },
   mounted() {

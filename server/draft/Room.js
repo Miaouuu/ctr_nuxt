@@ -46,7 +46,7 @@ class Room extends Draft {
   }
 
   static joinRoom(ele, socket) {
-    socket.join(ele);
+    socket.join(ele.toUpperCase());
     let index = this.ROOMS.findIndex(data => data.pin === ele.toUpperCase());
     if (this.ROOMS[index].users.length < 2) {
       this.ROOMS[index].addUser(socket.id);
@@ -92,6 +92,9 @@ class Room extends Draft {
       if (index !== -1) {
         this.ROOMS[indexRoom].spectators.splice(index, 1);
       }
+    }
+    if (indexRoom !== -1) {
+      socket.leave(this.ROOMS[indexRoom].pin.toUpperCase());
     }
   }
 
