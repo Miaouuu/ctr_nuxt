@@ -10,6 +10,10 @@ class Draft {
       .to(pin)
       .emit("RES_CHANGE_TEAM_NAME", [this.teamName[0], this.teamName[1]]);
   }
+
+  startDraft(pin, socket){
+    
+  }
 }
 
 module.exports = Draft;
