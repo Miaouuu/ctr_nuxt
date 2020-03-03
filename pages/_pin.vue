@@ -14,16 +14,24 @@
       :disabled="!admin"
       @input="teamName()"
     />
+
     <hr style="margin-top: 100px;" />
+
     <h1>Draft maps</h1>
     <input type="text" v-model="search" />
-
-    <p>{{ search }}</p>
+    <ul class="filters">
+      <li @click="researchByMapType('CTR')">CTR</li>
+      <li @click="researchByMapType('CNK')">CNK</li>
+      <li @click="researchByMapType('BONUS')">BONUS</li>
+      <li @click="researchByMapType('')">RESET</li>
+    </ul>
+    <p>Current map type : {{ mapType }}</p>
 
     <div class="wrapper">
       <div class="card" v-for="(map, index) in mapsFilteredList" :key="index">
         <!-- <img :src="map.img" /> -->
-        {{ map.title }}
+        <p>{{ map.title }}</p>
+        <p>{{ map.type }}</p>
       </div>
     </div>
   </div>
@@ -51,6 +59,7 @@ export default {
       team1Name: "",
       team2Name: "",
       search: "",
+      mapType: "",
       maps: [
         {
           title: "Crash Cove",
@@ -98,6 +107,9 @@ export default {
         path: this.$route.params.pin,
         teamName: [this.team1Name, this.team2Name]
       });
+    },
+    researchByMapType: function(newType) {
+      this.mapType = newType;
     }
   },
   mounted() {
@@ -109,7 +121,11 @@ export default {
   computed: {
     mapsFilteredList() {
       return this.maps.filter(map => {
-        return map.title.toLowerCase().indexOf(this.search.toLowerCase()) > -1;
+        if (this.mapType === map.type || this.mapType === "") {
+          return (
+            map.title.toLowerCase().indexOf(this.search.toLowerCase()) >= 0
+          );
+        }
       });
     }
   }
@@ -128,5 +144,13 @@ export default {
   width: 200px;
   height: 150px;
   margin: 20px 20px 0 0;
+}
+.filters {
+  padding-left: 0;
+  margin-top: 8px;
+}
+.filters li {
+  display: inline-block;
+  border: 1px solid blue;
 }
 </style>
