@@ -14,6 +14,18 @@
       :disabled="!admin"
       @input="teamName()"
     />
+    <hr style="margin-top: 100px;" />
+    <h1>Draft maps</h1>
+    <input type="text" v-model="search" />
+
+    <p>{{ search }}</p>
+
+    <div class="wrapper">
+      <div class="card" v-for="(map, index) in mapsFilteredList" :key="index">
+        <!-- <img :src="map.img" /> -->
+        {{ map.title }}
+      </div>
+    </div>
   </div>
 </template>
 
@@ -37,7 +49,46 @@ export default {
     return {
       admin: false,
       team1Name: "",
-      team2Name: ""
+      team2Name: "",
+      search: "",
+      maps: [
+        {
+          title: "Crash Cove",
+          type: "CTR"
+        },
+        {
+          title: "Mystery Caves",
+          type: "CTR"
+        },
+        {
+          title: "Sewer Speedway",
+          type: "CTR"
+        },
+        {
+          title: "Turbo Track/Retro Stadium",
+          type: "CNK"
+        },
+        {
+          title: "Coco Park",
+          type: "CNK"
+        },
+        {
+          title: "Tiger Temple",
+          type: "CNK"
+        },
+        {
+          title: "Polar Pass",
+          type: "BONUS"
+        },
+        {
+          title: "Tiny Arena",
+          type: "BONUS"
+        },
+        {
+          title: "Dragon Mines",
+          type: "BONUS"
+        }
+      ]
     };
   },
   methods: {
@@ -54,8 +105,28 @@ export default {
   },
   beforeDestroy() {
     this.$socket.emit("DISCONNECT_ROOM");
+  },
+  computed: {
+    mapsFilteredList() {
+      return this.maps.filter(map => {
+        return map.title.toLowerCase().indexOf(this.search.toLowerCase()) > -1;
+      });
+    }
   }
 };
 </script>
 
-<style></style>
+<style>
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: 0 auto;
+}
+.card {
+  border: 2px solid #3366cc;
+  width: 200px;
+  height: 150px;
+  margin: 20px 20px 0 0;
+}
+</style>
