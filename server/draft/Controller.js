@@ -16,4 +16,10 @@ const startDraft = (ele, socket, io) => {
   let index = Room.checkAdmin(ele, socket);
   if (index || index === 0) Room.ROOMS[index].startDraft(ele, io);
 };
-module.exports = { changeTeamName, changeDraftMode, startDraft };
+
+const selectMap = (ele, socket, io) => {
+  let index = Room.checkUsers(ele.path, socket);
+  if (index.room || index.room === 0)
+    Room.ROOMS[index.room].selectMap(ele.path, io, ele.id, index.user);
+};
+module.exports = { changeTeamName, changeDraftMode, startDraft, selectMap };

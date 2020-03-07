@@ -18,6 +18,17 @@ class Room extends Draft {
     return this.ROOMS[index].admin === socket.id ? index : false;
   }
 
+  static checkUsers(ele, socket) {
+    let indexRoom = this.ROOMS.findIndex(
+      data => data.pin === ele.toUpperCase()
+    );
+    if (indexRoom === -1) return { room: false, user: false };
+    let indexUser = this.ROOMS[indexRoom].users.indexOf(socket.id);
+    return indexUser !== -1
+      ? { room: indexRoom, user: indexUser }
+      : { room: false, user: false };
+  }
+
   static newPin() {
     const characters = "ABCDEFGHIJKLMNPQRSTUVWXYZ123456789";
     let result = "";

@@ -6,8 +6,15 @@ class Draft {
       bans: 6,
       picks: 10
     };
+    this.round = 1;
     this.started = false;
-    this.timeLeft = 30;
+    this.state = 0;
+    this.turn = false;
+    this.maps = {
+      banned: [],
+      picked: []
+    };
+    this.timer = null;
   }
 
   changeTeamName(pin, newName, socket) {
@@ -43,19 +50,52 @@ class Draft {
     socket.broadcast.to(pin).emit("RES_CHANGE_DRAFT_MODE", this.draftMode.name);
   }
 
+  startTimer(pin, io) {
+    this.timeLeft = 5;
+    this.timer = setInterval(() => {
+      io.to(pin).emit("RES_START_TIMER", this.timeLeft);
+      if (this.timeLeft > 0) {
+        this.timeLeft--;
+      } else {
+        this.nextRound(pin, io, -1, this.turn);
+      }
+    }, 1000);
+  }
+
   startDraft(pin, io) {
     if (!this.started) {
       this.started = true;
-      setInterval(() => {
-        if (this.timeLeft > 0) {
-          this.timeLeft--;
-          io.to(pin).emit("RES_START_DRAFT", this.timeLeft);
-        } else {
-          this.timeLeft = 30;
-          io.to(pin).emit("RES_START_DRAFT", this.timeLeft);
-        }
-      }, 1000);
+      io.to(pin).emit("RES_START_DRAFT", (this.state = 1));
+      this.startTimer(pin, io);
     }
+  }
+
+  nextRound(pin, io, idMap, indexUser) {
+    if (indexUser == this.turn) {
+      clearInterval(this.timer);
+      if (this.round <= this.draftMode.bans) {
+        this.maps.banned.push(idMap);
+        this.startTimer(pin, io);
+        this.turn = !this.turn;
+        this.round++;
+      } else if (
+        this.round > this.draftMode.bans &&
+        this.round <= this.draftMode.picks + this.draftMode.bans
+      ) {
+        this.maps.picked.push(idMap);
+        this.startTimer(pin, io);
+        this.turn = !this.turn;
+        this.round++;
+      } else {
+        console.log("GAME END");
+      }
+      console.log(this.maps, this.round);
+    }
+  }
+
+  selectMap(pin, io, idMap, indexUser) {
+    //CHECK MAP
+    this.nextRound(pin, io, idMap, indexUser);
   }
 }
 
