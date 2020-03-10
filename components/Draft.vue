@@ -6,16 +6,16 @@
         class="card"
         v-for="(map, index) in maps"
         :key="index"
-        @click="selected = map.id"
+        :style="styleButton(map)"
       >
-        <!-- <img :src="map.img" /> -->
+        <img @click="selected = map.id" src="https://via.placeholder.com/150" />
         <p>{{ map.title }}</p>
         <p>{{ map.type }}</p>
       </div>
     </div>
     <h1>Timer</h1>
     <p>Temps avant la prochaine étape : {{ timeLeft }}</p>
-    <h2 @click="lockOrPick()">Select</h2>
+    <button @click="lockOrPick()">Select</button>
   </div>
 </template>
 
@@ -25,6 +25,11 @@ export default {
   sockets: {
     RES_START_TIMER: function(ele) {
       this.timeLeft = ele;
+    },
+    RES_NEXT_ROUND: function(ele) {
+      if (ele[1] !== -1) {
+        this.$store.commit("map/selectMap", ele);
+      }
     }
   },
   components: {
@@ -45,6 +50,13 @@ export default {
           id: this.selected
         });
         this.selected = -1;
+      }
+    },
+    styleButton(map) {
+      if (map.banned === true) {
+        return "background-color:red";
+      } else if (map.picked === true) {
+        return "background-color:green";
       }
     }
   },

@@ -78,6 +78,7 @@ class Draft {
         this.startTimer(pin, io);
         this.turn = !this.turn;
         this.round++;
+        io.to(pin).emit("RES_NEXT_ROUND", [0, idMap]);
       } else if (
         this.round > this.draftMode.bans &&
         this.round <= this.draftMode.picks + this.draftMode.bans
@@ -86,6 +87,7 @@ class Draft {
         this.startTimer(pin, io);
         this.turn = !this.turn;
         this.round++;
+        io.to(pin).emit("RES_NEXT_ROUND", [1, idMap]);
       } else {
         console.log("GAME END");
       }
