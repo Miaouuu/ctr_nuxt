@@ -13,7 +13,7 @@
         <p>{{ map.type }}</p>
       </div>
     </div>
-    <h1>Timer</h1>
+    <h1>Timer :</h1>
     <p>Temps avant la prochaine étape : {{ timeLeft }}</p>
     <button @click="lockOrPick()">Select</button>
   </div>
