@@ -19,6 +19,8 @@
     "vue-socket.io": "^3.0.7"
   },
   "devDependencies": {
-    "nodemon": "^1.18.9"
+    "node-sass": "^4.13.1",
+    "nodemon": "^1.18.9",
+    "sass-loader": "^8.0.2"
   }
 }

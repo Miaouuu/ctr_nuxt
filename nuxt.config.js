@@ -14,7 +14,7 @@ module.exports = {
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
   },
   loading: { color: "#fff" },
-  css: [],
+  css: ["@/assets/css/main.css", "@/assets/css/main.scss"],
   plugins: [{ src: "~/plugins/socket.client.js" }],
   buildModules: [],
   modules: ["@nuxtjs/pwa"],
