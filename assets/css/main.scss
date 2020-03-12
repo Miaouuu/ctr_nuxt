@@ -25,13 +25,14 @@ body {
 .effect3D:hover {
   transform: perspective(50px) rotateX(-8deg) rotateY(-3deg) rotateZ(-3deg);
 }
-button.inputPin {
+button.btnPin {
   cursor: pointer;
   background: transparent;
   width: 20rem;
   height: 3rem;
   background: $inputGradient;
   border: none;
+  margin: 20px;
 }
 .shadow:hover {
   box-shadow: -8px 8px 0px $textColor;
@@ -52,4 +53,19 @@ button.inputPin {
   top: 50%;
   transform: translate(-60%, -50%);
   color: $textColor;
+  font-size: 20px;
+}
+a{
+  
+}
+.invi:focus{
+  background: none;
+  border: none;
+  width: 200px;
+  height: 30px;
+  background-color: #0d5288;
+  position: absolute;
+  left: 50%;
+  top: 200%;
+  transform: translate(-50%, -160%);
 }
