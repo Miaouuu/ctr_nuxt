@@ -1,21 +1,40 @@
 <template>
   <div>
-    <Search @update="maps = $event" />
-    <div class="wrapper">
-      <div
-        class="card"
-        v-for="(map, index) in maps"
-        :key="index"
-        :style="styleButton(map)"
-      >
-        <img @click="selected = map.id" src="https://via.placeholder.com/150" />
-        <p>{{ map.title }}</p>
-        <p>{{ map.type }}</p>
+    <div>
+      <h1>MAPS DRAFT</h1>
+      <h2 style="color:white">Timer :</h2>
+      <p style="color:white">Temps avant la prochaine étape : {{ timeLeft }}</p>
+
+      <div class="container draftContainer">
+        <div class="draftContainerTop">
+          <Search @update="maps = $event" />
+        </div>
+        <div class="wrapper">
+          <div
+            class="card"
+            v-for="(map, index) in maps"
+            :key="index"
+            :style="styleButton(map)"
+          >
+            <img
+              @click="selected = map.id"
+              :src="require(`../assets/img/circuits/${map.src}`)"
+              style="height:100px"
+            />
+            <p>{{ map.title }}</p>
+            <p>{{ map.type }}</p>
+          </div>
+        </div>
       </div>
+      
     </div>
-    <h1>Timer :</h1>
-    <p>Temps avant la prochaine étape : {{ timeLeft }}</p>
-    <button @click="lockOrPick()">Select</button>
+
+    <button
+      @click="lockOrPick()"
+      style="height: 50px; width: 200px; margin-left:calc(50% - 150px)"
+    >
+      Select
+    </button>
   </div>
 </template>
 
