@@ -47,6 +47,37 @@ button.btnPin {
   flex-direction: column;
 }
 
+.draftContainer {
+  width: 86vw;
+  display: flex;
+  margin: 0 auto;
+  background: #ececec48;
+
+  .draftContainerTop {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+    .draftContainerTopFilters {
+      align-content: left;
+    }
+    .draftContainerTopSearch {
+      align-content: right;
+    }
+  }
+
+  .wrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .card {
+    border: 2px solid #3366cc;
+    width: 200px;
+    height: 150px;
+    margin: 20px 20px 0 0;
+  }
+}
+
 .txtInput {
   position: absolute;
   left: 60%;
@@ -55,10 +86,9 @@ button.btnPin {
   color: $textColor;
   font-size: 20px;
 }
-a{
-  
+a {
 }
-.invi:focus{
+.invi:focus {
   background: none;
   border: none;
   width: 200px;

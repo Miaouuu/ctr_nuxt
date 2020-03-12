@@ -1,14 +1,17 @@
 <template>
-  <div>
-    <h1>Draft maps</h1>
-    <input type="text" v-model="search" @input="mapsFilteredList()" />
-    <ul class="filters">
-      <li @click="researchByMapType('CTR')">CTR</li>
-      <li @click="researchByMapType('CNK')">CNK</li>
-      <li @click="researchByMapType('BONUS')">BONUS</li>
-      <li @click="researchByMapType('')">RESET</li>
-    </ul>
-    <p>Current map type : {{ mapType }}</p>
+  <div style="display:flex;">
+    <div class="draftContainerTopFilters">
+      <ul class="filters">
+        <li @click="researchByMapType('CTR')">CTR</li>
+        <li @click="researchByMapType('CNK')">CNK</li>
+        <li @click="researchByMapType('BONUS')">BONUS</li>
+        <li @click="researchByMapType('')">RESET</li>
+      </ul>
+      <p>Current map type : {{ mapType }}</p>
+    </div>
+    <div class="draftContainerTopSearch">
+      <input type="text" v-model="search" @input="mapsFilteredList()" />
+    </div>
   </div>
 </template>
 

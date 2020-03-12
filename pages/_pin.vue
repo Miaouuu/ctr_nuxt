@@ -41,17 +41,4 @@ export default {
 };
 </script>
 
-<style>
-.wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  width: 80%;
-  margin: 0 auto;
-}
-.card {
-  border: 2px solid #3366cc;
-  width: 200px;
-  height: 150px;
-  margin: 20px 20px 0 0;
-}
-</style>
+<style></style>
