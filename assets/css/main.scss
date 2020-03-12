@@ -49,22 +49,44 @@ button.btnPin {
 
 .draftContainer {
   width: 86vw;
-  display: flex;
   margin: 0 auto;
   background: #ececec48;
 
   .draftContainerTop {
     display: flex;
     flex-direction: row;
-    width: 100%;
+    justify-content: space-between;
+    width: 90%;
+    margin: auto;
 
     .draftContainerTopFilters {
       align-content: left;
-    }
+      .filters {
+        padding-left: 0;
+        margin-top: 8px;
+          li {
+            display: inline-block;
+            border: 2px solid #0d5288;
+            padding: 5px 30px;
+            background-color: #FAC600;
+            color: #0d5288;
+            font-weight: 500;
+            cursor: pointer;
+            }
+          }
+        }
     .draftContainerTopSearch {
-      align-content: right;
+      align-items: center;
+      display: flex;
+      .search{
+        width: 400px;
+        padding: 10px 30px;
+        border-radius: 50px;
+        border: none;
+      }
     }
   }
+
 
   .wrapper {
     display: flex;
@@ -72,12 +94,33 @@ button.btnPin {
   }
   .card {
     border: 2px solid #3366cc;
-    width: 200px;
-    height: 150px;
-    margin: 20px 20px 0 0;
+    width: 280px;
+    height: 168px;
+    margin: 10px;
+    cursor: pointer;
+    .mapName{
+      width: 100%;
+      height: 50px;
+      background-color: black;
+      color: white;
+    }
+    img{
+      width: 100%;
+      height: 100%;
+    }
   }
 }
-
+.timer{
+  position: absolute;
+  top: -60px;
+  left: -90px;
+  .timerTxt{
+    color: white;
+    position: absolute;
+    top: 80px;
+    left: 150px;
+  }
+}
 .txtInput {
   position: absolute;
   left: 60%;
@@ -85,8 +128,6 @@ button.btnPin {
   transform: translate(-60%, -50%);
   color: $textColor;
   font-size: 20px;
-}
-a {
 }
 .invi:focus {
   background: none;

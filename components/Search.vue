@@ -1,5 +1,5 @@
 <template>
-  <div style="display:flex;">
+  <div class="draftContainerTop" >
     <div class="draftContainerTopFilters">
       <ul class="filters">
         <li @click="researchByMapType('CTR')">CTR</li>
@@ -7,10 +7,10 @@
         <li @click="researchByMapType('BONUS')">BONUS</li>
         <li @click="researchByMapType('')">RESET</li>
       </ul>
-      <p>Current map type : {{ mapType }}</p>
+      <!-- <p>Current map type : {{ mapType }}</p> -->
     </div>
     <div class="draftContainerTopSearch">
-      <input type="text" v-model="search" @input="mapsFilteredList()" />
+      <input class="search" type="text" v-model="search" @input="mapsFilteredList()" />
     </div>
   </div>
 </template>
@@ -45,12 +45,5 @@ export default {
 </script>
 
 <style>
-.filters {
-  padding-left: 0;
-  margin-top: 8px;
-}
-.filters li {
-  display: inline-block;
-  border: 1px solid blue;
-}
+
 </style>
