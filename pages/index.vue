@@ -1,8 +1,18 @@
 <template>
   <div class="container">
-    <input type="button" value="Create" @click="createRoom" />
+    <button class="inputPin effect3D shadow">
+      <nuxt-link :to="'/' + pin">JOIN</nuxt-link>
+      <input type="text" v-model="pin" />
+    </button>
+    <button
+      class="inputPin effect3D shadow"
+      type="button"
+      value="Create"
+      @click="createRoom"
+    />
+    <!-- <input type="button" value="Create" @click="createRoom" />
     <input class="inputPin effect3D shadow" type="text" v-model="pin" />
-    <nuxt-link :to="'/' + pin">Join</nuxt-link>
+    <nuxt-link :to="'/' + pin">Join</nuxt-link> -->
   </div>
 </template>
 
