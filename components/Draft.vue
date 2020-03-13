@@ -29,14 +29,19 @@
           v-for="(map, index) in maps"
           :key="index"
           :style="styleButton(map)"
+          @click="selected = map.id"
         >
-          <img
-            @click="selected = map.id"
-            :src="require(`../assets/img/circuits/${map.src}`)"
-          />
-          <div class="mapName">
+          <img :src="require(`../assets/img/circuits/${map.src}`)" />
+          <div class="banOverlayImg" v-if="map.banned"></div>
+          <div
+            class="mapName"
+            :class="{
+              picked: map.picked,
+              active: index == selected,
+              banned: map.banned
+            }"
+          >
             <h3>{{ map.title }}</h3>
-            <h3>{{ map.type }}</h3>
           </div>
         </div>
       </div>
@@ -45,10 +50,11 @@
     <div class="bottomContainer">
       <div class="soundContainer"></div>
       <div class="banContainer">
-        <div class="banOverlay">
+        <div class="banOverlay" v-for="(item, index) in 4" :key="index">
           <div class="banOverlayImg"></div>
         </div>
-        <!-- <div v-for="map in $store.state.map.maps" :key="map.id">
+      </div>
+      <!-- <div v-for="map in $store.state.map.maps" :key="map.id">
           <div v-if="map.banned" class="cardMapBan">
             <img
               @click="selected = map.id"
@@ -56,7 +62,7 @@
             />
           </div>
         </div> -->
-      </div>
+
       <button class="lockBtn" @click="lockOrPick()">
         Select
       </button>
@@ -83,7 +89,7 @@ export default {
   data() {
     return {
       timeLeft: 30,
-      selected: -1,
+      selected: 0,
       maps: []
     };
   },
@@ -94,6 +100,7 @@ export default {
           path: this.$route.params.pin,
           id: this.selected
         });
+
         this.selected = -1;
       }
     },
@@ -111,5 +118,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>
