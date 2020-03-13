@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <h1>MAPS DRAFT</h1>
     <div class="timer">
       <svg
@@ -25,7 +25,7 @@
       </div>
       <div class="wrapper">
         <div
-          class="card"
+          class="cardMapContainer"
           v-for="(map, index) in maps"
           :key="index"
           :style="styleButton(map)"
@@ -42,12 +42,25 @@
       </div>
     </div>
 
-    <button
-      @click="lockOrPick()"
-      style="height: 50px; width: 200px; margin-left:calc(50% - 150px)"
-    >
-      Select
-    </button>
+    <div class="bottomContainer">
+      <div class="soundContainer"></div>
+      <div class="banContainer">
+        <div class="banOverlay">
+          <div class="banOverlayImg"></div>
+        </div>
+        <!-- <div v-for="map in $store.state.map.maps" :key="map.id">
+          <div v-if="map.banned" class="cardMapBan">
+            <img
+              @click="selected = map.id"
+              :src="require(`../assets/img/circuits/${map.src}`)"
+            />
+          </div>
+        </div> -->
+      </div>
+      <button class="lockBtn" @click="lockOrPick()">
+        Select
+      </button>
+    </div>
   </div>
 </template>
 
@@ -98,4 +111,5 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+</style>
