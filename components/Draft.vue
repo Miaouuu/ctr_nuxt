@@ -1,6 +1,13 @@
 <template>
   <div class="container">
-    <h1>MAPS DRAFT</h1>
+    <h1>
+      Tour : Team
+      {{
+        $store.state.draft.draft.turn
+          ? $store.state.draft.draft.teamName[1]
+          : $store.state.draft.draft.teamName[0]
+      }}
+    </h1>
     <div class="timer">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -31,13 +38,13 @@
           :style="styleButton(map)"
           @click="selected = map.id"
         >
-          <img :src="require(`../assets/img/circuits/${map.src}`)" />
+          <img :src="require(`../assets/img/circuits/${map.src}.jpg`)" />
           <div class="banOverlayImg" v-if="map.banned"></div>
           <div
             class="mapName"
             :class="{
               picked: map.picked,
-              active: index == selected,
+              active: map.id === selected,
               banned: map.banned
             }"
           >
@@ -63,8 +70,8 @@
           </div>
         </div> -->
 
-      <button class="lockBtn" @click="lockOrPick()">
-        Select
+      <button class="lockBtn" @click="banOrPick()">
+        {{ buttonBanOrPick() }}
       </button>
     </div>
   </div>
@@ -78,9 +85,10 @@ export default {
       this.timeLeft = ele;
     },
     RES_NEXT_ROUND: function(ele) {
-      if (ele[1] !== -1) {
-        this.$store.commit("map/selectMap", ele);
+      if (ele.idMap !== -1) {
+        this.$store.commit("map/selectMap", [ele.banOrPick, ele.idMap]);
       }
+      this.$store.commit("draft/nextRound", [ele.round, ele.turn]);
     }
   },
   components: {
@@ -89,12 +97,22 @@ export default {
   data() {
     return {
       timeLeft: 30,
-      selected: 0,
+      selected: -1,
       maps: []
     };
   },
   methods: {
-    lockOrPick() {
+    buttonBanOrPick() {
+      if (
+        this.$store.state.draft.draft.draftMode.bans >=
+        this.$store.state.draft.draft.round
+      ) {
+        return "Ban";
+      } else {
+        return "Pick";
+      }
+    },
+    banOrPick() {
       if (this.selected !== -1) {
         this.$socket.emit("SELECT_MAP", {
           path: this.$route.params.pin,
