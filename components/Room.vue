@@ -86,8 +86,8 @@ export default {
       this.$socket.emit("START_DRAFT", this.$route.params.pin);
     }
   },
-  mounted() {
-    fetch("http://ctr-api.herokuapp.com/api/v1/maps", {
+  mounted() { //decale dans _pin
+    fetch("https://ctr-api.herokuapp.com/api/v1/maps", {
       method: "get"
     })
       .then(data => data.json())
