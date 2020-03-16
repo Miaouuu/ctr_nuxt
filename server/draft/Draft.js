@@ -71,6 +71,7 @@ class Draft {
   }
 
   nextRound(pin, io, idMap, indexUser) {
+    //1 tour puis 2 tours puis 2 tours
     if (indexUser == this.turn) {
       clearInterval(this.timer);
       if (this.round <= this.draftMode.bans) {
@@ -78,7 +79,12 @@ class Draft {
         this.startTimer(pin, io);
         this.turn = !this.turn;
         this.round++;
-        io.to(pin).emit("RES_NEXT_ROUND", [0, idMap]);
+        io.to(pin).emit("RES_NEXT_ROUND", {
+          banOrPick: 0,
+          idMap: idMap,
+          round: this.round,
+          turn: this.turn
+        });
       } else if (
         this.round > this.draftMode.bans &&
         this.round <= this.draftMode.picks + this.draftMode.bans
@@ -87,7 +93,12 @@ class Draft {
         this.startTimer(pin, io);
         this.turn = !this.turn;
         this.round++;
-        io.to(pin).emit("RES_NEXT_ROUND", [1, idMap]);
+        io.to(pin).emit("RES_NEXT_ROUND", {
+          banOrPick: 1,
+          idMap: idMap,
+          round: this.round,
+          turn: this.turn
+        });
       } else {
         console.log("GAME END");
       }
@@ -96,8 +107,12 @@ class Draft {
   }
 
   selectMap(pin, io, idMap, indexUser) {
-    //CHECK MAP
-    this.nextRound(pin, io, idMap, indexUser);
+    if (
+      this.maps.banned.indexOf(idMap) === -1 &&
+      this.maps.picked.indexOf(idMap) === -1
+    ) {
+      this.nextRound(pin, io, idMap, indexUser);
+    }
   }
 }
 

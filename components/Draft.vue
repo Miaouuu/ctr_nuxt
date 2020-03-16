@@ -1,6 +1,13 @@
 <template>
-  <div>
-    <h1>MAPS DRAFT</h1>
+  <div class="container">
+    <h1>
+      Tour : Team
+      {{
+        $store.state.draft.draft.turn
+          ? $store.state.draft.draft.teamName[1]
+          : $store.state.draft.draft.teamName[0]
+      }}
+    </h1>
     <div class="timer">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -25,29 +32,48 @@
       </div>
       <div class="wrapper">
         <div
-          class="card"
+          class="cardMapContainer"
           v-for="(map, index) in maps"
           :key="index"
           :style="styleButton(map)"
+          @click="selected = map.id"
         >
-          <img
-            @click="selected = map.id"
-            :src="require(`../assets/img/circuits/${map.src}`)"
-          />
-          <div class="mapName">
+          <img :src="require(`../assets/img/circuits/${map.src}.jpg`)" />
+          <div class="banOverlayImg" v-if="map.banned"></div>
+          <div
+            class="mapName"
+            :class="{
+              picked: map.picked,
+              active: map.id === selected,
+              banned: map.banned
+            }"
+          >
             <h3>{{ map.title }}</h3>
-            <h3>{{ map.type }}</h3>
           </div>
         </div>
       </div>
     </div>
 
-    <button
-      @click="lockOrPick()"
-      style="height: 50px; width: 200px; margin-left:calc(50% - 150px)"
-    >
-      Select
-    </button>
+    <div class="bottomContainer">
+      <div class="soundContainer"></div>
+      <div class="banContainer">
+        <div class="banOverlay" v-for="(item, index) in 4" :key="index">
+          <div class="banOverlayImg"></div>
+        </div>
+      </div>
+      <!-- <div v-for="map in $store.state.map.maps" :key="map.id">
+          <div v-if="map.banned" class="cardMapBan">
+            <img
+              @click="selected = map.id"
+              :src="require(`../assets/img/circuits/${map.src}`)"
+            />
+          </div>
+        </div> -->
+
+      <button class="lockBtn" @click="banOrPick()">
+        {{ buttonBanOrPick() }}
+      </button>
+    </div>
   </div>
 </template>
 
@@ -59,9 +85,10 @@ export default {
       this.timeLeft = ele;
     },
     RES_NEXT_ROUND: function(ele) {
-      if (ele[1] !== -1) {
-        this.$store.commit("map/selectMap", ele);
+      if (ele.idMap !== -1) {
+        this.$store.commit("map/selectMap", [ele.banOrPick, ele.idMap]);
       }
+      this.$store.commit("draft/nextRound", [ele.round, ele.turn]);
     }
   },
   components: {
@@ -75,12 +102,23 @@ export default {
     };
   },
   methods: {
-    lockOrPick() {
+    buttonBanOrPick() {
+      if (
+        this.$store.state.draft.draft.draftMode.bans >=
+        this.$store.state.draft.draft.round
+      ) {
+        return "Ban";
+      } else {
+        return "Pick";
+      }
+    },
+    banOrPick() {
       if (this.selected !== -1) {
         this.$socket.emit("SELECT_MAP", {
           path: this.$route.params.pin,
           id: this.selected
         });
+
         this.selected = -1;
       }
     },

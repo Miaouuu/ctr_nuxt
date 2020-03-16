@@ -27,9 +27,11 @@ export default {
     RES_CHANGE_TEAM_NAME: function(ele) {
       this.team1Name = ele[0];
       this.team2Name = ele[1];
+      this.$store.commit("draft/changeTeamName", ele);
     },
     RES_CHANGE_DRAFT_MODE: function(ele) {
       this.draftMode.draftModeSelected = ele;
+      this.$store.commit("draft/changeDraftMode", ele);
     }
   },
   props: {
@@ -56,16 +58,39 @@ export default {
         path: this.$route.params.pin,
         teamName: [this.team1Name, this.team2Name]
       });
+      this.$store.commit("draft/changeTeamName", [
+        this.team1Name,
+        this.team2Name
+      ]);
     },
     changeDraftMode() {
       this.$socket.emit("CHANGE_DRAFT_MODE", {
         path: this.$route.params.pin,
         value: this.draftMode.draftModeSelected
       });
+      this.$store.commit(
+        "draft/changeDraftMode",
+        this.draftMode.draftModeSelected
+      );
     },
     startDraft() {
       this.$socket.emit("START_DRAFT", this.$route.params.pin);
     }
+  },
+  mounted() { //decale dans _pin
+    fetch("https://ctr-api.herokuapp.com/api/v1/maps", {
+      method: "get"
+    })
+      .then(data => data.json())
+      .then(data => {
+        let newData = [];
+        data.maps.map(ele => {
+          ele.banned = false;
+          ele.picked = false;
+          newData.push(ele);
+        });
+        this.$store.commit("map/newMaps", newData);
+      });
   }
 };
 </script>
