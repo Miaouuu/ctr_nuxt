@@ -11,6 +11,24 @@ $inputGradient: linear-gradient(
   #bce1fd,
   #cbe8ff
 );
+
+@font-face {
+  font-family: "GROBOLD";
+  src: url(../font/GROBOLD.ttf);
+}
+@font-face {
+  font-family: "HeroesLegend";
+  src: url(../font/HeroesLegend.ttf);
+}
+@font-face {
+  font-family: "HeroesLegendHollow";
+  src: url(../font/HeroesLegendHollow.ttf);
+}
+@font-face {
+  font-family: "SpaceComics";
+  src: url(../font/SpaceComics.ttf);
+}
+
 * {
   margin: 0;
   padding: 0;
