@@ -37,6 +37,7 @@ $inputGradient: linear-gradient(
 }
 body {
   background-image: url("../img/bgCrash.png");
+  background-size: cover;
 }
 
 .effect3D {
@@ -127,13 +128,11 @@ button.btnPin {
   .wrapper {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    align-content: flex-start;
     overflow-y: auto;
     width: calc(100% - 50px);
     margin: 0 auto;
     height: 50vh;
-    /* Temporaire */
-    border: 1px solid white;
   }
 
   .cardMapContainer {
@@ -160,7 +159,7 @@ button.btnPin {
       left: 0;
       width: 100%;
       height: 50px;
-      background-color: black;
+      background-color: rgba(0, 0, 0, 0.85);
       color: white;
       display: flex;
       justify-content: center;
@@ -229,6 +228,20 @@ button.btnPin {
     left: 150px;
   }
 }
+
+.lockBtn {
+  background-color: $inputColor;
+  border-radius: 25px;
+  border: none;
+  color: $textColor;
+  font-size: 20px;
+  font-weight: 500;
+  width: 258px;
+  height: 60px;
+}
+
+// Page Main
+
 .txtInput {
   position: absolute;
   left: 60%;
@@ -249,15 +262,43 @@ button.btnPin {
   transform: translate(-50%, -160%);
 }
 
-.lockBtn {
+// Page room
+
+.teamInput {
+  margin: 10%;
+  justify-content: center;
+  align-items: center;
   background-color: $inputColor;
-  border-radius: 25px;
   border: none;
-  color: $textColor;
-  font-size: 20px;
-  font-weight: 500;
-  width: 258px;
-  height: 60px;
+  text-align: center;
+  font-weight: bold;
+  width: 20rem;
+  height: 3rem;
+  ::placeholder {
+    color: $textColor;
+  }
+}
+
+.teamSelect {
+  display: block;
+  margin: auto;
+  width: 20rem;
+  height: 3rem;
+  font-weight: bold;
+  background-color: $inputColor;
+}
+
+.roomButton {
+  margin-top: 10px;
+  display: block;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  background-color: $inputColor;
+  width: 10rem;
+  height: 3rem;
+  font-weight: bold;
+  border-radius: 40px;
 }
 
 // scrollbar

@@ -6,6 +6,7 @@
       v-model="team1Name"
       :disabled="!admin"
       @input="teamName()"
+      class="teamInput shadow"
     />
     <input
       type="text"
@@ -13,11 +14,21 @@
       v-model="team2Name"
       :disabled="!admin"
       @input="teamName()"
+      class="teamInput shadow"
     />
-    <select v-model="draftMode.draftModeSelected" @change="changeDraftMode()" :disabled="!admin">
-      <option v-for="option in draftMode.optionsDraftMode" :value="option.value">{{ option.text }}</option>
+    <select
+      v-model="draftMode.draftModeSelected"
+      @change="changeDraftMode()"
+      :disabled="!admin"
+      class="teamSelect"
+    >
+      <option
+        v-for="option in draftMode.optionsDraftMode"
+        :value="option.value"
+        >{{ option.text }}</option
+      >
     </select>
-    <button @click="startDraft()">Start draft</button>
+    <button @click="startDraft()" class="roomButton shadow">Start draft</button>
   </div>
 </template>
 
@@ -77,7 +88,8 @@ export default {
       this.$socket.emit("START_DRAFT", this.$route.params.pin);
     }
   },
-  mounted() { //decale dans _pin
+  mounted() {
+    //decale dans _pin
     fetch("https://ctr-api.herokuapp.com/api/v1/maps", {
       method: "get"
     })
@@ -95,42 +107,4 @@ export default {
 };
 </script>
 
-<style>
-input {
-  margin: 10%;
-  justify-content: center;
-  align-items: center;
-  background-color: #a8d8f8;
-  border: none;
-  text-align: center;
-  font-weight: bold;
-  width: 20rem;
-  height: 3rem;
-  box-shadow: -8px 8px 0px #0d5288;
-}
-::placeholder {
-  color: #0d5288;
-}
-select {
-  display: block;
-  margin: auto;
-  width: 20rem;
-  height: 3rem;
-  font-weight: bold;
-  background-color: #a8d8f8;
-  box-shadow: -8px 8px 0px #0d5288;
-}
-button {
-  margin-top: 10px;
-  display: block;
-  margin: auto;
-  justify-content: center;
-  align-items: center;
-  background-color: #a8d8f8;
-  width: 10rem;
-  height: 3rem;
-  font-weight: bold;
-  border-radius: 40px;
-  box-shadow: -8px 8px 0px #0d5288;
-}
-</style>
+<style></style>
