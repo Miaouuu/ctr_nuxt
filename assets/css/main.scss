@@ -272,6 +272,17 @@ button.btnPin {
 
 // Page room
 
+.Pin {
+  margin: 1%;
+  padding: 1%;
+  width: 8rem;
+  height: 3rem;
+  background-color: $inputColor;
+  border: none;
+  font-weight: bold;
+  box-shadow: -8px 8px 0px $textColor;
+}
+
 .teamInput {
   margin: 10%;
   justify-content: center;
@@ -279,9 +290,11 @@ button.btnPin {
   background-color: $inputColor;
   border: none;
   text-align: center;
+  text-transform: uppercase;
   font-weight: bold;
   width: 20rem;
   height: 3rem;
+  box-shadow: -8px 8px 0px $textColor;
   ::placeholder {
     color: $textColor;
   }
@@ -290,14 +303,18 @@ button.btnPin {
 .teamSelect {
   display: block;
   margin: auto;
+  margin-bottom: 100px;
   width: 20rem;
   height: 3rem;
   font-weight: bold;
   background-color: $inputColor;
+  box-shadow: -8px 8px 0px $textColor;
+  ::placeholder {
+    color: $textColor;
+  }
 }
 
 .roomButton {
-  margin-top: 10px;
   display: block;
   margin: auto;
   justify-content: center;
@@ -306,7 +323,9 @@ button.btnPin {
   width: 10rem;
   height: 3rem;
   font-weight: bold;
+  text-transform: uppercase;
   border-radius: 40px;
+  box-shadow: -8px 8px 0px $textColor;
 }
 
 // scrollbar

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div class="Pin">PIN :</div>
     <input
       type="text"
       placeholder="TEAM A"
@@ -22,11 +23,7 @@
       :disabled="!admin"
       class="teamSelect"
     >
-      <option
-        v-for="option in draftMode.optionsDraftMode"
-        :value="option.value"
-        >{{ option.text }}</option
-      >
+      <option v-for="option in draftMode.optionsDraftMode" :value="option.value">{{ option.text }}</option>
     </select>
     <button @click="startDraft()" class="roomButton shadow">Start draft</button>
   </div>
