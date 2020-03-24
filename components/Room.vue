@@ -1,32 +1,42 @@
 <template>
   <div>
-    <div style="display:flex; justify-content:center; width:100%; text-align:center;">
-      <input
-        type="text"
-        placeholder="TEAM A"
-        v-model="team1Name"
-        :disabled="!admin"
-        @input="teamName()"
-        class="teamInput shadow"
-      />
-      <input
-        type="text"
-        placeholder="TEAM B"
-        v-model="team2Name"
-        :disabled="!admin"
-        @input="teamName()"
-        class="teamInput shadow"
-      />
+    <div class="roomContainer">
+      <div class="roomContainerInput">
+        <input
+          type="text"
+          placeholder="TEAM A"
+          v-model="team1Name"
+          :disabled="!admin"
+          @input="teamName()"
+          class="teamInput shadow"
+        />
+        <input
+          type="text"
+          placeholder="TEAM B"
+          v-model="team2Name"
+          :disabled="!admin"
+          @input="teamName()"
+          class="teamInput shadow"
+        />
+      </div>
+      <div class="roomContainerBottom">
+        <select
+          v-model="draftMode.draftModeSelected"
+          @change="changeDraftMode()"
+          :disabled="!admin"
+          class="teamSelect"
+        >
+          <option
+            v-for="option in draftMode.optionsDraftMode"
+            :value="option.value"
+            >{{ option.text }}</option
+          >
+        </select>
+        <button @click="startDraft()" class="roomButton shadow">
+          Start draft
+        </button>
+      </div>
     </div>
-    <select
-      v-model="draftMode.draftModeSelected"
-      @change="changeDraftMode()"
-      :disabled="!admin"
-      class="teamSelect"
-    >
-      <option v-for="option in draftMode.optionsDraftMode" :value="option.value">{{ option.text }}</option>
-    </select>
-    <button @click="startDraft()" class="roomButton shadow">Start draft</button>
   </div>
 </template>
 

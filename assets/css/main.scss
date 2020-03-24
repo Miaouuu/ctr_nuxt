@@ -3,12 +3,14 @@ $textColor: #0d5288;
 $shadowColor: rgba(39, 39, 39, 0.3);
 $yellow: #fac600;
 
-$inputGradient: linear-gradient(to top,
+$inputGradient: linear-gradient(
+  to top,
   #8dcaf9,
   #9dd2fa,
   #add9fc,
   #bce1fd,
-  #cbe8ff);
+  #cbe8ff
+);
 
 @font-face {
   font-family: "GROBOLD";
@@ -39,6 +41,8 @@ $inputGradient: linear-gradient(to top,
 
 body {
   background-image: url("../img/bgCrash.png");
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
 }
 
@@ -61,20 +65,18 @@ button.btnPin {
 }
 
 button.btnPin:active {
-
-  transform: perspective(50px) rotateX(-8deg) rotateY(-3deg) rotateZ(-3deg) translateX(-4px) translateY(4px);
+  transform: perspective(50px) rotateX(-8deg) rotateY(-3deg) rotateZ(-3deg)
+    translateX(-4px) translateY(4px);
   box-shadow: -4px 4px 0px $textColor;
-
 }
 
 .shadow:hover {
   box-shadow: -8px 8px 0px $textColor;
 }
 
-
 .container {
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -297,41 +299,54 @@ button.btnPin:active {
 
 // Page room
 
-.teamInput {
-  margin: 10%;
-  justify-content: center;
-  align-items: center;
-  background-color: $inputColor;
-  border: none;
+.roomContainer {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
   text-align: center;
-  font-weight: bold;
-  width: 20rem;
-  height: 3rem;
-
-  ::placeholder {
-    color: $textColor;
-  }
-}
-
-.teamSelect {
-  display: block;
-  margin: auto;
-  width: 20rem;
-  height: 3rem;
-  font-weight: bold;
-  background-color: $inputColor;
-}
-
-.roomButton {
-  margin: 20px auto 0;
-  display: block;
   justify-content: center;
-  align-items: center;
-  background-color: $inputColor;
-  width: 10rem;
-  height: 3rem;
-  font-weight: bold;
-  border-radius: 40px;
+  flex-direction: column;
+
+  .roomContainerInput {
+    display: flex;
+    justify-content: space-around;
+    .teamInput {
+      justify-content: center;
+      background-color: $inputColor;
+      border: none;
+      text-align: center;
+      font-weight: bold;
+      width: calc(20% + 25px);
+      height: 3rem;
+
+      ::placeholder {
+        color: $textColor;
+      }
+    }
+  }
+  .roomContainerBottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .teamSelect {
+      display: flex;
+      width: calc(100px + 25%);
+      height: 3rem;
+      font-weight: bold;
+      background-color: $inputColor;
+    }
+
+    .roomButton {
+      display: block;
+      justify-content: center;
+      align-items: center;
+      background-color: $inputColor;
+      width: 10rem;
+      height: 3rem;
+      font-weight: bold;
+      border-radius: 40px;
+    }
+  }
 }
 
 // scrollbar
