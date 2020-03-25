@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="roomContainer">
+      <div class="pin">PIN : {{ this.$route.params.pin }}</div>
       <div class="roomContainerInput">
         <input
           type="text"
@@ -8,7 +9,7 @@
           v-model="team1Name"
           :disabled="!admin"
           @input="teamName()"
-          class="teamInput shadow"
+          class="teamInput shadowPermanent"
         />
         <input
           type="text"
@@ -16,7 +17,7 @@
           v-model="team2Name"
           :disabled="!admin"
           @input="teamName()"
-          class="teamInput shadow"
+          class="teamInput shadowPermanent"
         />
       </div>
       <div class="roomContainerBottom">
@@ -32,8 +33,8 @@
             >{{ option.text }}</option
           >
         </select>
-        <button @click="startDraft()" class="roomButton shadow">
-          Start draft
+        <button @click="startDraft()" class="roomButton shadowPermanent">
+          START
         </button>
       </div>
     </div>
