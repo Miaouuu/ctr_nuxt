@@ -104,7 +104,6 @@ button.btnPin:active {
 
       .filters {
         padding-left: 0;
-        margin-top: 8px;
 
         li {
           display: inline-block;
@@ -127,7 +126,6 @@ button.btnPin:active {
     .draftContainerTopSearch {
       align-items: center;
       display: flex;
-      margin-top: 8px;
 
       .searchBar {
         width: 320px;
@@ -165,7 +163,7 @@ button.btnPin:active {
     border: 2px solid #3366cc;
     width: 280px;
     height: 168px;
-    margin: 5px 10px 15px 10px;
+    margin: 10px 10px 5px 10px;
     cursor: pointer;
     position: relative;
 
@@ -207,6 +205,7 @@ button.btnPin:active {
     img {
       width: 100%;
       height: 100%;
+      object-fit: cover;
     }
   }
 }
@@ -249,6 +248,7 @@ button.btnPin:active {
       img {
         width: 100%;
         height: 100%;
+        object-fit: cover;
       }
     }
   }
@@ -395,4 +395,36 @@ button.btnPin:active {
 ::-webkit-scrollbar-track {
   border-radius: 5px;
   background: $textColor;
+}
+
+// Responsive
+// .wrapper {
+//   display: flex;
+//   flex-wrap: wrap;
+//   align-content: flex-start;
+//   overflow-y: auto;
+//   width: calc(100% - 50px);
+//   margin: 0 auto;
+//   height: 50vh;
+// }
+
+@media (min-width: 700px) {
+  .draftContainer .cardMapContainer {
+    width: calc(50% - 25px);
+  }
+}
+@media (min-width: 992px) {
+  .draftContainer .cardMapContainer {
+    width: calc(33.3% - 25px);
+  }
+}
+@media (min-width: 1400px) {
+  .draftContainer .cardMapContainer {
+    width: calc(25% - 25px);
+  }
+}
+@media (min-width: 1750px) {
+  .draftContainer .cardMapContainer {
+    width: calc(20% - 25px);
+  }
 }
