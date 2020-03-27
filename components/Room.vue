@@ -33,7 +33,7 @@
             >{{ option.text }}</option
           >
         </select>
-        <button @click="startDraft()" class="roomButton shadowPermanent">
+        <button @click="startDraft()" class="startLockBtn">
           START
         </button>
       </div>
@@ -64,10 +64,10 @@ export default {
       draftMode: {
         draftModeSelected: "",
         optionsDraftMode: [
-          { text: "Classic 6BANS 10PICKS", value: "Classic" },
-          { text: "League 6BANS 8PICKS", value: "League" },
-          { text: "Light 4BANS 6PICKS", value: "Light" },
-          { text: "No bans 0BANS 10PICKS", value: "No" }
+          { text: "Classic 6 BANS - 10 PICKS", value: "Classic" },
+          { text: "League 6 BANS - 8 PICKS", value: "League" },
+          { text: "Light 4 BANS - 6 PICKS", value: "Light" },
+          { text: "No bans 0 BANS - 10 PICKS", value: "No" }
         ]
       }
     };

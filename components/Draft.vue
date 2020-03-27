@@ -70,7 +70,7 @@
           </div>
         </div> -->
 
-      <button class="lockBtn" @click="banOrPick()">
+      <button class="startLockBtn" @click="banOrPick()">
         {{ buttonBanOrPick() }}
       </button>
     </div>

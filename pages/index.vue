@@ -1,8 +1,13 @@
 <template>
   <div class="container">
-    <button class="btnPin effect3D shadow">
+    <button class="btnPin effect3D shadow" @click="toggleInvi">
       <nuxt-link class="txtInput" :to="'/' + pin">JOIN</nuxt-link>
-      <input class="invi" type="text" v-model="pin" />
+      <input
+        :class="{ invi: isActive }"
+        class="inviNone"
+        type="text"
+        v-model="pin"
+      />
     </button>
     <button
       class="btnPin effect3D shadow"
@@ -27,12 +32,16 @@ export default {
   },
   data() {
     return {
-      pin: ""
+      pin: "",
+      isActive: false
     };
   },
   methods: {
     createRoom: function() {
       this.$socket.emit("CREATE_ROOM", "oui");
+    },
+    toggleInvi: function() {
+      this.isActive = true;
     }
   }
 };
