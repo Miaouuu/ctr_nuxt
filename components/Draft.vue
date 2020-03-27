@@ -64,18 +64,29 @@
           v-for="(item, index) in $store.state.draft.draft.draftMode.bans"
           :key="index"
         >
-          <p>{{ index }}</p>
-          <div class="banOverlayImg"></div>
+          <div
+            class="banOverlayImg"
+            v-if="$store.state.draft.draft.maps.banned[index]"
+          >
+            <img
+              v-if="$store.state.draft.draft.maps.banned[index] != -1"
+              :src="
+                require(`../assets/img/circuits/${
+                  $store.state.map.maps[
+                    $store.state.draft.draft.maps.banned[index] - 1
+                  ].src
+                }.jpg`)
+              "
+            />
+            <img class="banIcon" src="../assets/img/banned-icon.png" />
+          </div>
+          <div class="mapName">
+            <h3>
+              Map name
+            </h3>
+          </div>
         </div>
       </div>
-      <!-- <div v-for="map in $store.state.map.maps" :key="map.id">
-          <div v-if="map.banned" class="cardMapBan">
-            <img
-              @click="selected = map.id"
-              :src="require(`../assets/img/circuits/${map.src}`)"
-            />
-          </div>
-        </div> -->
 
       <button class="startLockBtn" @click="banOrPick()">
         {{ buttonBanOrPick() }}
