@@ -83,7 +83,8 @@ class Draft {
           banOrPick: 0,
           idMap: idMap,
           round: this.round,
-          turn: this.turn
+          turn: this.turn,
+          maps: this.maps
         });
       } else if (
         this.round > this.draftMode.bans &&
@@ -97,7 +98,8 @@ class Draft {
           banOrPick: 1,
           idMap: idMap,
           round: this.round,
-          turn: this.turn
+          turn: this.turn,
+          maps: this.maps
         });
       } else {
         console.log("GAME END");

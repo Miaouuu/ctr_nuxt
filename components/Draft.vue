@@ -95,7 +95,7 @@ export default {
       if (ele.idMap !== -1) {
         this.$store.commit("map/selectMap", [ele.banOrPick, ele.idMap]);
       }
-      this.$store.commit("draft/nextRound", [ele.round, ele.turn]);
+      this.$store.commit("draft/nextRound", [ele.round, ele.turn, ele.maps]);
     }
   },
   components: {
