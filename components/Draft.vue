@@ -39,7 +39,9 @@
           @click="selected = map.id"
         >
           <img :src="require(`../assets/img/circuits/${map.src}.jpg`)" />
-          <div class="banOverlayImg" v-if="map.banned"></div>
+          <div class="banOverlayImg" v-if="map.banned">
+            <img class="banIcon" src="../assets/img/banned-icon.png" />
+          </div>
           <div
             class="mapName"
             :class="{
@@ -57,7 +59,12 @@
     <div class="bottomContainer">
       <div class="soundContainer"></div>
       <div class="banContainer">
-        <div class="banOverlay" v-for="(item, index) in 4" :key="index">
+        <div
+          class="banOverlay"
+          v-for="(item, index) in $store.state.draft.draft.draftMode.bans"
+          :key="index"
+        >
+          <p>{{ index }}</p>
           <div class="banOverlayImg"></div>
         </div>
       </div>

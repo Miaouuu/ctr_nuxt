@@ -30,8 +30,8 @@
           <option
             v-for="option in draftMode.optionsDraftMode"
             :value="option.value"
-            >{{ option.text }}</option
-          >
+            >{{ option.text }}
+          </option>
         </select>
         <button @click="startDraft()" class="startLockBtn">
           START
