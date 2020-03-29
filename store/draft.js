@@ -11,7 +11,7 @@ export const state = () => ({
     },
     maps: {
       banned: [],
-      picked: []
+      picked: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     },
     round: 1,
     turn: false

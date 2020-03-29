@@ -1,14 +1,44 @@
 <template>
   <div class="container">
-    <h1>
+    <!-- <h3 class="teamName">
       Tour : Team
       {{
         $store.state.draft.draft.turn
           ? $store.state.draft.draft.teamName[1]
           : $store.state.draft.draft.teamName[0]
       }}
-    </h1>
-    <div class="timer">
+    </h3> -->
+    <div class="topContainer">
+      <div class="pickContainer">
+        <div
+          class="borderPick"
+          v-for="(item, index) in $store.state.draft.draft.draftMode.picks"
+          :key="index"
+        >
+          <div
+            class="pickee"
+            v-if="$store.state.draft.draft.maps.picked[index]"
+          >
+            <img
+              v-if="$store.state.draft.draft.maps.picked[index] != -1"
+              :src="
+                require(`../assets/img/circuits/${
+                  $store.state.map.maps[
+                    $store.state.draft.draft.maps.picked[index] - 1
+                  ].src
+                }.jpg`)
+              "
+            />
+          </div>
+          <div class="mapName">
+            <h4>
+              MAP
+            </h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="timer">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -24,7 +54,7 @@
         />
       </svg>
       <h1 class="timerTxt">{{ timeLeft }}</h1>
-    </div>
+    </div> -->
 
     <div class="draftContainer">
       <div class="draftContainerTop">
@@ -60,14 +90,11 @@
       <div class="soundContainer"></div>
       <div class="banContainer">
         <div
-          class="banOverlay"
+          class="banOverlay borderBan"
           v-for="(item, index) in $store.state.draft.draft.draftMode.bans"
           :key="index"
         >
-          <div
-            class="banOverlayImg"
-            v-if="$store.state.draft.draft.maps.banned[index]"
-          >
+          <div v-if="$store.state.draft.draft.maps.banned[index]">
             <img
               v-if="$store.state.draft.draft.maps.banned[index] != -1"
               :src="
@@ -78,12 +105,25 @@
                 }.jpg`)
               "
             />
-            <img class="banIcon" src="../assets/img/banned-icon.png" />
+            <div class="banOverlayImg">
+              <img class="banIcon" src="../assets/img/banned-icon.png" />
+            </div>
           </div>
-          <div class="mapName">
-            <h3>
-              Map name
-            </h3>
+          <div
+            class="mapName"
+            v-if="
+              $store.state.map.maps[
+                $store.state.draft.draft.maps.banned[index] - 1
+              ]
+            "
+          >
+            <h4>
+              {{
+                $store.state.map.maps[
+                  $store.state.draft.draft.maps.banned[index] - 1
+                ].title
+              }}
+            </h4>
           </div>
         </div>
       </div>

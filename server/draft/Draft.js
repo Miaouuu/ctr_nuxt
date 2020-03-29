@@ -51,7 +51,7 @@ class Draft {
   }
 
   startTimer(pin, io) {
-    this.timeLeft = 5;
+    this.timeLeft = 1000;
     this.timer = setInterval(() => {
       io.to(pin).emit("RES_START_TIMER", this.timeLeft);
       if (this.timeLeft > 0) {
