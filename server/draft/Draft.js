@@ -25,7 +25,7 @@ class Draft {
       .emit("RES_CHANGE_TEAM_NAME", [this.teamName[0], this.teamName[1]]);
   }
 
-  changeDraftMode(pin, draftMode, socket) {
+  changeDraftMode(pin, draftMode, io) {
     if (draftMode === "Classic") {
       this.draftMode.name = "Classic";
       this.draftMode.bans = 6;
@@ -47,7 +47,7 @@ class Draft {
       this.draftMode.bans = 6;
       this.draftMode.picks = 10;
     }
-    socket.broadcast.to(pin).emit("RES_CHANGE_DRAFT_MODE", this.draftMode.name);
+    io.to(pin).emit("RES_CHANGE_DRAFT_MODE", this.draftMode);
   }
 
   startTimer(pin, io) {

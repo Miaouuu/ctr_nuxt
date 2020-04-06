@@ -50,7 +50,7 @@ export default {
       this.$store.commit("draft/changeTeamName", ele);
     },
     RES_CHANGE_DRAFT_MODE: function(ele) {
-      this.draftMode.draftModeSelected = ele;
+      this.draftMode.draftModeSelected = ele.name;
       this.$store.commit("draft/changeDraftMode", ele);
     }
   },
