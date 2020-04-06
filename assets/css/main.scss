@@ -92,8 +92,8 @@ button.btnPin:active {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 90%;
-    margin: 8px auto;
+    width: calc(100% - 70px);
+    margin: 16px auto;
 
     .draftContainerTopFilters {
       align-content: left;
@@ -104,7 +104,7 @@ button.btnPin:active {
         li {
           display: inline-block;
           padding: 7px 30px;
-          margin: 0 6px;
+          margin: 0 12px 0 0;
           background-color: #fac600;
           color: $textColor;
           font-weight: 500;
@@ -122,6 +122,7 @@ button.btnPin:active {
     .draftContainerTopSearch {
       align-items: center;
       display: flex;
+      margin-right: 26px;
 
       .searchBar {
         width: 320px;

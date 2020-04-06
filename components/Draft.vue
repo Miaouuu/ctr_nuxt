@@ -57,9 +57,8 @@
     </div> -->
 
     <div class="draftContainer">
-      <div class="draftContainerTop">
-        <Search @update="maps = $event" />
-      </div>
+      <Search @update="maps = $event" />
+
       <div class="wrapper">
         <div
           class="cardMapContainer"
