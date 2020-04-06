@@ -26,9 +26,10 @@
           @change="changeDraftMode()"
           :disabled="!admin"
           class="teamSelect"
+          placeholder="Choisir un mode"
         >
           <option
-            v-for="option in draftMode.optionsDraftMode"
+            v-for="(option, index) in draftMode.optionsDraftMode"
             :value="option.value"
             >{{ option.text }}
           </option>
