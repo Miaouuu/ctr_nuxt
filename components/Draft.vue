@@ -93,7 +93,10 @@
           v-for="(item, index) in $store.state.draft.draft.draftMode.bans"
           :key="index"
         >
-          <div v-if="$store.state.draft.draft.maps.banned[index]">
+          <div
+            v-if="$store.state.draft.draft.maps.banned[index]"
+            style="display: flex"
+          >
             <img
               v-if="$store.state.draft.draft.maps.banned[index] != -1"
               :src="
