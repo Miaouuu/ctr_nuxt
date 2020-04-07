@@ -2,14 +2,14 @@
   <div>
     <div class="roomContainer">
       <div class="pin">PIN : {{ this.$route.params.pin }}</div>
-      <div class="roomContainerInput">
+      <div class="roomContainer">
         <input
           type="text"
           placeholder="TEAM A"
           v-model="team1Name"
           :disabled="!admin"
           @input="teamName()"
-          class="teamInput shadowPermanent"
+          class="teamInputSelect shadowPermanent"
         />
         <input
           type="text"
@@ -17,15 +17,13 @@
           v-model="team2Name"
           :disabled="!admin"
           @input="teamName()"
-          class="teamInput shadowPermanent"
+          class="teamInputSelect shadowPermanent"
         />
-      </div>
-      <div class="roomContainerBottom">
         <select
           v-model="draftModeSelected"
           @change="changeDraftMode()"
           :disabled="!admin"
-          class="teamSelect"
+          class="teamInputSelect"
           placeholder="Choisir un mode"
         >
           <option

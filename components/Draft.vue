@@ -38,7 +38,7 @@
         </div>
       </div>
     </div>
-    <!-- <div class="timer">
+    <div class="timer">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -54,7 +54,7 @@
         />
       </svg>
       <h1 class="timerTxt">{{ timeLeft }}</h1>
-    </div> -->
+    </div>
 
     <div class="draftContainer">
       <Search @update="maps = $event" />
