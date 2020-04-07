@@ -22,7 +22,7 @@
       </div>
       <div class="roomContainerBottom">
         <select
-          v-model="draftMode.draftModeSelected"
+          v-model="draftModeSelected"
           @change="changeDraftMode()"
           :disabled="!admin"
           class="teamSelect"
@@ -51,7 +51,6 @@ export default {
       this.$store.commit("draft/changeTeamName", ele);
     },
     RES_CHANGE_DRAFT_MODE: function(ele) {
-      this.draftMode.draftModeSelected = ele.name;
       this.$store.commit("draft/changeDraftMode", ele);
     }
   },
@@ -63,7 +62,6 @@ export default {
       team1Name: "",
       team2Name: "",
       draftMode: {
-        draftModeSelected: "",
         optionsDraftMode: [
           { text: "Classic 6 BANS - 10 PICKS", value: "Classic" },
           { text: "League 6 BANS - 8 PICKS", value: "League" },
@@ -87,12 +85,8 @@ export default {
     changeDraftMode() {
       this.$socket.emit("CHANGE_DRAFT_MODE", {
         path: this.$route.params.pin,
-        value: this.draftMode.draftModeSelected
+        value: this.draftModeSelected
       });
-      this.$store.commit(
-        "draft/changeDraftMode",
-        this.draftMode.draftModeSelected
-      );
     },
     startDraft() {
       this.$socket.emit("START_DRAFT", this.$route.params.pin);
@@ -113,6 +107,16 @@ export default {
         });
         this.$store.commit("map/newMaps", newData);
       });
+  },
+  computed: {
+    draftModeSelected: {
+      get() {
+        return this.$store.state.draft.draft.draftMode.name;
+      },
+      set(val) {
+        this.$store.commit("draft/changeDraftName", val);
+      }
+    }
   }
 };
 </script>

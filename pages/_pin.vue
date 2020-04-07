@@ -18,6 +18,10 @@ export default {
         this.$router.push("/");
       }
     },
+    RES_JOIN_ROOM: function(ele) {
+      this.$store.commit("draft/changeDraftMode", ele[0]);
+      this.$store.commit("draft/resetMap", ele[1]);
+    },
     RES_START_DRAFT: function(ele) {
       this.state = ele;
     }

@@ -64,6 +64,10 @@ class Room extends Draft {
     } else {
       this.ROOMS[index].addSpectators(socket.id);
     }
+    socket.emit("RES_JOIN_ROOM", [
+      this.ROOMS[index].draftMode,
+      this.ROOMS[index].maps
+    ]);
   }
 
   static checkRoom(ele, socket) {

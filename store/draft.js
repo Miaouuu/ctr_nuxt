@@ -11,7 +11,7 @@ export const state = () => ({
     },
     maps: {
       banned: [],
-      picked: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+      picked: []
     },
     round: 1,
     turn: false
@@ -29,5 +29,11 @@ export const mutations = {
   },
   changeDraftMode(state, draftMode) {
     state.draft.draftMode = draftMode;
+  },
+  changeDraftName(state, name) {
+    state.draft.draftMode.name = name;
+  },
+  resetMap(state, maps) {
+    state.draft.maps = maps;
   }
 };
