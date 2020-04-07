@@ -31,9 +31,9 @@
             />
           </div>
           <div class="mapName">
-            <h4>
+            <h5>
               MAP
-            </h4>
+            </h5>
           </div>
         </div>
       </div>
@@ -75,11 +75,14 @@
             class="mapName"
             :class="{
               picked: map.picked,
-              active: map.id === selected,
+              active:
+                map.id === selected &&
+                map.picked !== true &&
+                map.banned !== true,
               banned: map.banned
             }"
           >
-            <h3>{{ map.title }}</h3>
+            <h4>{{ map.title }}</h4>
           </div>
         </div>
       </div>
@@ -95,7 +98,7 @@
         >
           <div
             v-if="$store.state.draft.draft.maps.banned[index]"
-            style="display: flex"
+            class="sizeDiv"
           >
             <img
               v-if="$store.state.draft.draft.maps.banned[index] != -1"
@@ -119,13 +122,13 @@
               ]
             "
           >
-            <h4>
+            <h5>
               {{
                 $store.state.map.maps[
                   $store.state.draft.draft.maps.banned[index] - 1
                 ].title
               }}
-            </h4>
+            </h5>
           </div>
         </div>
       </div>

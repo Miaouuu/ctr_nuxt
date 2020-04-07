@@ -103,7 +103,7 @@ button.btnPin:active {
 
         li {
           display: inline-block;
-          padding: 7px 30px;
+          padding: 4px 25px;
           margin: 0 12px 0 0;
           background-color: #fac600;
           color: $textColor;
@@ -134,7 +134,6 @@ button.btnPin:active {
 
         .search {
           width: calc(100% - 32px);
-          padding: 10px 10px 10px 5px;
           border: none;
           background: none;
         }
@@ -159,7 +158,7 @@ button.btnPin:active {
   .cardMapContainer {
     border: 2px solid #3366cc;
     width: 280px;
-    height: 168px;
+    height: 140px;
     margin: 0 10px 15px 10px;
     cursor: pointer;
     position: relative;
@@ -181,7 +180,8 @@ button.btnPin:active {
 
       .banIcon {
         object-fit: contain;
-        height: 115px;
+        margin-top: 10px;
+        height: 75px;
       }
     }
 
@@ -190,7 +190,7 @@ button.btnPin:active {
       bottom: 0;
       left: 0;
       width: 100%;
-      height: 50px;
+      height: 35px;
       background-color: rgba(0, 0, 0, 0.85);
       color: white;
       display: flex;
@@ -212,25 +212,30 @@ button.btnPin:active {
   }
 }
 .topContainer {
-  margin-top: 50px;
   width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
   .borderPick {
     position: relative;
-    border: 2px solid #23cf8d;
+    /*TEMPO*/
+    width: 140px;
+    height: 80px;
+    /*TEMPO*/
+    border: 2px solid white;
     margin: 0 10px 15px 10px;
   }
   .pickContainer {
-    width: 100%;
-    height: 101px;
+    margin-top: 80px;
+    width: 86vw;
+    height: auto;
     display: flex;
-    justify-content: space-around;
-    background-color: rgb(98, 255, 255);
+    flex-wrap: wrap;
+    justify-content: center;
+    // background-color: rgb(98, 255, 255);
   }
   .pickee {
-    width: 150px;
+    width: 100%;
     height: 100%;
   }
   img {
@@ -243,7 +248,7 @@ button.btnPin:active {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 35px;
+    height: 25px;
     background-color: rgba(0, 0, 0, 0.85);
     color: white;
     display: flex;
@@ -264,6 +269,10 @@ button.btnPin:active {
     width: 238px;
     height: 101px;
     position: relative;
+    .sizeDiv {
+      width: 100%;
+      height: 100%;
+    }
     .banOverlayImg {
       position: absolute;
       top: 0;
@@ -277,7 +286,8 @@ button.btnPin:active {
 
       .banIcon {
         object-fit: contain;
-        height: 65px;
+        height: 60px;
+        margin-top: 6px;
       }
     }
     img {
@@ -291,7 +301,7 @@ button.btnPin:active {
       bottom: 0;
       left: 0;
       width: 100%;
-      height: 35px;
+      height: 25px;
       background-color: rgba(0, 0, 0, 0.85);
       color: white;
       display: flex;
@@ -505,23 +515,28 @@ button.btnPin:active {
 //   height: 50vh;
 // }
 
-@media (min-width: 700px) {
+@media (min-width: 783px) {
   .draftContainer .cardMapContainer {
     width: calc(50% - 25px);
   }
 }
-@media (min-width: 992px) {
+@media (min-width: 850px) {
   .draftContainer .cardMapContainer {
-    width: calc(33.3% - 25px);
+    width: calc(33.33% - 25px);
   }
 }
-@media (min-width: 1400px) {
+@media (min-width: 992px) {
   .draftContainer .cardMapContainer {
     width: calc(25% - 25px);
   }
 }
-@media (min-width: 1750px) {
+@media (min-width: 1200px) {
   .draftContainer .cardMapContainer {
     width: calc(20% - 25px);
+  }
+}
+@media (min-width: 1400px) {
+  .draftContainer .cardMapContainer {
+    width: calc(16.66% - 25px);
   }
 }
