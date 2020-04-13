@@ -8,7 +8,7 @@ class Room extends Draft {
     super();
     this.pin = pin;
     this.admin = admin;
-    this.users = [];
+    this.users = ["", ""];
     this.spectators = [];
   }
 
@@ -59,11 +59,7 @@ class Room extends Draft {
   static joinRoom(ele, socket) {
     socket.join(ele.toUpperCase());
     let index = this.ROOMS.findIndex(data => data.pin === ele.toUpperCase());
-    if (this.ROOMS[index].users.length < 2) {
-      this.ROOMS[index].addUser(socket.id);
-    } else {
-      this.ROOMS[index].addSpectators(socket.id);
-    }
+    this.ROOMS[index].addUser(0, socket);
     socket.emit("RES_JOIN_ROOM", [
       this.ROOMS[index].draftMode,
       this.ROOMS[index].maps
@@ -93,7 +89,7 @@ class Room extends Draft {
     });
     let indexRoom = this.ROOMS.findIndex(ele => ele.users[index] === socket.id);
     if (index !== -1) {
-      this.ROOMS[indexRoom].users.splice(index, 1);
+      this.ROOMS[indexRoom].users.splice(index, 1, "");
     } else {
       this.ROOMS.map(ele => {
         let temp = ele.spectators.indexOf(socket.id);
@@ -113,12 +109,51 @@ class Room extends Draft {
     }
   }
 
-  addUser(user) {
-    this.users.push(user);
+  nextRoom(ele, io) {
+    this.state = 1;
+    io.to(ele.toUpperCase()).emit("RES_NEXT_ROOM", this.state);
   }
 
-  addSpectators(user) {
-    this.spectators.push(user);
+  addUser(teamJoin, socket) {
+    switch (teamJoin) {
+      case 0:
+        if (this.users[0] === "") {
+          this.users[0] = socket.id;
+          socket.emit("RES_CHANGE_TEAM", "TEAM A");
+        } else {
+          this.addSpectators(socket.id);
+        }
+        break;
+      case 1:
+        if (this.users[1] === "") {
+          this.users[1] = socket.id;
+          socket.emit("RES_CHANGE_TEAM", "TEAM B");
+        } else {
+          this.addSpectators(socket.id);
+        }
+        break;
+    }
+    console.log(this.users);
+    console.log(this.spectators);
+  }
+
+  addSpectators(socket) {
+    this.spectators.push(socket.id);
+    socket.emit("RES_CHANGE_TEAM", "SPECTATOR");
+    console.log(this.users);
+    console.log(this.spectators);
+  }
+
+  deleteUser(user) {
+    let whereIs = this.users.indexOf(user);
+    if (whereIs !== -1) {
+      this.users.splice(whereIs, 1, "");
+    } else {
+      whereIs = this.spectators.indexOf(user);
+      if (whereIs !== -1) {
+        this.spectators.splice(whereIs, 1);
+      }
+    }
   }
 }
 

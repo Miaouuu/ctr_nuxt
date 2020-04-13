@@ -1,6 +1,6 @@
 export const state = () => ({
   room: {
-    users: 0
+    team: ""
   },
   draft: {
     teamName: ["", ""],
@@ -19,6 +19,9 @@ export const state = () => ({
 });
 
 export const mutations = {
+  changeTeam(state, team) {
+    state.room.team = team;
+  },
   nextRound(state, ele) {
     state.draft.round = ele[0];
     state.draft.turn = ele[1];

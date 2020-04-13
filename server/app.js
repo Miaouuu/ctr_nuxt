@@ -13,10 +13,14 @@ io.on("connection", socket => {
   socket.on("disconnect", ele => Room.disconnectRoom(ele, socket));
   // socket.on("DELETE_ROOM"); CHECK SI ADMIN EST DANS USER
 
+  socket.on("CHANGE_TEAM_A", ele => Controller.changeTeamA(ele, socket));
+  socket.on("CHANGE_TEAM_B", ele => Controller.changeTeamB(ele, socket));
+  socket.on("CHANGE_SPECTATOR", ele => Controller.changeSpectator(ele, socket));
   socket.on("CHANGE_TEAM_NAME", ele => Controller.changeTeamName(ele, socket));
   socket.on("CHANGE_DRAFT_MODE", ele =>
     Controller.changeDraftMode(ele, socket, io)
   );
+  socket.on("NEXT_ROOM", ele => Controller.nextRoom(ele, socket, io));
   socket.on("START_DRAFT", ele => Controller.startDraft(ele, socket, io));
 
   socket.on("SELECT_MAP", ele => Controller.selectMap(ele, socket, io));

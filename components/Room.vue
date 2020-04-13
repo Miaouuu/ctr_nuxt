@@ -90,22 +90,6 @@ export default {
       this.$socket.emit("START_DRAFT", this.$route.params.pin);
     }
   },
-  mounted() {
-    //decale dans _pin
-    fetch("https://ctr-api.herokuapp.com/api/v1/maps", {
-      method: "get"
-    })
-      .then(data => data.json())
-      .then(data => {
-        let newData = [];
-        data.maps.map(ele => {
-          ele.banned = false;
-          ele.picked = false;
-          newData.push(ele);
-        });
-        this.$store.commit("map/newMaps", newData);
-      });
-  },
   computed: {
     draftModeSelected: {
       get() {

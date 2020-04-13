@@ -47,13 +47,13 @@ class Draft {
       this.draftMode.bans = 6;
       this.draftMode.picks = 10;
     }
-    io.to(pin).emit("RES_CHANGE_DRAFT_MODE", this.draftMode);
+    io.to(pin.toUpperCase()).emit("RES_CHANGE_DRAFT_MODE", this.draftMode);
   }
 
   startTimer(pin, io) {
     this.timeLeft = 1000;
     this.timer = setInterval(() => {
-      io.to(pin).emit("RES_START_TIMER", this.timeLeft);
+      io.to(pin.toUpperCase()).emit("RES_START_TIMER", this.timeLeft);
       if (this.timeLeft > 0) {
         this.timeLeft--;
       } else {
@@ -65,7 +65,7 @@ class Draft {
   startDraft(pin, io) {
     if (!this.started) {
       this.started = true;
-      io.to(pin).emit("RES_START_DRAFT", (this.state = 1));
+      io.to(pin.toUpperCase()).emit("RES_START_DRAFT", (this.state = 2));
       this.startTimer(pin, io);
     }
   }
@@ -79,7 +79,7 @@ class Draft {
         this.startTimer(pin, io);
         this.turn = !this.turn;
         this.round++;
-        io.to(pin).emit("RES_NEXT_ROUND", {
+        io.to(pin.toUpperCase()).emit("RES_NEXT_ROUND", {
           banOrPick: 0,
           idMap: idMap,
           round: this.round,
@@ -94,7 +94,7 @@ class Draft {
         this.startTimer(pin, io);
         this.turn = !this.turn;
         this.round++;
-        io.to(pin).emit("RES_NEXT_ROUND", {
+        io.to(pin.toUpperCase()).emit("RES_NEXT_ROUND", {
           banOrPick: 1,
           idMap: idMap,
           round: this.round,
