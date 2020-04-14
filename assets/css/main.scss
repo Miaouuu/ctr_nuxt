@@ -157,7 +157,7 @@ button.btnPin:active {
 
   .cardMapContainer {
     border: 2px solid #3366cc;
-    width: 280px;
+    width: 100%;
     height: 140px;
     margin: 0 10px 15px 10px;
     cursor: pointer;
@@ -511,26 +511,26 @@ button.btnPin:active {
 
 @media (min-width: 783px) {
   .draftContainer .cardMapContainer {
-    width: calc(50% - 25px);
+    width: calc(50% - 29px);
   }
 }
 @media (min-width: 850px) {
   .draftContainer .cardMapContainer {
-    width: calc(33.33% - 25px);
+    width: calc(33.33% - 26px);
   }
 }
 @media (min-width: 992px) {
   .draftContainer .cardMapContainer {
-    width: calc(25% - 25px);
+    width: calc(25% - 24px);
   }
 }
 @media (min-width: 1200px) {
   .draftContainer .cardMapContainer {
-    width: calc(20% - 25px);
+    width: calc(20% - 23px);
   }
 }
 @media (min-width: 1400px) {
   .draftContainer .cardMapContainer {
-    width: calc(16.66% - 25px);
+    width: calc(16.66% - 22.5px);
   }
 }
