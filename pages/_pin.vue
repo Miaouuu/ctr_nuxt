@@ -3,7 +3,7 @@
     <Join v-if="state === 0" />
     <Room v-if="state === 1" :admin="admin" />
     <Draft v-if="state === 2" />
-    <Spectator v-if="state === 3" />
+    <Spectator v-if="state === 3" :endGame="endGame" />
   </div>
 </template>
 
@@ -34,6 +34,10 @@ export default {
     },
     RES_START_DRAFT: function(ele) {
       this.state = ele;
+    },
+    RES_END_GAME: function(ele) {
+      this.state = ele;
+      this.endGame = true;
     }
   },
   components: {
@@ -45,7 +49,8 @@ export default {
   data() {
     return {
       admin: false,
-      state: 0
+      state: 0,
+      endGame: false
     };
   },
   mounted() {

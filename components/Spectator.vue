@@ -2,6 +2,7 @@
   <div>
     <p>Mode Spectateur</p>
     <p>{{ timeLeft }}</p>
+    <p>{{ endGame }}</p>
   </div>
 </template>
 
@@ -22,6 +23,9 @@ export default {
     return {
       timeLeft: 30
     };
+  },
+  props: {
+    endGame: Boolean
   },
   methods: {}
 };

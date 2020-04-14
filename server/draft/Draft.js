@@ -51,7 +51,7 @@ class Draft {
   }
 
   startTimer(pin, io) {
-    this.timeLeft = 1000;
+    this.timeLeft = 2;
     this.timer = setInterval(() => {
       io.to(pin.toUpperCase()).emit("RES_START_TIMER", this.timeLeft);
       if (this.timeLeft > 0) {
@@ -102,7 +102,7 @@ class Draft {
           maps: this.maps
         });
       } else {
-        console.log("GAME END");
+        io.to(pin.toUpperCase()).emit("RES_END_GAME", (this.state = 3));
       }
       console.log(this.maps, this.round);
     }
