@@ -15,7 +15,7 @@
           v-for="(item, index) in $store.state.draft.draft.draftMode.picks"
           :key="index"
         >
-          <div class="pickee" v-if="$store.state.draft.draft.maps.picked[index]">
+          <div class="ifPick" v-if="$store.state.draft.draft.maps.picked[index]">
             <img
               v-if="$store.state.draft.draft.maps.picked[index] != -1"
               :src="

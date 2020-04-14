@@ -3,21 +3,23 @@ $textColor: #0d5288;
 $shadowColor: rgba(39, 39, 39, 0.3);
 $yellow: #fac600;
 
-$inputGradient: linear-gradient(to top,
+$inputGradient: linear-gradient(
+  to top,
   #8dcaf9,
   #9dd2fa,
   #add9fc,
   #bce1fd,
-  #cbe8ff);
+  #cbe8ff
+);
 
 @font-face {
   font-family: "CCGeekSpeakRegular";
-  src: url(../font/CCGeekSpeakRegular.eot);
+  src: url("/assets/font/CCGeekSpeakRegular.eot") format("eot");
 }
 
 @font-face {
   font-family: "CCZoinks";
-  src: url(../font/CCZoinks.eot);
+  src: url("/assets/font/CCZoinks.eot") format("eot");
 }
 
 * {
@@ -25,6 +27,7 @@ $inputGradient: linear-gradient(to top,
   padding: 0;
   box-sizing: border-box;
   outline: none;
+  font-family: "CCGeekSpeakRegular";
 }
 
 body {
@@ -55,7 +58,8 @@ button.btnPin {
 }
 
 button.btnPin:active {
-  transform: perspective(50px) rotateX(-8deg) rotateY(-3deg) rotateZ(-3deg) translateX(-4px) translateY(4px);
+  transform: perspective(50px) rotateX(-8deg) rotateY(-3deg) rotateZ(-3deg)
+    translateX(-4px) translateY(4px);
   box-shadow: -4px 4px 0px $textColor;
 }
 
@@ -236,7 +240,7 @@ button.btnPin:active {
     // background-color: rgb(98, 255, 255);
   }
 
-  .pickee {
+  .ifPick {
     width: 100%;
     height: 100%;
   }
@@ -552,6 +556,37 @@ button.btnPin:active {
   }
 }
 
+// Page spectator
+
+.specContainer {
+  .topContainer {
+    width: 100%;
+    .borderPick {
+      width: 240px;
+      height: 137px;
+    }
+  }
+  .mapName {
+    height: 35px;
+  }
+  .specCategoryName {
+    display: flex;
+    p {
+      font-size: 25px;
+      font-weight: bold;
+      color: $yellow;
+      margin: 10px auto;
+    }
+  }
+}
+
+.specHeader {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
 // scrollbar
 ::-webkit-scrollbar {
   width: 10px;
