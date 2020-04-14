@@ -5,7 +5,7 @@
       <div class="roomContainer">
         <input
           type="text"
-          placeholder="TEAM A"
+          placeholder="Team A's name"
           v-model="team1Name"
           :disabled="!admin"
           @input="teamName()"
@@ -13,7 +13,7 @@
         />
         <input
           type="text"
-          placeholder="TEAM B"
+          placeholder="Team B's name"
           v-model="team2Name"
           :disabled="!admin"
           @input="teamName()"
