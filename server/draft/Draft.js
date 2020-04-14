@@ -101,9 +101,11 @@ class Draft {
           turn: this.turn,
           maps: this.maps
         });
-      } else {
-        io.to(pin.toUpperCase()).emit("RES_END_GAME", (this.state = 3));
+        if (this.round > this.draftMode.picks + this.draftMode.bans) {
+          io.to(pin.toUpperCase()).emit("RES_END_GAME", (this.state = 3));
+        }
       }
+
       console.log(this.maps, this.round);
     }
   }
