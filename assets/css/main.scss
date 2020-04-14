@@ -3,19 +3,18 @@ $textColor: #0d5288;
 $shadowColor: rgba(39, 39, 39, 0.3);
 $yellow: #fac600;
 
-$inputGradient: linear-gradient(
-  to top,
+$inputGradient: linear-gradient(to top,
   #8dcaf9,
   #9dd2fa,
   #add9fc,
   #bce1fd,
-  #cbe8ff
-);
+  #cbe8ff);
 
 @font-face {
   font-family: "CCGeekSpeakRegular";
   src: url(../font/CCGeekSpeakRegular.eot);
 }
+
 @font-face {
   font-family: "CCZoinks";
   src: url(../font/CCZoinks.eot);
@@ -56,8 +55,7 @@ button.btnPin {
 }
 
 button.btnPin:active {
-  transform: perspective(50px) rotateX(-8deg) rotateY(-3deg) rotateZ(-3deg)
-    translateX(-4px) translateY(4px);
+  transform: perspective(50px) rotateX(-8deg) rotateY(-3deg) rotateZ(-3deg) translateX(-4px) translateY(4px);
   box-shadow: -4px 4px 0px $textColor;
 }
 
@@ -76,6 +74,7 @@ button.btnPin:active {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
   .teamName {
     position: absolute;
     top: 20px;
@@ -211,11 +210,13 @@ button.btnPin:active {
     }
   }
 }
+
 .topContainer {
   width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
+
   .borderPick {
     position: relative;
     /*TEMPO*/
@@ -225,6 +226,7 @@ button.btnPin:active {
     border: 2px solid white;
     margin: 0 10px 15px 10px;
   }
+
   .pickContainer {
     width: 86vw;
     height: auto;
@@ -233,15 +235,18 @@ button.btnPin:active {
     justify-content: center;
     // background-color: rgb(98, 255, 255);
   }
+
   .pickee {
     width: 100%;
     height: 100%;
   }
+
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
+
   .mapName {
     position: absolute;
     bottom: 0;
@@ -255,23 +260,28 @@ button.btnPin:active {
     align-items: center;
   }
 }
+
 .bottomContainer {
   width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
+
   .borderBan {
     border: 2px solid #3366cc;
     margin: 0 10px 15px 10px;
   }
+
   .banOverlay {
     width: 238px;
     height: 101px;
     position: relative;
+
     .sizeDiv {
       width: 100%;
       height: 100%;
     }
+
     .banOverlayImg {
       position: absolute;
       top: 0;
@@ -289,6 +299,7 @@ button.btnPin:active {
         margin-top: 6px;
       }
     }
+
     img {
       width: 100%;
       height: 100%;
@@ -319,6 +330,7 @@ button.btnPin:active {
     height: 101px;
     display: flex;
     justify-content: space-around;
+
     // background-color: lightcoral;
     img {
       width: 100%;
@@ -364,6 +376,7 @@ button.btnPin:active {
   text-decoration: none;
   font-weight: bold;
 }
+
 .inviNone {
   display: none;
   position: absolute;
@@ -375,6 +388,7 @@ button.btnPin:active {
   height: 30px;
   background-color: $textColor;
 }
+
 .invi {
   background: none;
   display: block;
@@ -390,14 +404,17 @@ button.btnPin:active {
   // transition: all 1s ease-out;
   // transform: translate(-50%, -160%);
 }
+
 @keyframes popIn {
   0% {
     height: 0;
   }
+
   100% {
     height: 30px;
   }
 }
+
 // Page room
 
 .roomContainer {
@@ -428,6 +445,7 @@ button.btnPin:active {
     display: flex;
     flex-direction: column;
     align-items: center;
+
     .teamInputSelect {
       margin: 20px;
       justify-content: center;
@@ -435,14 +453,17 @@ button.btnPin:active {
       border: none;
       text-align: center;
       width: calc(20% + 25px);
+      min-width: 400px;
       height: 3rem;
       color: $textColor;
       font-weight: bold;
       font-size: 20px;
     }
+
     ::placeholder {
       color: $textColor;
     }
+
     // .teamSelect {
     //   display: flex;
     //   width: calc(100px + 15%);
@@ -457,6 +478,7 @@ button.btnPin:active {
     // }
   }
 }
+
 .startLockBtn {
   display: block;
   justify-content: center;
@@ -473,16 +495,19 @@ button.btnPin:active {
   font-weight: bold;
   font-size: 20px;
   transition: all 0.2s ease-out;
+
   &:hover {
     box-shadow: -6px 6px 0px $textColor;
     transition: all 0.2s ease-out;
   }
+
   &:active {
     transform: translate(-3px, 3px);
     box-shadow: -3px 3px 0px $textColor;
     transition: all 0.1s ease-out;
   }
 }
+
 // scrollbar
 ::-webkit-scrollbar {
   width: 10px;
@@ -514,21 +539,25 @@ button.btnPin:active {
     width: calc(50% - 29px);
   }
 }
+
 @media (min-width: 850px) {
   .draftContainer .cardMapContainer {
     width: calc(33.33% - 26px);
   }
 }
+
 @media (min-width: 992px) {
   .draftContainer .cardMapContainer {
     width: calc(25% - 24px);
   }
 }
+
 @media (min-width: 1200px) {
   .draftContainer .cardMapContainer {
     width: calc(20% - 23px);
   }
 }
+
 @media (min-width: 1400px) {
   .draftContainer .cardMapContainer {
     width: calc(16.66% - 22.5px);

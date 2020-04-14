@@ -7,7 +7,7 @@
           ? $store.state.draft.draft.teamName[1]
           : $store.state.draft.draft.teamName[0]
       }}
-    </h3> -->
+    </h3>-->
     <div class="topContainer">
       <div class="pickContainer">
         <div
@@ -15,10 +15,7 @@
           v-for="(item, index) in $store.state.draft.draft.draftMode.picks"
           :key="index"
         >
-          <div
-            class="pickee"
-            v-if="$store.state.draft.draft.maps.picked[index]"
-          >
+          <div class="pickee" v-if="$store.state.draft.draft.maps.picked[index]">
             <img
               v-if="$store.state.draft.draft.maps.picked[index] != -1"
               :src="
@@ -30,9 +27,20 @@
               "
             />
           </div>
-          <div class="mapName">
+          <div
+            class="mapName"
+            v-if="
+              $store.state.map.maps[
+                $store.state.draft.draft.maps.picked[index] - 1
+              ]
+            "
+          >
             <h5>
-              MAP
+              {{
+              $store.state.map.maps[
+              $store.state.draft.draft.maps.picked[index] - 1
+              ].title
+              }}
             </h5>
           </div>
         </div>
@@ -96,10 +104,7 @@
           v-for="(item, index) in $store.state.draft.draft.draftMode.bans"
           :key="index"
         >
-          <div
-            v-if="$store.state.draft.draft.maps.banned[index]"
-            class="sizeDiv"
-          >
+          <div v-if="$store.state.draft.draft.maps.banned[index]" class="sizeDiv">
             <img
               v-if="$store.state.draft.draft.maps.banned[index] != -1"
               :src="
@@ -124,18 +129,16 @@
           >
             <h5>
               {{
-                $store.state.map.maps[
-                  $store.state.draft.draft.maps.banned[index] - 1
-                ].title
+              $store.state.map.maps[
+              $store.state.draft.draft.maps.banned[index] - 1
+              ].title
               }}
             </h5>
           </div>
         </div>
       </div>
 
-      <button class="startLockBtn" @click="banOrPick()">
-        {{ buttonBanOrPick() }}
-      </button>
+      <button class="startLockBtn" @click="banOrPick()">{{ buttonBanOrPick() }}</button>
     </div>
   </div>
 </template>
