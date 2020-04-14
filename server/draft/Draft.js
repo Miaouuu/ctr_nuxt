@@ -65,7 +65,7 @@ class Draft {
   startDraft(pin, io) {
     if (!this.started) {
       this.started = true;
-      io.to(pin.toUpperCase()).emit("RES_START_DRAFT", (this.state = 2));
+      //io.to(pin.toUpperCase()).emit("RES_START_DRAFT", (this.state = 2));
       this.startTimer(pin, io);
     }
   }

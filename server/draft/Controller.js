@@ -40,7 +40,10 @@ const nextRoom = (ele, socket, io) => {
 
 const startDraft = (ele, socket, io) => {
   let index = Room.checkAdmin(ele, socket);
-  if (index || index === 0) Room.ROOMS[index].startDraft(ele, io);
+  if (index || index === 0) {
+    Room.ROOMS[index].sendStart(io);
+    Room.ROOMS[index].startDraft(ele, io);
+  }
 };
 
 const selectMap = (ele, socket, io) => {

@@ -3,6 +3,7 @@
     <Join v-if="state === 0" />
     <Room v-if="state === 1" :admin="admin" />
     <Draft v-if="state === 2" />
+    <Spectator v-if="state === 3" />
   </div>
 </template>
 
@@ -10,6 +11,7 @@
 import Join from "~/components/Join.vue";
 import Room from "~/components/Room.vue";
 import Draft from "~/components/Draft.vue";
+import Spectator from "~/components/Spectator.vue";
 export default {
   sockets: {
     RES_CHECK_ROOM: function(ele) {
@@ -37,7 +39,8 @@ export default {
   components: {
     Join,
     Room,
-    Draft
+    Draft,
+    Spectator
   },
   data() {
     return {

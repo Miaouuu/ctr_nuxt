@@ -109,6 +109,16 @@ class Room extends Draft {
     }
   }
 
+  sendStart(io) {
+    this.state = 2;
+    this.users.map(ele => {
+      io.to(ele).emit("RES_START_DRAFT", this.state);
+    });
+    this.spectators.map(ele => {
+      io.to(ele).emit("RES_START_DRAFT", 3);
+    });
+  }
+
   nextRoom(ele, io) {
     this.state = 1;
     io.to(ele.toUpperCase()).emit("RES_NEXT_ROOM", this.state);
@@ -121,7 +131,7 @@ class Room extends Draft {
           this.users[0] = socket.id;
           socket.emit("RES_CHANGE_TEAM", "TEAM A");
         } else {
-          this.addSpectators(socket.id);
+          this.addSpectators(socket);
         }
         break;
       case 1:
@@ -129,7 +139,7 @@ class Room extends Draft {
           this.users[1] = socket.id;
           socket.emit("RES_CHANGE_TEAM", "TEAM B");
         } else {
-          this.addSpectators(socket.id);
+          this.addSpectators(socket);
         }
         break;
     }
