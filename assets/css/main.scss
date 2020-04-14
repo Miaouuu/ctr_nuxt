@@ -364,6 +364,50 @@ button.btnPin:active {
   height: 60px;
 }
 
+// Page Join
+
+.teamJoinSelect {
+  margin: 20px;
+  justify-content: center;
+  background-color: $inputColor;
+  border: none;
+  text-align: center;
+  width: calc(15% + 25px);
+  min-width: 400px;
+  height: 3rem;
+  color: $textColor;
+  font-weight: bold;
+  font-size: 20px;
+
+  &:active {
+    box-shadow: -2px 3px 0px $textColor;
+    transform: perspective(50px) translateX(-4px) translateY(4px);
+  }
+}
+
+.teamNext {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  background-color: $inputColor;
+  // width: calc(100px + 15%);
+  // min-width: 300px;
+  width: 150px;
+  height: 3rem;
+  border-radius: 40px;
+  border: none;
+  cursor: pointer;
+  color: $textColor;
+  font-weight: bold;
+  font-size: 20px;
+  transition: all 0.2s ease-out;
+
+  &:hover {
+    box-shadow: -6px 6px 0px $textColor;
+    transition: all 0.2s ease-out;
+  }
+}
+
 // Page Main
 
 .txtInput {
