@@ -13,13 +13,14 @@ $inputGradient: linear-gradient(
 );
 
 @font-face {
-  font-family: "CCGeekSpeakRegular";
-  src: url("/assets/font/CCGeekSpeakRegular.eot") format("eot");
+  font-family: "CCZoinkss";
+  src: url("../font/test2.otf");
 }
 
 @font-face {
   font-family: "CCZoinks";
-  src: url("/assets/font/CCZoinks.eot") format("eot");
+  src: url("../font/test.ttf");
+  font-style: normal;
 }
 
 * {
@@ -27,7 +28,7 @@ $inputGradient: linear-gradient(
   padding: 0;
   box-sizing: border-box;
   outline: none;
-  font-family: "CCGeekSpeakRegular";
+  font-family: "CCZoinkss";
 }
 
 body {
@@ -35,6 +36,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  height: 100vh;
 }
 
 .effect3D {
@@ -382,6 +384,7 @@ button.btnPin:active {
   color: $textColor;
   font-weight: bold;
   font-size: 20px;
+  cursor: pointer;
 
   &:active {
     box-shadow: -2px 3px 0px $textColor;
@@ -472,7 +475,9 @@ button.btnPin:active {
   text-align: center;
   justify-content: center;
   flex-direction: column;
-
+  h1 {
+    color: $yellow;
+  }
   .pin {
     position: absolute;
     top: 15px;
@@ -489,7 +494,7 @@ button.btnPin:active {
     font-size: 20px;
   }
 
-  .roomContainer {
+  .roomInputContainer {
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -2,7 +2,7 @@
   <div>
     <div class="roomContainer">
       <div class="pin">PIN : {{ this.$route.params.pin }}</div>
-      <div class="roomContainer">
+      <div class="roomInputContainer">
         <input
           type="text"
           placeholder="Team A's name"

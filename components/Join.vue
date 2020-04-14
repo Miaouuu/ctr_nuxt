@@ -1,25 +1,28 @@
 <template>
-  <div class>
+  <div class="roomContainer">
+    <h1>SELECT YOUR TEAM</h1>
     <p>{{ $store.state.draft.room.team }}</p>
-    <input
-      class="teamJoinSelect shadowPermanent"
-      type="button"
-      value="Team A"
-      @click="changeTeamA()"
-    />
-    <input
-      class="teamJoinSelect shadowPermanent"
-      type="button"
-      value="Team B"
-      @click="changeTeamB()"
-    />
-    <input
-      class="teamJoinSelect shadowPermanent"
-      type="button"
-      value="Spectator"
-      @click="changeSpectator()"
-    />
-    <input class="teamNext" type="button" value="Next" @click="nextRoom()" />
+    <div class="roomInputContainer">
+      <input
+        class="teamJoinSelect shadowPermanent"
+        type="button"
+        value="Team A"
+        @click="changeTeamA()"
+      />
+      <input
+        class="teamJoinSelect shadowPermanent"
+        type="button"
+        value="Team B"
+        @click="changeTeamB()"
+      />
+      <input
+        class="teamJoinSelect shadowPermanent"
+        type="button"
+        value="Spectator"
+        @click="changeSpectator()"
+      />
+      <input class="teamNext" type="button" value="Next" @click="nextRoom()" />
+    </div>
   </div>
 </template>
 

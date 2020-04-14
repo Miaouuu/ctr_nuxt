@@ -51,7 +51,7 @@ class Draft {
   }
 
   startTimer(pin, io) {
-    this.timeLeft = 2;
+    this.timeLeft = 30;
     this.timer = setInterval(() => {
       io.to(pin.toUpperCase()).emit("RES_START_TIMER", this.timeLeft);
       if (this.timeLeft > 0) {
