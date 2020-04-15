@@ -5,6 +5,7 @@
     <div class="roomInputContainer">
       <input
         class="teamJoinSelect shadowPermanent"
+        :class="{ active: $store.state.draft.room.team === 'TEAM A' }"
         type="button"
         value="Team A"
         @click="changeTeamA()"
