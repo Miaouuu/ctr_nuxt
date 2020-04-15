@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Join v-if="state === 0" />
+    <Join v-if="state === 0" :team="team" />
     <Room v-if="state === 1" :admin="admin" />
     <Draft v-if="state === 2" />
     <Spectator v-if="state === 3" :endGame="endGame" />

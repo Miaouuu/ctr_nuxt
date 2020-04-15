@@ -371,24 +371,36 @@ button.btnPin:active {
 }
 
 // Page Join
+.roomInputContainer {
+  .teamJoinSelect {
+    margin: 20px;
+    justify-content: center;
+    background-color: $inputColor;
+    border: none;
+    text-align: center;
+    width: calc(15% + 25px);
+    min-width: 400px;
+    height: 3rem;
+    color: $textColor;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
 
-.teamJoinSelect {
-  margin: 20px;
-  justify-content: center;
-  background-color: $inputColor;
-  border: none;
-  text-align: center;
-  width: calc(15% + 25px);
-  min-width: 400px;
-  height: 3rem;
-  color: $textColor;
-  font-weight: bold;
-  font-size: 20px;
-  cursor: pointer;
+    &:active {
+      box-shadow: -2px 3px 0px $textColor;
+      transform: perspective(50px) translateX(-4px) translateY(4px);
+    }
+  }
+  .active {
+    background-color: $yellow;
+  }
 
-  &:active {
-    box-shadow: -2px 3px 0px $textColor;
-    transform: perspective(50px) translateX(-4px) translateY(4px);
+  .full {
+    background-color: rgb(255, 187, 187);
+  }
+
+  label {
+    color: rgb(255, 187, 187);
   }
 }
 
