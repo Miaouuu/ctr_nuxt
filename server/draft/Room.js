@@ -56,10 +56,10 @@ class Room extends Draft {
     return pin;
   }
 
-  static joinRoom(ele, socket) {
+  static joinRoom(ele, socket, io) {
     socket.join(ele.toUpperCase());
     let index = this.ROOMS.findIndex(data => data.pin === ele.toUpperCase());
-    this.ROOMS[index].addUser(0, socket);
+    this.ROOMS[index].addUser(0, socket, io);
     socket.emit("RES_JOIN_ROOM", [
       this.ROOMS[index].draftMode,
       this.ROOMS[index].maps
@@ -124,22 +124,30 @@ class Room extends Draft {
     io.to(ele.toUpperCase()).emit("RES_NEXT_ROOM", this.state);
   }
 
-  addUser(teamJoin, socket) {
+  addUser(teamJoin, socket, io) {
     switch (teamJoin) {
       case 0:
         if (this.users[0] === "") {
           this.users[0] = socket.id;
           socket.emit("RES_CHANGE_TEAM", "TEAM A");
+          io.to(this.pin.toUpperCase()).emit("RES_CHANGE", [
+            this.users[0] === "" ? false : true,
+            this.users[1] === "" ? false : true
+          ]);
         } else {
-          this.addSpectators(socket);
+          this.addSpectators(socket, io);
         }
         break;
       case 1:
         if (this.users[1] === "") {
           this.users[1] = socket.id;
           socket.emit("RES_CHANGE_TEAM", "TEAM B");
+          io.to(this.pin.toUpperCase()).emit("RES_CHANGE", [
+            this.users[0] === "" ? false : true,
+            this.users[1] === "" ? false : true
+          ]);
         } else {
-          this.addSpectators(socket);
+          this.addSpectators(socket, io);
         }
         break;
     }
@@ -147,9 +155,13 @@ class Room extends Draft {
     console.log(this.spectators);
   }
 
-  addSpectators(socket) {
+  addSpectators(socket, io) {
     this.spectators.push(socket.id);
     socket.emit("RES_CHANGE_TEAM", "SPECTATOR");
+    io.to(this.pin.toUpperCase()).emit("RES_CHANGE", [
+      this.users[0] === "" ? false : true,
+      this.users[1] === "" ? false : true
+    ]);
     console.log(this.users);
     console.log(this.spectators);
   }

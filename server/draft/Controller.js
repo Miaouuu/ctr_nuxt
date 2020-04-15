@@ -1,24 +1,24 @@
 const Room = require("./Room");
 
-const changeTeamA = (ele, socket) => {
+const changeTeamA = (ele, socket, io) => {
   let indexRoom = Room.ROOMS.findIndex(data => data.pin === ele.toUpperCase());
   //NEED CHECK POUR PAS SUPPR POUR R
   Room.ROOMS[indexRoom].deleteUser(socket.id);
-  Room.ROOMS[indexRoom].addUser(0, socket);
+  Room.ROOMS[indexRoom].addUser(0, socket, io);
 };
 
-const changeTeamB = (ele, socket) => {
+const changeTeamB = (ele, socket, io) => {
   let indexRoom = Room.ROOMS.findIndex(data => data.pin === ele.toUpperCase());
   //NEED CHECK POUR PAS SUPPR POUR R
   Room.ROOMS[indexRoom].deleteUser(socket.id);
-  Room.ROOMS[indexRoom].addUser(1, socket);
+  Room.ROOMS[indexRoom].addUser(1, socket, io);
 };
 
-const changeSpectator = (ele, socket) => {
+const changeSpectator = (ele, socket, io) => {
   let indexRoom = Room.ROOMS.findIndex(data => data.pin === ele.toUpperCase());
   //NEED CHECK POUR PAS SUPPR POUR R
   Room.ROOMS[indexRoom].deleteUser(socket.id);
-  Room.ROOMS[indexRoom].addSpectators(socket);
+  Room.ROOMS[indexRoom].addSpectators(socket, io);
 };
 
 const changeTeamName = (ele, socket) => {

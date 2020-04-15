@@ -7,15 +7,17 @@ const Room = require("./draft/Room");
 
 io.on("connection", socket => {
   socket.on("CREATE_ROOM", ele => Room.createRoom(ele, socket));
-  socket.on("JOIN_ROOM", ele => Room.joinRoom(ele, socket)); //DONNER TOUTES LES VARIABLES DE LA ROOM
+  socket.on("JOIN_ROOM", ele => Room.joinRoom(ele, socket, io)); //DONNER TOUTES LES VARIABLES DE LA ROOM
   socket.on("CHECK_ROOM", ele => Room.checkRoom(ele, socket));
   socket.on("DISCONNECT_ROOM", ele => Room.disconnectRoom(ele, socket));
   socket.on("disconnect", ele => Room.disconnectRoom(ele, socket));
   // socket.on("DELETE_ROOM"); CHECK SI ADMIN EST DANS USER
 
-  socket.on("CHANGE_TEAM_A", ele => Controller.changeTeamA(ele, socket));
-  socket.on("CHANGE_TEAM_B", ele => Controller.changeTeamB(ele, socket));
-  socket.on("CHANGE_SPECTATOR", ele => Controller.changeSpectator(ele, socket));
+  socket.on("CHANGE_TEAM_A", ele => Controller.changeTeamA(ele, socket, io));
+  socket.on("CHANGE_TEAM_B", ele => Controller.changeTeamB(ele, socket, io));
+  socket.on("CHANGE_SPECTATOR", ele =>
+    Controller.changeSpectator(ele, socket, io)
+  );
   socket.on("CHANGE_TEAM_NAME", ele => Controller.changeTeamName(ele, socket));
   socket.on("CHANGE_DRAFT_MODE", ele =>
     Controller.changeDraftMode(ele, socket, io)

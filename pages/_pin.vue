@@ -29,6 +29,9 @@ export default {
     RES_CHANGE_TEAM: function(ele) {
       this.$store.commit("draft/changeTeam", ele);
     },
+    RES_CHANGE: function(ele) {
+      this.team = ele;
+    },
     RES_NEXT_ROOM: function(ele) {
       this.state = ele;
     },
@@ -50,7 +53,8 @@ export default {
     return {
       admin: false,
       state: 0,
-      endGame: false
+      endGame: false,
+      team: []
     };
   },
   mounted() {
