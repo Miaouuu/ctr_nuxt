@@ -630,6 +630,23 @@ button.btnPin:active {
 //   height: 50vh;
 // }
 
+@media (min-width: 360px) and ( max-width: 783px){
+  .roomContainer .roomInputContainer .teamInputSelect{
+    min-width: 300px;
+  }
+  .roomInputContainer .teamJoinSelect{
+    min-width: 300px;
+
+  }
+  .effect3D{
+transform: 
+  perspective(8vh) 
+  rotateX(-8deg) 
+  rotateY(-3deg) 
+  rotateZ(-3deg);
+  }
+}
+
 @media (min-width: 783px) {
   .draftContainer .cardMapContainer {
     width: calc(50% - 29px);
