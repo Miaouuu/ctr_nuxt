@@ -231,6 +231,19 @@ button.btnPin:active {
     /*TEMPO*/
     border: 2px solid white;
     margin: 0 10px 15px 10px;
+
+    .cornerNumber {
+      position: absolute;
+      font-size: 12px;
+      color: #fff;
+    }
+  }
+  .blue {
+    border: 2px solid #3867d6;
+  }
+
+  .red {
+    border: 2px solid #d63031;
   }
 
   .pickContainer {
@@ -240,6 +253,17 @@ button.btnPin:active {
     flex-wrap: wrap;
     justify-content: center;
     // background-color: rgb(98, 255, 255);
+  }
+
+  .corner {
+    .cornerImage {
+      position: absolute;
+      z-index: 50;
+    }
+    .cornerNumber {
+      color: white;
+      z-index: 51;
+    }
   }
 
   .ifPick {
@@ -274,10 +298,32 @@ button.btnPin:active {
   align-items: center;
 
   .borderBan {
-    border: 2px solid #3366cc;
     margin: 0 10px 15px 10px;
+
+    .cornerNumber {
+      position: absolute;
+      font-size: 12px;
+      color: #fff;
+    }
+  }
+  .blue {
+    border: 2px solid #3867d6;
   }
 
+  .red {
+    border: 2px solid #d63031;
+  }
+
+  .corner {
+    .cornerImage {
+      position: absolute;
+      z-index: 50;
+    }
+    .cornerNumber {
+      color: white;
+      z-index: 51;
+    }
+  }
   .banOverlay {
     width: 238px;
     height: 101px;
@@ -350,6 +396,7 @@ button.btnPin:active {
   position: absolute;
   top: -60px;
   left: -90px;
+  z-index: 60;  
 
   .timerTxt {
     color: white;
