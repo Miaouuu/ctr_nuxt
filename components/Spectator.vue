@@ -165,6 +165,9 @@
         </div>
       </div>
     </div>
+    <div v-if="this.$auth.loggedIn && this.endGame">
+      <p>Save</p>
+    </div>
   </div>
 </template>
 
