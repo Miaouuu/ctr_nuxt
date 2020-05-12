@@ -12,12 +12,17 @@
     <div class="topContainer">
       <div class="pickContainer">
         <client-only>
+          <!-- :responsive="{
+              0: { items: 1 },
+              600: { items: 3 },
+              1000: {items: 6}
+            }" -->
           <carousel
             :loop="true"
             :nav="false"
             :dots="false"
-            :items="6"
-            :autoWidth="true"
+            :items="7"
+            :margin="0"
           >
             <div
               class="borderPick"
