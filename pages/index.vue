@@ -33,7 +33,11 @@ export default {
   sockets: {
     RES_CONN: function(ele) {
       if (process.browser) {
-        localStorage.setItem("socketId", ele);
+        if (localStorage.getItem("socketId")) {
+          localStorage.setItem("waitSocketId", ele);
+        } else {
+          localStorage.setItem("socketId", ele);
+        }
       }
     },
     RES_CREATE_ROOM: function(ele) {

@@ -59,7 +59,12 @@ class Room extends Draft {
   static joinRoom(ele, socket, io) {
     socket.join(ele.toUpperCase());
     let index = this.ROOMS.findIndex(data => data.pin === ele.toUpperCase());
-    this.ROOMS[index].addUser(0, socket, io);
+    if (this.ROOMS[index].state === 0) {
+      this.ROOMS[index].addUser(0, socket, io);
+    } else {
+      this.ROOMS[index].addSpectators(socket, io);
+    }
+
     socket.emit("RES_JOIN_ROOM", [
       this.ROOMS[index].draftMode,
       this.ROOMS[index].maps
@@ -158,6 +163,11 @@ class Room extends Draft {
   addSpectators(socket, io) {
     this.spectators.push(socket.id);
     socket.emit("RES_CHANGE_TEAM", "SPECTATOR");
+    if (this.state === 2) {
+      socket.emit("STATE_GAME", 3);
+    } else {
+      socket.emit("STATE_GAME", this.state);
+    }
     io.to(this.pin.toUpperCase()).emit("RES_CHANGE", [
       this.users[0] === "" ? false : true,
       this.users[1] === "" ? false : true

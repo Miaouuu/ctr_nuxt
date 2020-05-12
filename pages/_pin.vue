@@ -14,6 +14,9 @@ import Draft from "~/components/Draft.vue";
 import Spectator from "~/components/Spectator.vue";
 export default {
   sockets: {
+    STATE_GAME: function(ele) {
+      this.state = ele;
+    },
     RES_CHECK_ROOM: function(ele) {
       if (ele.exist) {
         this.admin = ele.isAdmin;
