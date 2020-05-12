@@ -229,13 +229,16 @@ button.btnPin:active {
     width: 140px;
     height: 80px;
     /*TEMPO*/
-    border: 2px solid white;
     margin: 0 10px 15px 10px;
 
     .cornerNumber {
       position: absolute;
       font-size: 12px;
       color: #fff;
+    }
+
+    .spectator {
+      font-size: 18px;
     }
   }
   .blue {
@@ -396,7 +399,7 @@ button.btnPin:active {
   position: absolute;
   top: -60px;
   left: -90px;
-  z-index: 60;  
+  z-index: 60;
 
   .timerTxt {
     color: white;
@@ -677,20 +680,15 @@ button.btnPin:active {
 //   height: 50vh;
 // }
 
-@media (min-width: 360px) and ( max-width: 783px){
-  .roomContainer .roomInputContainer .teamInputSelect{
+@media (min-width: 360px) and (max-width: 783px) {
+  .roomContainer .roomInputContainer .teamInputSelect {
     min-width: 300px;
   }
-  .roomInputContainer .teamJoinSelect{
+  .roomInputContainer .teamJoinSelect {
     min-width: 300px;
-
   }
-  .effect3D{
-transform: 
-  perspective(8vh) 
-  rotateX(-8deg) 
-  rotateY(-3deg) 
-  rotateZ(-3deg);
+  .effect3D {
+    transform: perspective(8vh) rotateX(-8deg) rotateY(-3deg) rotateZ(-3deg);
   }
 }
 
