@@ -30,7 +30,7 @@
     <div class="specContainer">
       <div class="specCategoryName"><p>PICKED</p></div>
       <div class="topContainer">
-        <div class="pickContainer">
+        <div class="pickContainer spec">
           <div
             class="borderPick"
             v-for="(item, index) in $store.state.draft.draft.draftMode.picks"
