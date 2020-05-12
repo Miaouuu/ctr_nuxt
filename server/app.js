@@ -6,6 +6,7 @@ const Controller = require("./draft/Controller");
 const Room = require("./draft/Room");
 
 io.on("connection", socket => {
+  socket.emit("RES_CONN", socket.id);
   socket.on("CREATE_ROOM", ele => Room.createRoom(ele, socket));
   socket.on("JOIN_ROOM", ele => Room.joinRoom(ele, socket, io)); //DONNER TOUTES LES VARIABLES DE LA ROOM
   socket.on("CHECK_ROOM", ele => Room.checkRoom(ele, socket));

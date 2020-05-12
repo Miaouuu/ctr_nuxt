@@ -1,5 +1,10 @@
 <template>
   <div class="container">
+    <div>
+      <nuxt-link v-if="!$auth.loggedIn" to="/login">Login</nuxt-link>
+      <nuxt-link v-if="!$auth.loggedIn" to="/register">Register</nuxt-link>
+      <p v-if="$auth.loggedIn" @click="logout">Logout</p>
+    </div>
     <button class="btnPin effect3D shadow" @click="toggleInvi">
       <nuxt-link class="txtInput" :to="'/' + pin">JOIN</nuxt-link>
       <input
@@ -26,6 +31,11 @@
 <script>
 export default {
   sockets: {
+    RES_CONN: function(ele) {
+      if (process.browser) {
+        localStorage.setItem("socketId", ele);
+      }
+    },
     RES_CREATE_ROOM: function(ele) {
       this.$router.push("/" + ele.pin);
     }
@@ -42,6 +52,10 @@ export default {
     },
     toggleInvi: function() {
       this.isActive = true;
+    },
+    logout: async function() {
+      await this.$axios.get("/v1/token/revoke");
+      await this.$auth.logout();
     }
   }
 };

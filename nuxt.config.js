@@ -17,8 +17,30 @@ module.exports = {
   css: ["@/assets/css/main.css", "@/assets/css/main.scss"],
   plugins: [{ src: "~/plugins/socket.client.js" }],
   buildModules: [],
-  modules: ["@nuxtjs/pwa"],
+  modules: ["@nuxtjs/pwa", "@nuxtjs/axios", "@nuxtjs/auth"],
   build: {
     extend(config, ctx) {}
+  },
+  axios: {
+    baseURL: "http://ctr-api.herokuapp.com/api"
+  },
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            url: "/v1/login",
+            method: "post",
+            propertyName: false
+          },
+          user: { url: "/v1/user", method: "get", propertyName: false },
+          logout: false
+        },
+        tokenRequired: true,
+        tokenType: "bearer",
+        globalToken: true,
+        autoFetchUser: false
+      }
+    }
   }
 };
