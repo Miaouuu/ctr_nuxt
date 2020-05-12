@@ -15,7 +15,10 @@ module.exports = {
   },
   loading: { color: "#fff" },
   css: ["@/assets/css/main.css", "@/assets/css/main.scss"],
-  plugins: [{ src: "~/plugins/socket.client.js" }, { src: "~/plugins/owl.js" }],
+  plugins: [
+    { src: "~/plugins/socket.client.js" },
+    { src: "~/plugins/owl.js", ssr: false }
+  ],
   buildModules: [],
   modules: ["@nuxtjs/pwa", "@nuxtjs/axios", "@nuxtjs/auth"],
   build: {
