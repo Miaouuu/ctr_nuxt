@@ -252,12 +252,13 @@ button.btnPin:active {
   .pickContainer {
     width: 86vw;
     height: auto;
+    // background-color: rgb(98, 255, 255);
+  }
+  .spec {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    // background-color: rgb(98, 255, 255);
   }
-
   .corner {
     .cornerImage {
       position: absolute;

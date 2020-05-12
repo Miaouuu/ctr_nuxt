@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="">
     <!-- <h3 class="teamName">
       Tour : Team
       {{
@@ -8,71 +8,88 @@
           : $store.state.draft.draft.teamName[0]
       }}
     </h3>-->
+
     <div class="topContainer">
       <div class="pickContainer">
-        <div
-          class="borderPick"
-          v-for="(item, index) in $store.state.draft.draft.draftMode.picks"
-          :key="index"
-          :class="{
-            red:
-              index == 0 ||
-              index == 3 ||
-              index == 4 ||
-              index == 7 ||
-              index == 8,
-            blue:
-              index == 1 || index == 2 || index == 5 || index == 6 || index == 9
-          }"
-        >
-          <div class="corner">
-            <div
-              class="cornerImage"
-              v-if="index == 0 ||
-              index == 3 ||
-              index == 4 ||
-              index == 7 ||
-              index == 8"
-            >
-              <img src="../assets/img/corner-red.png" />
-            </div>
-            <div class="cornerImage" v-else>
-              <img src="../assets/img/corner-blue.png" />
-            </div>
-            <div class="cornerNumber">{{ index + 1 }}</div>
-          </div>
-          <div
-            class="ifPick"
-            v-if="$store.state.draft.draft.maps.picked[index]"
+        <client-only>
+          <carousel
+            :loop="true"
+            :nav="false"
+            :dots="false"
+            :items="6"
+            :autoWidth="true"
           >
-            <img
-              v-if="$store.state.draft.draft.maps.picked[index] != -1"
-              :src="
-                require(`../assets/img/circuits/${
+            <div
+              class="borderPick"
+              v-for="(item, index) in $store.state.draft.draft.draftMode.picks"
+              :key="index"
+              :class="{
+                red:
+                  index == 0 ||
+                  index == 3 ||
+                  index == 4 ||
+                  index == 7 ||
+                  index == 8,
+                blue:
+                  index == 1 ||
+                  index == 2 ||
+                  index == 5 ||
+                  index == 6 ||
+                  index == 9
+              }"
+            >
+              <div class="corner">
+                <div
+                  class="cornerImage"
+                  v-if="
+                    index == 0 ||
+                      index == 3 ||
+                      index == 4 ||
+                      index == 7 ||
+                      index == 8
+                  "
+                >
+                  <img src="../assets/img/corner-red.png" />
+                </div>
+                <div class="cornerImage" v-else>
+                  <img src="../assets/img/corner-blue.png" />
+                </div>
+                <div class="cornerNumber">{{ index + 1 }}</div>
+              </div>
+              <div
+                class="ifPick"
+                v-if="$store.state.draft.draft.maps.picked[index]"
+              >
+                <img
+                  v-if="$store.state.draft.draft.maps.picked[index] != -1"
+                  :src="
+                    require(`../assets/img/circuits/${
+                      $store.state.map.maps[
+                        $store.state.draft.draft.maps.picked[index] - 1
+                      ].src
+                    }.jpg`)
+                  "
+                />
+              </div>
+              <div
+                class="mapName"
+                v-if="
                   $store.state.map.maps[
                     $store.state.draft.draft.maps.picked[index] - 1
-                  ].src
-                }.jpg`)
-              "
-            />
-          </div>
-          <div
-            class="mapName"
-            v-if="
-              $store.state.map.maps[
-                $store.state.draft.draft.maps.picked[index] - 1
-              ]
-            "
-          >
-            <h5>
-              {{
-                $store.state.map.maps[
-                  $store.state.draft.draft.maps.picked[index] - 1
-                ].title
-              }}
-            </h5>
-          </div>
-        </div>
+                  ]
+                "
+              >
+                <h5>
+                  {{
+                    $store.state.map.maps[
+                      $store.state.draft.draft.maps.picked[index] - 1
+                    ].title
+                  }}
+                </h5>
+              </div>
+            </div>
+          </carousel>
+        </client-only>
       </div>
     </div>
     <div class="timer">
