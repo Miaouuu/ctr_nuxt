@@ -53,9 +53,6 @@ export default {
       mapType: ""
     };
   },
-  mounted() {
-    this.researchByMapType("");
-  },
   methods: {
     researchByMapType(newType) {
       this.mapType = newType;

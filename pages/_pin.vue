@@ -2,7 +2,7 @@
   <div>
     <Join v-if="state === 0" :team="team" />
     <Room v-if="state === 1" :admin="admin" />
-    <Draft v-if="state === 2" />
+    <Draft v-if="state === 2" :maps="maps" @update="maps = $event" />
     <Spectator v-if="state === 3" :endGame="endGame" />
   </div>
 </template>
@@ -68,7 +68,8 @@ export default {
       admin: false,
       state: 0,
       endGame: false,
-      team: []
+      team: [],
+      maps: []
     };
   },
   mounted() {
@@ -85,6 +86,16 @@ export default {
   },
   beforeDestroy() {
     this.$socket.emit("DISCONNECT_ROOM");
+  },
+  created() {
+    this.unsubscribe = this.$store.subscribe((mutation, state) => {
+      if (mutation.type === "map/newMaps") {
+        this.maps = this.$store.state.map.maps;
+      }
+    });
+  },
+  beforeDestroy() {
+    this.unsubscribe();
   }
 };
 </script>

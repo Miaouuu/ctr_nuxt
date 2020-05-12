@@ -28,11 +28,13 @@
           <div class="corner">
             <div
               class="cornerImage"
-              v-if="index == 0 ||
-              index == 3 ||
-              index == 4 ||
-              index == 7 ||
-              index == 8"
+              v-if="
+                index == 0 ||
+                  index == 3 ||
+                  index == 4 ||
+                  index == 7 ||
+                  index == 8
+              "
             >
               <img src="../assets/img/corner-red.png" />
             </div>
@@ -94,7 +96,7 @@
     </div>
 
     <div class="draftContainer">
-      <Search @update="maps = $event" />
+      <Search @update="$emit('update', $event)" />
 
       <div class="wrapper">
         <div
@@ -211,11 +213,13 @@ export default {
   components: {
     Search
   },
+  props: {
+    maps: Array
+  },
   data() {
     return {
       timeLeft: 30,
-      selected: -1,
-      maps: []
+      selected: -1
     };
   },
   methods: {
@@ -246,9 +250,6 @@ export default {
         return "background-color:green";
       }
     }
-  },
-  mounted() {
-    this.maps = this.$store.state.map.maps;
   }
 };
 </script>
