@@ -14,13 +14,24 @@ import Draft from "~/components/Draft.vue";
 import Spectator from "~/components/Spectator.vue";
 export default {
   sockets: {
+    CHANGE_SOCKET_ID: function(ele) {
+      localStorage.setItem("oldSocketId", localStorage.getItem("socketId"));
+      localStorage.setItem("socketId", ele);
+    },
+    ADMIN_GAME: function(ele) {
+      this.admin = true;
+    },
     STATE_GAME: function(ele) {
       this.state = ele;
     },
     RES_CHECK_ROOM: function(ele) {
       if (ele.exist) {
         this.admin = ele.isAdmin;
-        this.$socket.emit("JOIN_ROOM", this.$route.params.pin);
+        this.$socket.emit("JOIN_ROOM", [
+          this.$route.params.pin,
+          localStorage.getItem("socketId"),
+          localStorage.getItem("oldSocketId")
+        ]);
       } else {
         this.$router.push("/");
       }
@@ -62,19 +73,15 @@ export default {
   },
   mounted() {
     this.$socket.emit("CHECK_ROOM", this.$route.params.pin);
-    fetch("https://ctr-api.herokuapp.com/api/v1/maps", {
-      method: "get"
-    })
-      .then(data => data.json())
-      .then(data => {
-        let newData = [];
-        data.maps.map(ele => {
-          ele.banned = false;
-          ele.picked = false;
-          newData.push(ele);
-        });
-        this.$store.commit("map/newMaps", newData);
+    this.$axios.get("/v1/maps").then(data => {
+      let newData = [];
+      data.data.maps.map(ele => {
+        ele.banned = false;
+        ele.picked = false;
+        newData.push(ele);
       });
+      this.$store.commit("map/newMaps", newData);
+    });
   },
   beforeDestroy() {
     this.$socket.emit("DISCONNECT_ROOM");

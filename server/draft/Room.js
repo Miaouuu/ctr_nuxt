@@ -57,12 +57,14 @@ class Room extends Draft {
   }
 
   static joinRoom(ele, socket, io) {
-    socket.join(ele.toUpperCase());
-    let index = this.ROOMS.findIndex(data => data.pin === ele.toUpperCase());
-    if (this.ROOMS[index].state === 0) {
-      this.ROOMS[index].addUser(0, socket, io);
-    } else {
-      this.ROOMS[index].addSpectators(socket, io);
+    socket.join(ele[0].toUpperCase());
+    let index = this.ROOMS.findIndex(data => data.pin === ele[0].toUpperCase());
+    if (!this.ROOMS[index].changeUserId(io, socket, ele[1], ele[2])) {
+      if (this.ROOMS[index].state === 0) {
+        this.ROOMS[index].addUser(0, socket, io);
+      } else {
+        this.ROOMS[index].addSpectators(socket, io);
+      }
     }
 
     socket.emit("RES_JOIN_ROOM", [
@@ -93,16 +95,14 @@ class Room extends Draft {
       }
     });
     let indexRoom = this.ROOMS.findIndex(ele => ele.users[index] === socket.id);
-    if (index !== -1) {
-      this.ROOMS[indexRoom].users.splice(index, 1, "");
-    } else {
+    if (index === -1) {
       this.ROOMS.map(ele => {
         let temp = ele.spectators.indexOf(socket.id);
         if (temp !== -1) {
           index = temp;
         }
       });
-      indexRoom = this.ROOMS.findIndex(
+      let indexRoom = this.ROOMS.findIndex(
         ele => ele.spectators[index] === socket.id
       );
       if (index !== -1) {
@@ -111,6 +111,52 @@ class Room extends Draft {
     }
     if (indexRoom !== -1) {
       socket.leave(this.ROOMS[indexRoom].pin.toUpperCase());
+    }
+  }
+
+  changeUserId(io, socket, socketId, oldId) {
+    let index;
+    if ((index = this.users.indexOf(oldId)) !== -1 && this.admin === oldId) {
+      this.users[index] = socketId;
+      this.admin = socketId;
+      socket.emit("ADMIN_GAME");
+      socket.emit("STATE_GAME", this.state);
+      if (index === 0) {
+        socket.emit("RES_CHANGE_TEAM", "TEAM A");
+      } else if (index === 1) {
+        socket.emit("RES_CHANGE_TEAM", "TEAM B");
+      }
+      io.to(this.pin.toUpperCase()).emit("RES_CHANGE", [
+        this.users[0] === "" ? false : true,
+        this.users[1] === "" ? false : true
+      ]);
+      return true;
+    } else if (
+      (index = this.users.indexOf(oldId)) === -1 &&
+      this.admin === oldId
+    ) {
+      this.admin = socketId;
+      socket.emit("ADMIN_GAME");
+      socket.emit("STATE_GAME", this.state);
+      return false;
+    } else if (
+      (index = this.users.indexOf(oldId)) !== -1 &&
+      this.admin !== oldId
+    ) {
+      this.users[index] = socketId;
+      socket.emit("STATE_GAME", this.state);
+      if (index === 0) {
+        socket.emit("RES_CHANGE_TEAM", "TEAM A");
+      } else if (index === 1) {
+        socket.emit("RES_CHANGE_TEAM", "TEAM B");
+      }
+      io.to(this.pin.toUpperCase()).emit("RES_CHANGE", [
+        this.users[0] === "" ? false : true,
+        this.users[1] === "" ? false : true
+      ]);
+      return true;
+    } else {
+      return false;
     }
   }
 

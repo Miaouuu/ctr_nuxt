@@ -31,17 +31,12 @@
 <script>
 export default {
   sockets: {
-    RES_CONN: function(ele) {
-      if (process.browser) {
-        if (localStorage.getItem("socketId")) {
-          localStorage.setItem("waitSocketId", ele);
-        } else {
-          localStorage.setItem("socketId", ele);
-        }
-      }
-    },
     RES_CREATE_ROOM: function(ele) {
       this.$router.push("/" + ele.pin);
+    },
+    CHANGE_SOCKET_ID: function(ele) {
+      localStorage.setItem("oldSocketId", localStorage.getItem("socketId"));
+      localStorage.setItem("socketId", ele);
     }
   },
   data() {
