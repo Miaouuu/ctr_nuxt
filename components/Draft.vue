@@ -14,8 +14,37 @@
           class="borderPick"
           v-for="(item, index) in $store.state.draft.draft.draftMode.picks"
           :key="index"
+          :class="{
+            red:
+              index == 0 ||
+              index == 3 ||
+              index == 4 ||
+              index == 7 ||
+              index == 8,
+            blue:
+              index == 1 || index == 2 || index == 5 || index == 6 || index == 9
+          }"
         >
-          <div class="ifPick" v-if="$store.state.draft.draft.maps.picked[index]">
+          <div class="corner">
+            <div
+              class="cornerImage"
+              v-if="index == 0 ||
+              index == 3 ||
+              index == 4 ||
+              index == 7 ||
+              index == 8"
+            >
+              <img src="../assets/img/corner-red.png" />
+            </div>
+            <div class="cornerImage" v-else>
+              <img src="../assets/img/corner-blue.png" />
+            </div>
+            <div class="cornerNumber">{{ index + 1 }}</div>
+          </div>
+          <div
+            class="ifPick"
+            v-if="$store.state.draft.draft.maps.picked[index]"
+          >
             <img
               v-if="$store.state.draft.draft.maps.picked[index] != -1"
               :src="
@@ -37,9 +66,9 @@
           >
             <h5>
               {{
-              $store.state.map.maps[
-              $store.state.draft.draft.maps.picked[index] - 1
-              ].title
+                $store.state.map.maps[
+                  $store.state.draft.draft.maps.picked[index] - 1
+                ].title
               }}
             </h5>
           </div>
@@ -103,8 +132,27 @@
           class="banOverlay borderBan"
           v-for="(item, index) in $store.state.draft.draft.draftMode.bans"
           :key="index"
+          :class="{
+            red: index == 0 || index == 2 || index == 4,
+            blue: index == 1 || index == 3 || index == 5
+          }"
         >
-          <div v-if="$store.state.draft.draft.maps.banned[index]" class="sizeDiv">
+          <div class="corner">
+            <div
+              class="cornerImage"
+              v-if="index == 0 || index == 2 || index == 4"
+            >
+              <img src="../assets/img/corner-red.png" />
+            </div>
+            <div class="cornerImage" v-else>
+              <img src="../assets/img/corner-blue.png" />
+            </div>
+            <div class="cornerNumber">{{ index + 1 }}</div>
+          </div>
+          <div
+            v-if="$store.state.draft.draft.maps.banned[index]"
+            class="sizeDiv"
+          >
             <img
               v-if="$store.state.draft.draft.maps.banned[index] != -1"
               :src="
@@ -119,6 +167,7 @@
               <img class="banIcon" src="../assets/img/banned-icon.png" />
             </div>
           </div>
+
           <div
             class="mapName"
             v-if="
@@ -129,16 +178,18 @@
           >
             <h5>
               {{
-              $store.state.map.maps[
-              $store.state.draft.draft.maps.banned[index] - 1
-              ].title
+                $store.state.map.maps[
+                  $store.state.draft.draft.maps.banned[index] - 1
+                ].title
               }}
             </h5>
           </div>
         </div>
       </div>
 
-      <button class="startLockBtn" @click="banOrPick()">{{ buttonBanOrPick() }}</button>
+      <button class="startLockBtn" @click="banOrPick()">
+        {{ buttonBanOrPick() }}
+      </button>
     </div>
   </div>
 </template>
