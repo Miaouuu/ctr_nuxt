@@ -66,7 +66,6 @@ button.btnPin:active {
   box-shadow: -4px 4px 0px $textColor;
 }
 
-
 button.btnPinLogs {
   cursor: pointer;
   background: transparent;
@@ -75,7 +74,7 @@ button.btnPinLogs {
   background: $inputGradient;
   border: none;
   margin: 20px;
-  margin: 10px 10px 10px 20px;
+  margin: 10px -5px 10px 25px;
 }
 
 button.btnPinLogs:active {
