@@ -415,15 +415,19 @@ button.btnPinLogs:active {
 
 .timer {
   position: absolute;
-  top: -60px;
-  left: -90px;
+  top: 0px;
+  left: 50%;
   z-index: 60;
+  height: 37px;
+  width: 255px;
+  transform: translate(-50%);
 
   .timerTxt {
     color: white;
     position: absolute;
-    top: 80px;
-    left: 150px;
+    top: 0px;
+    left: 50%;
+    transform: translate(-50%);
   }
 }
 
