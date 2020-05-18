@@ -9,12 +9,7 @@
       </div>
     </div>
     <div class="timer">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink"
-        width="274px"
-        height="178px"
-      >
+      <svg width="274px" height="178px">
         <image
           x="0px"
           y="0px"
@@ -25,7 +20,6 @@
       </svg>
       <h1 class="timerTxt">{{ timeLeft }}</h1>
     </div>
-    <p style="margin-top: 100px;">Partie finie : {{ endGame }}</p>
 
     <div class="specContainer">
       <div class="specCategoryName"><p>PICKED</p></div>
