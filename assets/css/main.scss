@@ -164,7 +164,6 @@ button.btnPin:active {
     overflow-y: auto;
     width: calc(100% - 50px);
     margin: 0 auto;
-    height: calc(100vh - 470px);
   }
 
   .cardMapContainer {
@@ -771,9 +770,16 @@ button.btnPin:active {
     height: 90px;
     margin: 0 7px 10px 7px;
   }
+  .draftContainer .wrapper {
+    height: calc(100vh - 390px);
+  }
   .bottomContainer .banOverlay {
-    width: 110px;
-    height: 74px;
+    width: 100px;
+    height: 60px;
+  }
+  .topContainer .borderPick {
+    width: 100px;
+    height: 60px;
   }
   .bottomContainer .banOverlay .banOverlayImg .banIcon {
     height: 36px;
@@ -785,9 +791,16 @@ button.btnPin:active {
     width: calc(33.33% - 26px);
     height: 100px;
   }
+  .draftContainer .wrapper {
+    height: calc(100vh - 400px);
+  }
   .bottomContainer .banOverlay {
     width: 110px;
-    height: 74px;
+    height: 64px;
+  }
+  .topContainer .borderPick {
+    width: 110px;
+    height: 64px;
   }
   .bottomContainer .banOverlay .banOverlayImg .banIcon {
     height: 36px;
@@ -799,9 +812,16 @@ button.btnPin:active {
     width: calc(33.33% - 26px);
     height: 100px;
   }
+  .draftContainer .wrapper {
+    height: calc(100vh - 410px);
+  }
   .bottomContainer .banOverlay {
     width: 122px;
-    height: 78px;
+    height: 68px;
+  }
+  .topContainer .borderPick {
+    width: 122px;
+    height: 68px;
   }
   .bottomContainer .banOverlay .banOverlayImg .banIcon {
     height: 36px;
@@ -813,9 +833,16 @@ button.btnPin:active {
     width: calc(33.33% - 26px);
     height: 120px;
   }
+  .draftContainer .wrapper {
+    height: calc(100vh - 420px);
+  }
   .bottomContainer .banOverlay {
-    width: 135px;
-    height: 88px;
+    width: 128px;
+    height: 70px;
+  }
+  .topContainer .borderPick {
+    width: 128px;
+    height: 70px;
   }
   .bottomContainer .banOverlay .banOverlayImg .banIcon {
     height: 38px;
@@ -827,8 +854,12 @@ button.btnPin:active {
     width: calc(25% - 24px);
   }
   .bottomContainer .banOverlay {
-    width: 150px;
-    height: 92px;
+    width: 140px;
+    height: 80px;
+  }
+  .topContainer .borderPick {
+    width: 140px;
+    height: 80px;
   }
   .bottomContainer .banOverlay .banOverlayImg .banIcon {
     height: 44px;
@@ -839,13 +870,23 @@ button.btnPin:active {
   .draftContainer .cardMapContainer {
     width: calc(20% - 23px);
   }
+  .draftContainer .wrapper {
+    height: calc(100vh - 440px);
+  }
 }
 
 @media (min-width: 1400px) {
   .draftContainer .cardMapContainer {
     width: calc(16.66% - 22.5px);
   }
+  .draftContainer .wrapper {
+    height: calc(100vh - 500px);
+  }
   .bottomContainer .banOverlay {
+    width: 180px;
+    height: 100px;
+  }
+  .topContainer .borderPick {
     width: 180px;
     height: 100px;
   }
