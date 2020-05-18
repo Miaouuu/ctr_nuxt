@@ -1,13 +1,16 @@
 <template>
   <div class="container">
-    <!-- <h3 class="teamName">
-      Tour : Team
+    <h3 class="teamName" v-if="$store.state.draft.room.team === 'TEAM A'">
+      <!-- Tour : Team
       {{
         $store.state.draft.draft.turn
           ? $store.state.draft.draft.teamName[1]
           : $store.state.draft.draft.teamName[0]
-      }}
-    </h3>-->
+      }} -->{{ $store.state.draft.draft.teamName[0] }}
+    </h3>
+    <h3 class="teamName" v-else>
+      {{ $store.state.draft.draft.teamName[1] }}
+    </h3>
 
     <div class="topContainer">
       <client-only>
@@ -113,7 +116,10 @@
           v-for="(map, index) in maps"
           :key="index"
           :style="styleButton(map)"
-          @click="selected = map.id; $playSFX('select_map')"
+          @click="
+            selected = map.id;
+            $playSFX('select_map');
+          "
         >
           <img :src="require(`../assets/img/circuits/${map.src}.jpg`)" />
           <div class="banOverlayImg" v-if="map.banned">
@@ -210,7 +216,13 @@
           </div>
         </carousel>
       </client-only>
-      <button class="startLockBtn" @click="banOrPick(); $playSFX('click')">
+      <button
+        class="startLockBtn"
+        @click="
+          banOrPick();
+          $playSFX('click');
+        "
+      >
         {{ buttonBanOrPick() }}
       </button>
     </div>
@@ -221,13 +233,12 @@
 import Search from "~/components/Search.vue";
 export default {
   mounted() {
-    this.$playMusic('ban')
+    this.$playMusic("ban");
   },
   sockets: {
     RES_START_TIMER: function(ele) {
       this.timeLeft = ele;
-      if(this.timeLeft <= 10)
-        this.$playSFX('gofast')
+      if (this.timeLeft <= 10) this.$playSFX("gofast");
     },
     RES_NEXT_ROUND: function(ele) {
       if (ele.idMap !== -1) {
@@ -237,26 +248,28 @@ export default {
 
       // TODO : ET ICI ON MET LE TOUT PREMIER PICK GENRE
 
-      if(!(this.$store.state.draft.draft.draftMode.bans >=
-        this.$store.state.draft.draft.round)) {
-        if(!this.lock) {
-          this.$playMusic('pick')
+      if (
+        !(
+          this.$store.state.draft.draft.draftMode.bans >=
+          this.$store.state.draft.draft.round
+        )
+      ) {
+        if (!this.lock) {
+          this.$playMusic("pick");
         }
         this.lock = true;
       }
 
-      if(ele.banOrPick == 0) {
-        this.$playSFX('banned')
-      } else if(ele.banOrPick == 1) {
-        this.$playSFX('picked')
+      if (ele.banOrPick == 0) {
+        this.$playSFX("banned");
+      } else if (ele.banOrPick == 1) {
+        this.$playSFX("picked");
       }
 
       // TODO : METTRE LA MUSIQUE POUR SAVOIR C'EST A QUI DE PICK
 
-      if(ele.turn == 0) {
-
-      } else if(ele.turn == 1) {
-
+      if (ele.turn == 0) {
+      } else if (ele.turn == 1) {
       }
     }
   },
