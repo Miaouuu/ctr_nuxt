@@ -734,6 +734,9 @@ button.btnPin:active {
   .roomContainer .roomInputContainer .teamInputSelect {
     min-width: calc(240px + 10vw);
   }
+  .roomInputContainer .teamJoinSelect {
+    min-width: calc(240px + 10vw);
+  }
   .effect3D {
     transform: perspective(8vh) rotateX(-8deg) rotateY(-3deg) rotateZ(-3deg);
   }
