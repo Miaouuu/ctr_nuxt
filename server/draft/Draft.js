@@ -71,7 +71,6 @@ class Draft {
   }
 
   nextRound(pin, io, idMap, indexUser) {
-    //1 tour puis 2 tours puis 2 tours
     if (this.round <= this.draftMode.bans) {
       if (indexUser == this.turn) {
         clearInterval(this.timer);
