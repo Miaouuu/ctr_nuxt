@@ -1,17 +1,5 @@
 <template>
   <div class="container">
-    <h3 class="teamName" v-if="$store.state.draft.room.team === 'TEAM A'">
-      <!-- Tour : Team
-      {{
-        $store.state.draft.draft.turn
-          ? $store.state.draft.draft.teamName[1]
-          : $store.state.draft.draft.teamName[0]
-      }} -->{{ $store.state.draft.draft.teamName[0] }}
-    </h3>
-    <h3 class="teamName" v-else>
-      {{ $store.state.draft.draft.teamName[1] }}
-    </h3>
-
     <div class="topContainer">
       <client-only>
         <!-- :responsive="{
@@ -101,10 +89,15 @@
     </div>
 
     <div class="timer">
-      <svg>
-        <polygon points="0 0 18 36.5 230 36.5 255 0 0 0" fill="#FAC600" />
+      <svg v-if="$store.state.draft.room.team === 'TEAM A'">
+        <polygon fill="#3867d8" points="257.5,36.5 42.5,36.5 22.5,0 277.5,0 " />
       </svg>
-      <h1 class="timerTxt">{{ timeLeft }}</h1>
+      <svg v-else>
+        <polygon fill="#d63031" points="257.5,36.5 42.5,36.5 22.5,0 277.5,0 " />
+      </svg>
+      <h1 class="timerTxt">
+        {{ timeLeft }}
+      </h1>
     </div>
 
     <div class="draftContainer">

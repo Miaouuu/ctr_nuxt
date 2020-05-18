@@ -10,7 +10,13 @@
     </div>
     <div class="timer">
       <svg>
-        <polygon points="0 0 18 36.5 230 36.5 255 0 0 0" fill="#FAC600" />
+        <polygon fill="#3867d8" points="257.5,36.5 42.5,36.5 22.5,0 237.5,0 " />
+      </svg>
+      <svg>
+        <polygon fill="#FAC600" points="257.5,36.5 42.5,36.5 22.5,0 277.5,0 " />
+      </svg>
+      <svg>
+        <polygon fill="#d63031" points="277.5,0 62.5,0 42.5,36.5 257.5,36.5 " />
       </svg>
       <h1 class="timerTxt">{{ timeLeft }}</h1>
     </div>
@@ -179,8 +185,7 @@
 <script>
 export default {
   mounted() {
-    if(this.endGame)
-      this.$playMusic('end')
+    if (this.endGame) this.$playMusic("end");
   },
   sockets: {
     RES_START_TIMER: function(ele) {
