@@ -1,35 +1,84 @@
 <template>
-  <form method="post" @submit.prevent="register">
-    <div>
-      <label>Name</label>
+  <!-- <div class="loginstyle">
+    <form method="post" @submit.prevent="register">
       <div>
-        <input type="text" name="name" v-model="name" required />
+        <label>Name</label>
+        <div class="control">
+          <input type="text" name="name" v-model="name" required />
+        </div>
       </div>
-    </div>
-    <div>
-      <label>Email</label>
       <div>
-        <input type="email" name="email" v-model="email" required />
+        <label>Email</label>
+        <div class="control">
+          <input type="email" name="email" v-model="email" required />
+        </div>
       </div>
-    </div>
-    <div>
-      <label>Password</label>
       <div>
-        <input type="password" name="password" v-model="password" required />
+        <label>Password</label>
+        <div class="control">
+          <input type="password" name="password" v-model="password" required />
+        </div>
       </div>
-    </div>
-    <div>
-      <label>Confirm Password</label>
       <div>
-        <input type="password" name="cPassword" v-model="cPassword" required />
+        <label>Confirm Password</label>
+        <div class="control">
+          <input
+            type="password"
+            name="cPassword"
+            v-model="cPassword"
+            required
+          />
+        </div>
       </div>
+
+      <div class="button">
+        <button type="submit" class="button is-dark is-fullwidth">
+          Register
+        </button>
+      </div>
+    </form>
+  </div> -->
+  <div class="roomContainer">
+    <div class="roomInputContainer">
+      <form method="post" @submit.prevent="register">
+        <input
+          type="text"
+          class="teamInputSelect shadowPermanent"
+          name="name"
+          v-model="name"
+          placeholder="Pseudo"
+          required
+        />
+        <input
+          type="email"
+          class="teamInputSelect shadowPermanent"
+          name="email"
+          placeholder="Email"
+          v-model="email"
+          required
+        />
+        <input
+          type="password"
+          class="teamInputSelect shadowPermanent"
+          name="password"
+          placeholder="Password"
+          v-model="password"
+          required
+        />
+        <input
+          type="password"
+          class="teamInputSelect shadowPermanent"
+          name="cPassword"
+          placeholder="Confirm password"
+          v-model="cPassword"
+          required
+        />
+        <button type="submit" class="startLockBtn">
+          Register
+        </button>
+      </form>
     </div>
-    <div>
-      <button type="submit">
-        Register
-      </button>
-    </div>
-  </form>
+  </div>
 </template>
 
 <script>

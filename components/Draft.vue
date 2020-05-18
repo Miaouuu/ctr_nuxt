@@ -1,5 +1,14 @@
 <template>
   <div class="container">
+    <<<<<<< HEAD =======
+    <h3 class="teamName" v-if="$store.state.draft.room.team === 'TEAM A'">
+      {{ $store.state.draft.draft.teamName[0] }}
+    </h3>
+    <h3 class="teamName" v-else>
+      {{ $store.state.draft.draft.teamName[1] }}
+    </h3>
+
+    >>>>>>> 55ca48fb81e2b147ce8e5560a20a7fba39221ff8
     <div class="topContainer">
       <client-only>
         <!-- :responsive="{
