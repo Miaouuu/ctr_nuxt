@@ -1,8 +1,12 @@
 <template>
   <div class="container">
     <div>
-      <nuxt-link v-if="!$auth.loggedIn" to="/login">Login</nuxt-link>
-      <nuxt-link v-if="!$auth.loggedIn" to="/register">Register</nuxt-link>
+      <button class="btnPinLogs effect3D shadow">
+        <nuxt-link v-if="!$auth.loggedIn" class="txtInput" to="/login">LOGIN</nuxt-link>
+      </button>
+      <button class="btnPinLogs effect3D shadow">
+      <nuxt-link v-if="!$auth.loggedIn" class="txtInput" to="/register">REGISTER</nuxt-link>
+      </button>
       <p v-if="$auth.loggedIn" @click="logout">Logout</p>
     </div>
     <button class="btnPin effect3D shadow" @click="toggleInvi">

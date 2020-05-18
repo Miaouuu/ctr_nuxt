@@ -66,6 +66,24 @@ button.btnPin:active {
   box-shadow: -4px 4px 0px $textColor;
 }
 
+
+button.btnPinLogs {
+  cursor: pointer;
+  background: transparent;
+  width: 10rem;
+  height: 3rem;
+  background: $inputGradient;
+  border: none;
+  margin: 20px;
+  margin: 10px 10px 10px 20px;
+}
+
+button.btnPinLogs:active {
+  transform: perspective(50px) rotateX(-8deg) rotateY(-3deg) rotateZ(-3deg)
+    translateX(-4px) translateY(4px);
+  box-shadow: -4px 4px 0px $textColor;
+}
+
 .shadow:hover {
   box-shadow: -8px 8px 0px $textColor;
 }
