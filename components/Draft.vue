@@ -12,11 +12,6 @@
     <div class="topContainer">
       <div class="pickContainer">
         <client-only>
-          <!-- :responsive="{
-              0: { items: 1 },
-              600: { items: 3 },
-              1000: {items: 6}
-            }" -->
           <carousel
             :loop="true"
             :nav="false"
@@ -100,7 +95,7 @@
 
     <div class="timer">
       <svg>
-        <!-- Polygon en dehors de l'ecran, replace -->
+        <!-- Polygon en dehors de l'ecran, à replacer -->
         <polygon points="0 0 18 36.5 230 36.5 255 0 0 0" fill="#FAC600" />
       </svg>
       <h1 class="timerTxt">{{ timeLeft }}</h1>
