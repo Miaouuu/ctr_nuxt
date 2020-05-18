@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-let sfx_channel = new Audio()
+let sfx_channels = []
 let music_channel = new Audio()
 
 const sfx_format = "mp3"
@@ -11,8 +11,10 @@ Vue.prototype.$playMusic = name => _playMusic(name)
 Vue.prototype.$updateVolume = volume => _updateVolume(volume)
 
 function _playSFX(name) {
-  sfx_channel.src = require("@/assets/sounds/sfx/" + name + "." + sfx_format)
-  sfx_channel.play()
+  let sfx = new Audio()
+  sfx.src = require("@/assets/sounds/sfx/" + name + "." + sfx_format)
+  sfx_channels.push(sfx)
+  sfx.play()
 }
 
 function _playMusic(name) {
@@ -21,6 +23,8 @@ function _playMusic(name) {
 }
 
 function _updateVolume(volume) {
-  sfx_channel.volume = volume
+  sfx_channels.forEach(sfx => {
+    sfx.volume = volume
+  });
   music_channel.volume = volume
 }
