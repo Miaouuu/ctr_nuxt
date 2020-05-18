@@ -164,12 +164,12 @@ button.btnPin:active {
     overflow-y: auto;
     width: calc(100% - 50px);
     margin: 0 auto;
-    height: 50vh;
+    height: calc(100vh - 470px);
   }
 
   .cardMapContainer {
     border: 2px solid #3366cc;
-    width: 100%;
+    width: calc(50% - 29px);
     height: 140px;
     margin: 0 10px 15px 10px;
     cursor: pointer;
@@ -752,15 +752,42 @@ button.btnPin:active {
   }
 }
 
+// Responsive maps wrapper
+
+@media (max-width: 370px) {
+  .draftContainer .cardMapContainer {
+    width: calc(50% - 11px);
+    height: 80px;
+    margin: 0 5px 7px 5px;
+  }
+}
+
+@media (max-width: 500px) {
+  .draftContainer .cardMapContainer {
+    width: calc(50% - 15px);
+    height: 90px;
+    margin: 0 7px 10px 7px;
+  }
+}
+
 @media (min-width: 500px) {
   .draftContainer .cardMapContainer {
-    width: calc(50% - 29px);
+    width: calc(33.33% - 26px);
+    height: 100px;
+  }
+}
+
+@media (min-width: 650px) {
+  .draftContainer .cardMapContainer {
+    width: calc(33.33% - 26px);
+    height: 100px;
   }
 }
 
 @media (min-width: 850px) {
   .draftContainer .cardMapContainer {
     width: calc(33.33% - 26px);
+    height: 120px;
   }
 }
 
