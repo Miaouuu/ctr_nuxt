@@ -20,6 +20,7 @@
     "nuxt-vuex-localstorage": "^1.2.6",
     "socket.io": "^2.3.0",
     "v-owl-carousel": "^1.0.8",
+    "vue-i18n": "^8.17.6",
     "vue-socket.io": "^3.0.7"
   },
   "devDependencies": {
