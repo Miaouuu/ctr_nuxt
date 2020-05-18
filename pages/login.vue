@@ -1,38 +1,26 @@
 <template>
   <section>
-    <div>
-      <div>
-        <div class="loginstyle">
-          <form method="post" @submit.prevent="login">
-            <div class="field">
-              <label class="label">Email</label>
-              <div class="control">
-                <input
-                  type="email"
-                  class="input"
-                  name="email"
-                  v-model="email"
-                />
-              </div>
-            </div>
-            <div class="field">
-              <label class="label">Password</label>
-              <div class="control">
-                <input
-                  type="password"
-                  class="input"
-                  name="password"
-                  v-model="password"
-                />
-              </div>
-            </div>
-            <div class="button">
-              <button type="submit" class="button is-dark is-fullwidth">
-                Log In
-              </button>
-            </div>
-          </form>
-        </div>
+    <div class="roomContainer">
+      <div class="roomInputContainer">
+        <form method="post" @submit.prevent="login">
+          <input
+            type="email"
+            class="teamInputSelect shadowPermanent"
+            name="email"
+            placeholder="Email"
+            v-model="email"
+          />
+          <input
+            type="password"
+            class="teamInputSelect shadowPermanent"
+            name="password"
+            placeholder="Password"
+            v-model="password"
+          />
+          <button type="submit" class="startLockBtn">
+            Log In
+          </button>
+        </form>
       </div>
     </div>
   </section>

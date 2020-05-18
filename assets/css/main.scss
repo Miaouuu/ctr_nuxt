@@ -436,59 +436,6 @@ button.btnPin:active {
   width: 258px;
   height: 60px;
 }
-// Page login
-.loginstyle {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  text-align: center;
-  height: 100vh;
-  color: $textColor;
-  font-weight: bold;
-  font-size: 30px;
-
-  input {
-    margin: 20px;
-    justify-content: center;
-    background-color: $inputColor;
-    border: none;
-    text-align: center;
-    min-width: 400px;
-    height: 1rem;
-    color: $textColor;
-    font-weight: bold;
-    font-size: 20px;
-  }
-}
-
-.control {
-  background: $inputColor;
-  box-shadow: -4px 6px 0px $textColor;
-}
-
-.button {
-  position: static;
-  display: block;
-  justify-content: center;
-  align-items: center;
-  background-color: $inputColor;
-  margin: 10px 0;
-  width: 150px;
-  height: 4rem;
-  border-radius: 40px;
-  border: none;
-  cursor: pointer;
-  color: $textColor;
-  font-weight: bold;
-  font-size: 20px;
-  transition: all 0.2s ease-out;
-
-  &:hover {
-    box-shadow: -6px 6px 0px $textColor;
-    transition: all 0.2s ease-out;
-  }
-}
 
 // Page Join
 .roomInputContainer {
@@ -521,6 +468,11 @@ button.btnPin:active {
 
   label {
     color: rgb(255, 187, 187);
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 
@@ -666,8 +618,6 @@ button.btnPin:active {
 
 .startLockBtn {
   display: block;
-  justify-content: center;
-  align-items: center;
   background-color: $inputColor;
   width: calc(100px + 15%);
   height: 3rem;
@@ -785,21 +735,17 @@ button.btnPin:active {
   .roomContainer .roomInputContainer .teamInputSelect {
     min-width: calc(240px + 10vw);
   }
-  .roomInputContainer .teamJoinSelect {
-    min-width: calc(240px + 10vw);
-  }
   .effect3D {
     transform: perspective(8vh) rotateX(-8deg) rotateY(-3deg) rotateZ(-3deg);
   }
   button.btnPin {
     width: calc(220px + 10vw);
-    margin: 20px 20px 20px -10px;
+    margin: 20px 20px 20px -23px;
   }
   .draftContainer {
     width: 100vw;
     .draftContainerTop {
       display: flex;
-      flex-direction: column;
     }
   }
 }

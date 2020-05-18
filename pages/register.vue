@@ -1,5 +1,5 @@
 <template>
-  <div class="loginstyle">
+  <!-- <div class="loginstyle">
     <form method="post" @submit.prevent="register">
       <div>
         <label>Name</label>
@@ -37,6 +37,47 @@
         </button>
       </div>
     </form>
+  </div> -->
+  <div class="roomContainer">
+    <div class="roomInputContainer">
+      <form method="post" @submit.prevent="register">
+        <input
+          type="text"
+          class="teamInputSelect shadowPermanent"
+          name="name"
+          v-model="name"
+          placeholder="Pseudo"
+          required
+        />
+        <input
+          type="email"
+          class="teamInputSelect shadowPermanent"
+          name="email"
+          placeholder="Email"
+          v-model="email"
+          required
+        />
+        <input
+          type="password"
+          class="teamInputSelect shadowPermanent"
+          name="password"
+          placeholder="Password"
+          v-model="password"
+          required
+        />
+        <input
+          type="password"
+          class="teamInputSelect shadowPermanent"
+          name="cPassword"
+          placeholder="Confirm password"
+          v-model="cPassword"
+          required
+        />
+        <button type="submit" class="startLockBtn">
+          Register
+        </button>
+      </form>
+    </div>
   </div>
 </template>
 
