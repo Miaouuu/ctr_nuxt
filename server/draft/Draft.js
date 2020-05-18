@@ -99,7 +99,7 @@ class Draft {
           banOrPick: 1,
           idMap: idMap,
           round: this.round,
-          turn: this.turn,
+          turn: this.orderPick[this.round - this.draftMode.bans - 1],
           maps: this.maps
         });
         if (this.round > this.draftMode.picks + this.draftMode.bans) {

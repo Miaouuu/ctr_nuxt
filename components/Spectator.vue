@@ -178,6 +178,10 @@
 
 <script>
 export default {
+  mounted() {
+    if(this.endGame)
+      this.$playMusic('end')
+  },
   sockets: {
     RES_START_TIMER: function(ele) {
       this.timeLeft = ele;

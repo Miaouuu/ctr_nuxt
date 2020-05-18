@@ -1,24 +1,27 @@
 <template>
   <div class="container">
-    <a href="/login">
-      <button class="btnPin effect3D shadow">
-        <p class="txtInput">LOGIN</p>
+    <div class="logs">
+      <a href="/login">
+        <button class="btnPin effect3D shadow">
+          <p class="txtInput">LOGIN</p>
+        </button>
+      </a>
+      <a href="/register">
+        <button class="btnPin effect3D shadow">
+          <p class="txtInput">REGISTER</p>
+        </button>
+      </a>
+      <button
+        v-if="$auth.loggedIn"
+        class="btnPin effect3D shadow"
+        type="button"
+        @click="logout"
+      >
+        <h2 class="txtInput">Logout</h2>
       </button>
-    </a>
-    <a href="/register">
-      <button class="btnPin effect3D shadow">
-        <p class="txtInput">REGISTER</p>
-      </button>
-    </a>
-    <button
-      v-if="$auth.loggedIn"
-      class="btnPin effect3D shadow"
-      type="button"
-      @click="logout"
-    >
-      <h2 class="txtInput">Logout</h2>
-    </button>
-    <!-- <p v-if="$auth.loggedIn" @click="logout">Logout</p> -->
+      <!-- <p v-if="$auth.loggedIn" @click="logout">Logout</p> -->
+    </div>
+
     <nuxt-link :to="'/' + pin">
       <button class="btnPin effect3D shadow" @click="toggleInvi">
         <p class="txtInput">JOIN</p>
