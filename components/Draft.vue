@@ -114,7 +114,7 @@
           v-for="(map, index) in maps"
           :key="index"
           :style="styleButton(map)"
-          @click="selected = map.id"
+          @click="selected = map.id; $playSFX('select_map')"
         >
           <img :src="require(`../assets/img/circuits/${map.src}.jpg`)" />
           <div class="banOverlayImg" v-if="map.banned">
@@ -211,7 +211,7 @@
           </div>
         </carousel>
       </client-only>
-      <button class="startLockBtn" @click="banOrPick()">
+      <button class="startLockBtn" @click="banOrPick(); $playSFX('click')">
         {{ buttonBanOrPick() }}
       </button>
     </div>
@@ -221,15 +221,44 @@
 <script>
 import Search from "~/components/Search.vue";
 export default {
+  mounted() {
+    this.$playMusic('ban')
+  },
   sockets: {
     RES_START_TIMER: function(ele) {
       this.timeLeft = ele;
+      if(this.timeLeft <= 10)
+        this.$playSFX('gofast')
     },
     RES_NEXT_ROUND: function(ele) {
       if (ele.idMap !== -1) {
         this.$store.commit("map/selectMap", [ele.banOrPick, ele.idMap]);
       }
       this.$store.commit("draft/nextRound", [ele.round, ele.turn, ele.maps]);
+
+      // TODO : ET ICI ON MET LE TOUT PREMIER PICK GENRE
+
+      if(!(this.$store.state.draft.draft.draftMode.bans >=
+        this.$store.state.draft.draft.round)) {
+        if(!this.lock) {
+          this.$playMusic('pick')
+        }
+        this.lock = true;
+      }
+
+      if(ele.banOrPick == 0) {
+        this.$playSFX('banned')
+      } else if(ele.banOrPick == 1) {
+        this.$playSFX('picked')
+      }
+
+      // TODO : METTRE LA MUSIQUE POUR SAVOIR C'EST A QUI DE PICK
+
+      if(ele.turn == 0) {
+
+      } else if(ele.turn == 1) {
+
+      }
     }
   },
   components: {
@@ -241,7 +270,8 @@ export default {
   data() {
     return {
       timeLeft: 30,
-      selected: -1
+      selected: -1,
+      lock: false
     };
   },
   methods: {
