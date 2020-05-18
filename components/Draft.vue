@@ -221,6 +221,9 @@
 <script>
 import Search from "~/components/Search.vue";
 export default {
+  mounted() {
+    this.$playMusic('ban')
+  },
   sockets: {
     RES_START_TIMER: function(ele) {
       this.timeLeft = ele;
@@ -230,6 +233,13 @@ export default {
         this.$store.commit("map/selectMap", [ele.banOrPick, ele.idMap]);
       }
       this.$store.commit("draft/nextRound", [ele.round, ele.turn, ele.maps]);
+
+      if(ele.banOrPick == 1) {
+        if(!this.lock) {
+          this.$playMusic('pick')
+        }
+        this.lock = true;
+      }
     }
   },
   components: {
@@ -241,7 +251,8 @@ export default {
   data() {
     return {
       timeLeft: 30,
-      selected: -1
+      selected: -1,
+      lock: false
     };
   },
   methods: {
