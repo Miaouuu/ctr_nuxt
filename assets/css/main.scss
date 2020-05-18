@@ -705,6 +705,9 @@ button.btnPin:active {
   }
 }
 @media (max-width: 783px) {
+  .inviNone {
+    width: calc(100px + 10vw);
+  }
   .roomContainer .roomInputContainer .teamInputSelect {
     min-width: calc(240px + 10vw);
   }
