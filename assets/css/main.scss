@@ -92,7 +92,6 @@ button.btnPin:active {
 .draftContainer {
   width: 86vw;
   margin: 3vh auto 3vh auto;
-  background: #ececec48;
 
   .draftContainerTop {
     display: flex;
@@ -220,7 +219,7 @@ button.btnPin:active {
 }
 
 .topContainer {
-  width: 100%;
+  width: 82vw;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -252,7 +251,7 @@ button.btnPin:active {
   }
 
   .pickContainer {
-    width: 86vw;
+    width: 100%;
     height: auto;
     // background-color: rgb(98, 255, 255);
   }
@@ -298,7 +297,7 @@ button.btnPin:active {
 }
 
 .bottomContainer {
-  width: 100%;
+  width: 82vw;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -384,8 +383,8 @@ button.btnPin:active {
   }
 
   .banContainer {
-    width: 1032px; //CHANGEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
-    height: 101px;
+    width: 100%;
+    height: auto;
     display: flex;
     justify-content: space-around;
 
@@ -630,7 +629,7 @@ button.btnPin:active {
 
 .specContainer {
   .topContainer {
-    width: 100%;
+    width: 82vw;
     .borderPick {
       width: 240px;
       height: 137px;
