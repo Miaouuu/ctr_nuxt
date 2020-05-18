@@ -722,6 +722,9 @@ button.btnPin:active {
       }
     }
   }
+  .specContainer .topContainer {
+    width: 95vw;
+  }
 }
 @media (max-width: 783px) {
   .draftContainer .draftContainerTop .draftContainerTopFilters .filters li {
@@ -768,12 +771,26 @@ button.btnPin:active {
     height: 90px;
     margin: 0 7px 10px 7px;
   }
+  .bottomContainer .banOverlay {
+    width: 110px;
+    height: 74px;
+  }
+  .bottomContainer .banOverlay .banOverlayImg .banIcon {
+    height: 36px;
+  }
 }
 
 @media (min-width: 500px) {
   .draftContainer .cardMapContainer {
     width: calc(33.33% - 26px);
     height: 100px;
+  }
+  .bottomContainer .banOverlay {
+    width: 110px;
+    height: 74px;
+  }
+  .bottomContainer .banOverlay .banOverlayImg .banIcon {
+    height: 36px;
   }
 }
 
@@ -782,6 +799,13 @@ button.btnPin:active {
     width: calc(33.33% - 26px);
     height: 100px;
   }
+  .bottomContainer .banOverlay {
+    width: 122px;
+    height: 78px;
+  }
+  .bottomContainer .banOverlay .banOverlayImg .banIcon {
+    height: 36px;
+  }
 }
 
 @media (min-width: 850px) {
@@ -789,11 +813,25 @@ button.btnPin:active {
     width: calc(33.33% - 26px);
     height: 120px;
   }
+  .bottomContainer .banOverlay {
+    width: 135px;
+    height: 88px;
+  }
+  .bottomContainer .banOverlay .banOverlayImg .banIcon {
+    height: 38px;
+  }
 }
 
 @media (min-width: 992px) {
   .draftContainer .cardMapContainer {
     width: calc(25% - 24px);
+  }
+  .bottomContainer .banOverlay {
+    width: 150px;
+    height: 92px;
+  }
+  .bottomContainer .banOverlay .banOverlayImg .banIcon {
+    height: 44px;
   }
 }
 
@@ -806,5 +844,12 @@ button.btnPin:active {
 @media (min-width: 1400px) {
   .draftContainer .cardMapContainer {
     width: calc(16.66% - 22.5px);
+  }
+  .bottomContainer .banOverlay {
+    width: 180px;
+    height: 100px;
+  }
+  .bottomContainer .banOverlay .banOverlayImg .banIcon {
+    height: 54px;
   }
 }

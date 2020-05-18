@@ -89,10 +89,10 @@
     </div>
 
     <div class="timer">
-      <svg v-if="$store.state.draft.room.team === 'TEAM A'">
+      <svg v-if="$store.state.draft.room.team === 'TEAM A'" height="40px">
         <polygon fill="#3867d8" points="257.5,36.5 42.5,36.5 22.5,0 277.5,0 " />
       </svg>
-      <svg v-else>
+      <svg v-else height="40px">
         <polygon fill="#d63031" points="257.5,36.5 42.5,36.5 22.5,0 277.5,0 " />
       </svg>
       <h1 class="timerTxt">
