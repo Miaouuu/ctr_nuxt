@@ -114,7 +114,7 @@
           v-for="(map, index) in maps"
           :key="index"
           :style="styleButton(map)"
-          @click="selected = map.id"
+          @click="selected = map.id; $playSFX('select_map')"
         >
           <img :src="require(`../assets/img/circuits/${map.src}.jpg`)" />
           <div class="banOverlayImg" v-if="map.banned">
@@ -211,7 +211,7 @@
           </div>
         </carousel>
       </client-only>
-      <button class="startLockBtn" @click="banOrPick()">
+      <button class="startLockBtn" @click="banOrPick(); $playSFX('click')">
         {{ buttonBanOrPick() }}
       </button>
     </div>
@@ -239,6 +239,16 @@ export default {
           this.$playMusic('pick')
         }
         this.lock = true;
+      }
+
+      if(ele.banOrPick == 1) {
+        this.$playSFX('banned')
+      }
+
+      if(ele.turn == 0) {
+
+      } else if(ele.turn == 1) {
+
       }
     }
   },

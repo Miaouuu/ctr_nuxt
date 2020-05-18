@@ -3,7 +3,7 @@ import Vue from 'vue'
 let sfx_channel = new Audio()
 let music_channel = new Audio()
 
-const sfx_format = "wav"
+const sfx_format = "mp3"
 const music_format = "mp3"
 
 Vue.prototype.$playSFX = name => _playSFX(name)

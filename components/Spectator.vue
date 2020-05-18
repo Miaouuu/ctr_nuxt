@@ -195,6 +195,15 @@ export default {
       this.$store.commit("draft/nextRound", [ele.round, ele.turn, ele.maps]);
     }
   },
+  watch() {
+    return {
+      endGame()  {
+        if(this.endGame == true) {
+          this.$playSFX('end')
+        }
+      }
+    }
+  },
   data() {
     return {
       timeLeft: 30
