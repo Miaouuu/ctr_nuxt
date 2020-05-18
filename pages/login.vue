@@ -2,7 +2,7 @@
   <section>
     <div>
       <div>
-        <div>
+        <div class="loginstyle">
           <form method="post" @submit.prevent="login">
             <div class="field">
               <label class="label">Email</label>
@@ -26,7 +26,7 @@
                 />
               </div>
             </div>
-            <div class="control">
+            <div class="button">
               <button type="submit" class="button is-dark is-fullwidth">
                 Log In
               </button>

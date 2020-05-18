@@ -1,12 +1,7 @@
 <template>
   <div class="container">
     <h3 class="teamName" v-if="$store.state.draft.room.team === 'TEAM A'">
-      <!-- Tour : Team
-      {{
-        $store.state.draft.draft.turn
-          ? $store.state.draft.draft.teamName[1]
-          : $store.state.draft.draft.teamName[0]
-      }} -->{{ $store.state.draft.draft.teamName[0] }}
+      {{ $store.state.draft.draft.teamName[0] }}
     </h3>
     <h3 class="teamName" v-else>
       {{ $store.state.draft.draft.teamName[1] }}
@@ -102,7 +97,7 @@
 
     <div class="timer">
       <svg>
-        <polygon points="0 0 18 36.5 230 36.5 255 0 0 0" fill="#FAC600" />
+        <polygon points="0 0 18 36.5 235 36.5 255 0 0 0" fill="#FAC600" />
       </svg>
       <h1 class="timerTxt">{{ timeLeft }}</h1>
     </div>

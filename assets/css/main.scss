@@ -208,6 +208,8 @@ button.btnPin:active {
       display: flex;
       justify-content: center;
       align-items: center;
+      overflow: hidden;
+      white-space: nowrap;
     }
 
     .picked {
@@ -259,7 +261,6 @@ button.btnPin:active {
   .pickContainer {
     width: 100%;
     height: auto;
-    // background-color: rgb(98, 255, 255);
   }
   .spec {
     display: flex;
@@ -299,6 +300,8 @@ button.btnPin:active {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
   }
 }
 
@@ -380,6 +383,8 @@ button.btnPin:active {
       display: flex;
       justify-content: center;
       align-items: center;
+      overflow: hidden;
+      white-space: nowrap;
     }
   }
 
@@ -430,6 +435,59 @@ button.btnPin:active {
   font-weight: 500;
   width: 258px;
   height: 60px;
+}
+// Page login
+.loginstyle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  text-align: center;
+  height: 100vh;
+  color: $textColor;
+  font-weight: bold;
+  font-size: 30px;
+
+  input {
+    margin: 20px;
+    justify-content: center;
+    background-color: $inputColor;
+    border: none;
+    text-align: center;
+    min-width: 400px;
+    height: 1rem;
+    color: $textColor;
+    font-weight: bold;
+    font-size: 20px;
+  }
+}
+
+.control {
+  background: $inputColor;
+  box-shadow: -4px 6px 0px $textColor;
+}
+
+.button {
+  position: static;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  background-color: $inputColor;
+  margin: 10px 0;
+  width: 150px;
+  height: 4rem;
+  border-radius: 40px;
+  border: none;
+  cursor: pointer;
+  color: $textColor;
+  font-weight: bold;
+  font-size: 20px;
+  transition: all 0.2s ease-out;
+
+  &:hover {
+    box-shadow: -6px 6px 0px $textColor;
+    transition: all 0.2s ease-out;
+  }
 }
 
 // Page Join
@@ -690,11 +748,23 @@ button.btnPin:active {
 //   height: 50vh;
 // }
 @media (max-width: 1050px) {
+  .container {
+    padding-top: 20px;
+  }
+  .topContainer {
+    width: 92vw;
+  }
+  .bottomContainer {
+    width: 92vw;
+  }
   .draftContainer .draftContainerTop {
     display: flex;
     flex-direction: column;
+    margin-top: 0;
+    margin-bottom: 10px;
     .draftContainerTopFilters .filters li {
-      padding: 4px calc(5px + 4vw);
+      margin-bottom: 5px;
+      padding: 4px calc(15px + 3.8vw);
     }
     .draftContainerTopSearch {
       margin-right: 0;
@@ -705,6 +775,10 @@ button.btnPin:active {
   }
 }
 @media (max-width: 783px) {
+  .draftContainer .draftContainerTop .draftContainerTopFilters .filters li {
+    padding: 4px calc(15px + 2vw);
+    margin-right: 5px;
+  }
   .inviNone {
     width: calc(100px + 10vw);
   }
