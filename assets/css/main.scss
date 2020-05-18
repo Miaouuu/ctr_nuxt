@@ -57,6 +57,7 @@ button.btnPin {
   background: $inputGradient;
   border: none;
   margin: 20px;
+  margin: 20px 20px 20px -10px;
 }
 
 button.btnPin:active {
@@ -681,12 +682,12 @@ button.btnPin:active {
 //   height: 50vh;
 // }
 
-@media (min-width: 360px) and (max-width: 783px) {
+@media (max-width: 783px) {
   .roomContainer .roomInputContainer .teamInputSelect {
-    min-width: 300px;
+    min-width: calc(240px + 10vw);
   }
   .roomInputContainer .teamJoinSelect {
-    min-width: 300px;
+    min-width: calc(240px + 10vw);
   }
   .effect3D {
     transform: perspective(8vh) rotateX(-8deg) rotateY(-3deg) rotateZ(-3deg);

@@ -1,8 +1,7 @@
 <template>
   <div class="roomContainer">
+    <div class="pin">PIN : {{ this.$route.params.pin }}</div>
     <h1>SELECT YOUR TEAM</h1>
-    <!-- <p>{{ $store.state.draft.room.team }}</p>
-    <p>Team pleines : {{ team }}</p> -->
     <div class="roomInputContainer">
       <input
         class="teamJoinSelect shadowPermanent"
