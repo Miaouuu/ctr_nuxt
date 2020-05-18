@@ -6,6 +6,7 @@ class Draft {
       bans: 6,
       picks: 10
     };
+    this.orderPick = [0, 1, 1, 0, 0, 1, 1, 0, 0, 1];
     this.round = 1;
     this.started = false;
     this.state = 0;
@@ -71,9 +72,9 @@ class Draft {
 
   nextRound(pin, io, idMap, indexUser) {
     //1 tour puis 2 tours puis 2 tours
-    if (indexUser == this.turn) {
-      clearInterval(this.timer);
-      if (this.round <= this.draftMode.bans) {
+    if (this.round <= this.draftMode.bans) {
+      if (indexUser == this.turn) {
+        clearInterval(this.timer);
         this.maps.banned.push(idMap);
         this.startTimer(pin, io);
         this.turn = !this.turn;
@@ -85,13 +86,15 @@ class Draft {
           turn: this.turn,
           maps: this.maps
         });
-      } else if (
-        this.round > this.draftMode.bans &&
-        this.round <= this.draftMode.picks + this.draftMode.bans
-      ) {
+      }
+    } else if (
+      this.round > this.draftMode.bans &&
+      this.round <= this.draftMode.picks + this.draftMode.bans
+    ) {
+      if (this.orderPick[this.round - this.draftMode.bans - 1] == indexUser) {
+        clearInterval(this.timer);
         this.maps.picked.push(idMap);
         this.startTimer(pin, io);
-        this.turn = !this.turn;
         this.round++;
         io.to(pin.toUpperCase()).emit("RES_NEXT_ROUND", {
           banOrPick: 1,
@@ -103,9 +106,9 @@ class Draft {
         if (this.round > this.draftMode.picks + this.draftMode.bans) {
           io.to(pin.toUpperCase()).emit("RES_END_GAME", (this.state = 3));
         }
-      }
 
-      console.log(this.maps, this.round);
+        console.log(this.maps, this.round);
+      }
     }
   }
 

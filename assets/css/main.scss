@@ -66,6 +66,23 @@ button.btnPin:active {
   box-shadow: -4px 4px 0px $textColor;
 }
 
+button.btnPinLogs {
+  cursor: pointer;
+  background: transparent;
+  width: 10rem;
+  height: 3rem;
+  background: $inputGradient;
+  border: none;
+  margin: 20px;
+  margin: 10px -5px 10px 25px;
+}
+
+button.btnPinLogs:active {
+  transform: perspective(50px) rotateX(-8deg) rotateY(-3deg) rotateZ(-3deg)
+    translateX(-4px) translateY(4px);
+  box-shadow: -4px 4px 0px $textColor;
+}
+
 .shadow:hover {
   box-shadow: -8px 8px 0px $textColor;
 }
@@ -388,7 +405,6 @@ button.btnPin:active {
     display: flex;
     justify-content: space-around;
 
-    // background-color: lightcoral;
     img {
       width: 100%;
       height: 100%;
@@ -688,8 +704,11 @@ button.btnPin:active {
     .draftContainerTopFilters .filters li {
       padding: 4px calc(5px + 4vw);
     }
-    .draftContainerTopSearch .searchBar {
-      width: 100%;
+    .draftContainerTopSearch {
+      margin-right: 0;
+      .searchBar {
+        width: 100%;
+      }
     }
   }
 }
