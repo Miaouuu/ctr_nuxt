@@ -104,11 +104,14 @@
       <Search @update="$emit('update', $event)" />
 
       <div class="wrapper">
+        <div class="cardMapContainer" @click="randomMapSelect()">
+          <!-- <img :src="require(`../assets/img/circuits/${map.src}.jpg`)" /> -->
+        </div>
+
         <div
           class="cardMapContainer"
           v-for="(map, index) in maps"
           :key="index"
-          :style="styleButton(map)"
           @click="
             selected = map.id;
             $playSFX('select_map');
@@ -305,6 +308,17 @@ export default {
         return "background-color:red";
       } else if (map.picked === true) {
         return "background-color:green";
+      }
+    },
+    randomMapSelect() {
+      let randomMap = Math.floor(Math.random() * this.maps.length);
+      if (
+        this.$store.state.draft.draft.maps.picked.includes(randomMap) ||
+        this.$store.state.draft.draft.maps.banned.includes(randomMap)
+      ) {
+        this.randomMapSelect();
+      } else {
+        return (this.selected = this.maps[randomMap].id);
       }
     }
   }
