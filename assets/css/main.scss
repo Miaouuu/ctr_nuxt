@@ -95,7 +95,7 @@ button.btnPin:active {
 
 .draftContainer {
   width: 86vw;
-  margin: 3vh auto 3vh auto;
+  margin: 0 auto 3vh auto;
 
   .draftContainerTop {
     display: flex;
@@ -415,6 +415,7 @@ button.btnPin:active {
     top: 0px;
     left: 50%;
     transform: translate(-50%);
+    font-size: 30px;
   }
 }
 
