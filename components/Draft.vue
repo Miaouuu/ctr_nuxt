@@ -138,7 +138,7 @@
     </div>
 
     <div class="bottomContainer">
-      <div class="soundContainer"></div>
+      <!-- <div class="soundContainer"></div> -->
       <client-only>
         <!-- :responsive="{
               0: { items: 1 },
