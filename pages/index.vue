@@ -1,23 +1,38 @@
 <template>
   <div class="container">
-    <div>
-      <button class="btnPinLogs effect3D shadow">
-        <nuxt-link v-if="!$auth.loggedIn" class="txtInput" to="/login">LOGIN</nuxt-link>
+    <div class="logs">
+      <a href="/login">
+        <button class="btnPin effect3D shadow">
+          <p class="txtInput">LOGIN</p>
+        </button>
+      </a>
+      <a href="/register">
+        <button class="btnPin effect3D shadow">
+          <p class="txtInput">REGISTER</p>
+        </button>
+      </a>
+      <button
+        v-if="$auth.loggedIn"
+        class="btnPin effect3D shadow"
+        type="button"
+        @click="logout"
+      >
+        <h2 class="txtInput">Logout</h2>
       </button>
-      <button class="btnPinLogs effect3D shadow">
-      <nuxt-link v-if="!$auth.loggedIn" class="txtInput" to="/register">REGISTER</nuxt-link>
-      </button>
-      <p v-if="$auth.loggedIn" @click="logout">Logout</p>
+      <!-- <p v-if="$auth.loggedIn" @click="logout">Logout</p> -->
     </div>
-    <button class="btnPin effect3D shadow" @click="toggleInvi">
-      <nuxt-link class="txtInput" :to="'/' + pin">JOIN</nuxt-link>
-      <input
-        :class="{ invi: isActive }"
-        class="inviNone"
-        type="text"
-        v-model="pin"
-      />
-    </button>
+
+    <nuxt-link :to="'/' + pin">
+      <button class="btnPin effect3D shadow" @click="toggleInvi">
+        <p class="txtInput">JOIN</p>
+        <input
+          :class="{ invi: isActive }"
+          class="inviNone"
+          type="text"
+          v-model="pin"
+        />
+      </button>
+    </nuxt-link>
     <button
       class="btnPin effect3D shadow"
       type="button"
@@ -26,9 +41,6 @@
     >
       <h2 class="txtInput">CREATE</h2>
     </button>
-    <!-- <input type="button" value="Create" @click="createRoom" />
-    <input class="inputPin effect3D shadow" type="text" v-model="pin" />
-    <nuxt-link :to="'/' + pin">Join</nuxt-link> -->
   </div>
 </template>
 
