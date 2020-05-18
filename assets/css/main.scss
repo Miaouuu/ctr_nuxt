@@ -57,7 +57,7 @@ button.btnPin {
   background: $inputGradient;
   border: none;
   margin: 20px;
-  margin: 20px 20px 20px -10px;
+  margin: 20px 20px 20px 0px;
 }
 
 button.btnPin:active {
@@ -121,6 +121,7 @@ button.btnPinLogs:active {
 
     .draftContainerTopFilters {
       align-content: left;
+      display: flex;
 
       .filters {
         padding-left: 0;
@@ -699,7 +700,18 @@ button.btnPinLogs:active {
 //   margin: 0 auto;
 //   height: 50vh;
 // }
-
+@media (max-width: 1050px) {
+  .draftContainer .draftContainerTop {
+    display: flex;
+    flex-direction: column;
+    .draftContainerTopFilters .filters li {
+      padding: 4px calc(5px + 4vw);
+    }
+    .draftContainerTopSearch .searchBar {
+      width: 100%;
+    }
+  }
+}
 @media (max-width: 783px) {
   .roomContainer .roomInputContainer .teamInputSelect {
     min-width: calc(240px + 10vw);
@@ -710,9 +722,20 @@ button.btnPinLogs:active {
   .effect3D {
     transform: perspective(8vh) rotateX(-8deg) rotateY(-3deg) rotateZ(-3deg);
   }
+  button.btnPin {
+    width: calc(220px + 10vw);
+    margin: 20px 20px 20px -10px;
+  }
+  .draftContainer {
+    width: 100vw;
+    .draftContainerTop {
+      display: flex;
+      flex-direction: column;
+    }
+  }
 }
 
-@media (min-width: 783px) {
+@media (min-width: 500px) {
   .draftContainer .cardMapContainer {
     width: calc(50% - 29px);
   }
