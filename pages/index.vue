@@ -11,13 +11,18 @@
           <p class="txtInput">REGISTER</p>
         </button>
       </a>
+      <a href="/profile" v-if="$auth.loggedIn">
+        <button class="btnPin effect3D shadow">
+          <p class="txtInput">PROFILE</p>
+        </button>
+      </a>
       <button
         v-if="$auth.loggedIn"
         class="btnPin effect3D shadow"
         type="button"
         @click="logout"
       >
-        <h2 class="txtInput">Logout</h2>
+        <h2 class="txtInput">LOGOUT</h2>
       </button>
       <!-- <p v-if="$auth.loggedIn" @click="logout">Logout</p> -->
     </div>
