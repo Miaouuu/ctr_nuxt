@@ -224,7 +224,7 @@ export default {
   },
   watch: {
     volume: function(newVol, oldVol) {
-      this.$updateVolume(newVol / 100);
+      this.$updateVolume(newVol)
     }
   },
   methods: {

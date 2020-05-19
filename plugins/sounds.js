@@ -3,6 +3,8 @@ import Vue from 'vue'
 let sfx_channels = []
 let music_channel = new Audio()
 
+let sfx_volume = 1
+
 const sfx_format = "mp3"
 const music_format = "mp3"
 
@@ -28,8 +30,9 @@ function _shutdownSoundSystem() {
 function _playSFX(name) {
   let sfx = new Audio()
   sfx.src = require("@/assets/sounds/sfx/" + name + "." + sfx_format)
+  sfx.volume = sfx_volume
   let index = sfx_channels.push(sfx) - 1
-  sfx.addEventListener('ended', () => { console.log('Suppression du son : ' + sfx_channels[index].src); sfx_channels.splice(index, 1); console.log(sfx_channels) })
+  sfx.addEventListener('ended', () => { sfx_channels.splice(index, 1) })
   sfx.play()
 }
 
@@ -39,8 +42,10 @@ function _playMusic(name) {
 }
 
 function _updateVolume(volume) {
+  volume = volume / 100
+  sfx_volume = volume
   sfx_channels.forEach(sfx => {
-    sfx.volume = volume
+    sfx.volume = sfx_volume
   });
   music_channel.volume = volume
 }
