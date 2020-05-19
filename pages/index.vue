@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <Language></Language>
     <p @click="changeLang('fr')">FR</p>
     <p @click="changeLang('en')">EN</p>
     <div class="logs">
@@ -52,6 +53,7 @@
 </template>
 
 <script>
+import Language from "~/components/Language.vue";
 export default {
   sockets: {
     RES_CREATE_ROOM: function(ele) {
@@ -61,6 +63,9 @@ export default {
       localStorage.setItem("oldSocketId", localStorage.getItem("socketId"));
       localStorage.setItem("socketId", ele);
     }
+  },
+  components: {
+    Language
   },
   data() {
     return {

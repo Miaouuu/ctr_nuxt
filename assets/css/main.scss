@@ -67,8 +67,15 @@ button.btnPin:active {
 .owl-carousel {
   width: calc(100% - 10px);
 }
+
 .range-slider-fill {
   background-color: $yellow !important;
+}
+
+.langSelector {
+  position: absolute;
+  top: -2px;
+  right: calc(15px + 3vw);
 }
 .logs {
   display: flex;
