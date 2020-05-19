@@ -216,7 +216,7 @@ export default {
   data() {
     return {
       timeLeft: 30,
-      volume: 100
+      volume: 50
     };
   },
   props: {

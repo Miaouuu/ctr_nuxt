@@ -320,7 +320,7 @@ export default {
       timeLeft: 30,
       selected: -1,
       lock: false,
-      volume: 100
+      volume: 50
     };
   },
   methods: {
