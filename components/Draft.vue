@@ -104,7 +104,7 @@
       <Search @update="$emit('update', $event)" />
 
       <div class="wrapper">
-        <div class="cardMapContainer" @click="randomMapSelect()">
+        <div class="cardMapContainer" @click="randomMapSelect(); $playSFX('select_map');">
           <img :src="require(`../assets/img/circuits/Random.png`)" />
         </div>
 
@@ -242,8 +242,6 @@ export default {
       }
       this.$store.commit("draft/nextRound", [ele.round, ele.turn, ele.maps]);
 
-      // TODO : ET ICI ON MET LE TOUT PREMIER PICK GENRE
-
       if (
         !(
           this.$store.state.draft.draft.draftMode.bans >=
@@ -267,12 +265,10 @@ export default {
         this.$playSFX("picked");
       }
 
-      // TODO : METTRE LA MUSIQUE POUR SAVOIR C'EST A QUI DE PICK
-
       if(ele.banOrPick == 1) {
-        if (ele.turn == 0 && ele.round) {
+        if (ele.turn == 0 && this.$store.state.draft.room.team == "TEAM A") {
           this.$playSFX("turn");
-        } else if (ele.turn == 1) {
+        } else if (ele.turn == 1 && this.$store.state.draft.room.team == "TEAM B") {
           this.$playSFX("turn");
         }
       }

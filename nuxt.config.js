@@ -1,7 +1,7 @@
 module.exports = {
   mode: "universal",
   head: {
-    title: process.env.npm_package_name || "Crash Team Racing Draft",
+    title: "Crash Team Racing Draft",
     meta: [
       {
         property: "og:title",
@@ -18,7 +18,12 @@ module.exports = {
       {
         hid: "description",
         name: "description",
-        content: process.env.npm_package_description || ""
+        content:
+          "Crash Team Racing Draft is a website which allows you to easily create CTR Draft between two teams."
+      },
+      {
+        property: "og:image",
+        content: "/favicon.ico"
       }
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
