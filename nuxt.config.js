@@ -1,7 +1,7 @@
 module.exports = {
   mode: "universal",
   head: {
-    title: process.env.npm_package_name || "Crash Team Racing Draft",
+    title: "Crash Team Racing Draft",
     meta: [
       {
         property: "og:title",
