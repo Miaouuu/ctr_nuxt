@@ -1,12 +1,12 @@
 <template>
   <div class="container">
     <div class="logs">
-      <a href="/login">
+      <a href="/login" v-if="!$auth.loggedIn">
         <button class="btnPin effect3D shadow">
           <p class="txtInput">LOGIN</p>
         </button>
       </a>
-      <a href="/register">
+      <a href="/register" v-if="!$auth.loggedIn">
         <button class="btnPin effect3D shadow">
           <p class="txtInput">REGISTER</p>
         </button>
