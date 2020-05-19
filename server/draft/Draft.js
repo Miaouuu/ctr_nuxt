@@ -1,3 +1,5 @@
+const axios = require("axios").default;
+
 class Draft {
   constructor() {
     this.teamName = ["", ""];
@@ -16,6 +18,15 @@ class Draft {
       picked: []
     };
     this.timer = null;
+    this.numberMap = 0;
+    axios
+      .get("https://ctr-api.herokuapp.com/api/v1/maps/count")
+      .then(ele => {
+        this.numberMap = ele.data;
+      })
+      .catch(e => {
+        this.numberMap = 20;
+      });
   }
 
   changeTeamName(pin, newName, socket) {
@@ -58,7 +69,26 @@ class Draft {
       if (this.timeLeft > 0) {
         this.timeLeft--;
       } else {
-        this.nextRound(pin, io, -1, this.turn);
+        if (
+          this.round > this.draftMode.bans &&
+          this.round <= this.draftMode.picks + this.draftMode.bans
+        ) {
+          let randomMap = Math.floor(Math.random() * this.numberMap);
+          while (
+            this.maps.banned.includes(randomMap) ||
+            this.maps.picked.includes(randomMap)
+          ) {
+            randomMap = Math.floor(Math.random() * this.numberMap);
+          }
+          this.nextRound(
+            pin,
+            io,
+            randomMap,
+            this.orderPick[this.round - this.draftMode.bans - 1]
+          );
+        } else {
+          this.nextRound(pin, io, -1, this.turn);
+        }
       }
     }, 1000);
   }
