@@ -21,7 +21,9 @@
       <h1 class="timerTxt">{{ timeLeft }}</h1>
     </div>
     <div class="specContainer">
-      <div class="specCategoryName"><p>PICKED</p></div>
+      <div class="specCategoryName">
+        <p>{{ pickedT }}</p>
+      </div>
       <div class="topContainer">
         <client-only>
           <carousel
@@ -105,7 +107,9 @@
         </client-only>
       </div>
 
-      <div class="specCategoryName"><p>BANNED</p></div>
+      <div class="specCategoryName">
+        <p>{{ bannedT }}</p>
+      </div>
       <div class="bottomContainer">
         <client-only>
           <carousel
@@ -177,7 +181,7 @@
       </div>
     </div>
     <div v-if="this.$auth.loggedIn && this.endGame">
-      <p @click="saveDraft()">Save</p>
+      <p @click="saveDraft()">{{ saveT }}</p>
     </div>
   </div>
 </template>
@@ -231,6 +235,17 @@ export default {
         picks: this.$store.state.draft.draft.maps.picked,
         client_name: "ctr-api"
       });
+    }
+  },
+  computed: {
+    pickedT() {
+      return this.$t("spectator").picked;
+    },
+    bannedT() {
+      return this.$t("spectator").banned;
+    },
+    saveT() {
+      return this.$t("spectator").save;
     }
   }
 };

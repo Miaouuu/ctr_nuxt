@@ -1,1 +1,43 @@
-{}
+{
+  "index": {
+    "login": "SE CONNECTER",
+    "register": "S'INSCRIRE",
+    "profile": "PROFILE",
+    "logout": "SE DECONNECTER",
+    "join": "REJOINDRE",
+    "create": "CREER"
+  },
+  "login": {
+    "email": "Email",
+    "password": "Mot de passe",
+    "login": "Se connecter"
+  },
+  "register": {
+    "name": "Pseudo",
+    "email": "Email",
+    "password": "Mot de passe",
+    "confirm": "Confirmer le mot de passe",
+    "register": "S'inscrire"
+  },
+  "join": {
+    "select": "Choisissez votre équipe",
+    "afull": "L'équipe A est pleine !",
+    "bfull": "L'équipe B est pleine !",
+    "spectator": "Spectateur",
+    "next": "Suivant"
+  },
+  "room": {
+    "aname": "Nom de la team A",
+    "bname": "Nom de la team B",
+    "choose": "Choisir un mode",
+    "start": "Commencer"
+  },
+  "search": {
+    "all": "Tout voir"
+  },
+  "spectator": {
+    "picked": "Picks",
+    "banned": "Bans",
+    "save": "Sauvegarder"
+  }
+}

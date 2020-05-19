@@ -1,35 +1,37 @@
 <template>
   <div class="container">
+    <p @click="changeLang('fr')">FR</p>
+    <p @click="changeLang('en')">EN</p>
     <div class="logs">
-      <a href="/login" v-if="!$auth.loggedIn">
+      <nuxt-link to="/login" v-if="!$auth.loggedIn">
         <button class="btnPin effect3D shadow">
-          <p class="txtInput">LOGIN</p>
+          <p class="txtInput">{{ loginT }}</p>
         </button>
-      </a>
-      <a href="/register" v-if="!$auth.loggedIn">
+      </nuxt-link>
+      <nuxt-link to="/register" v-if="!$auth.loggedIn">
         <button class="btnPin effect3D shadow">
-          <p class="txtInput">REGISTER</p>
+          <p class="txtInput">{{ registerT }}</p>
         </button>
-      </a>
-      <a href="/profile" v-if="$auth.loggedIn">
+      </nuxt-link>
+      <nuxt-link to="/profile" v-if="$auth.loggedIn">
         <button class="btnPin effect3D shadow">
-          <p class="txtInput">PROFILE</p>
+          <p class="txtInput">{{ profileT }}</p>
         </button>
-      </a>
+      </nuxt-link>
       <button
         v-if="$auth.loggedIn"
         class="btnPin effect3D shadow"
         type="button"
-        @click="logout"
+        @click="logOut"
       >
-        <h2 class="txtInput">LOGOUT</h2>
+        <h2 class="txtInput">{{ logoutT }}</h2>
       </button>
       <!-- <p v-if="$auth.loggedIn" @click="logout">Logout</p> -->
     </div>
 
     <nuxt-link :to="'/' + pin">
       <button class="btnPin effect3D shadow" @click="toggleInvi">
-        <p class="txtInput">JOIN</p>
+        <p class="txtInput">{{ joinT }}</p>
         <input
           :class="{ invi: isActive }"
           class="inviNone"
@@ -44,7 +46,7 @@
       value="Create"
       @click="createRoom"
     >
-      <h2 class="txtInput">CREATE</h2>
+      <h2 class="txtInput">{{ createT }}</h2>
     </button>
   </div>
 </template>
@@ -73,9 +75,32 @@ export default {
     toggleInvi: function() {
       this.isActive = true;
     },
-    logout: async function() {
+    logOut: async function() {
       await this.$axios.get("/v1/token/revoke");
       await this.$auth.logout();
+    },
+    changeLang(lang) {
+      this.$i18n.locale = lang;
+    }
+  },
+  computed: {
+    loginT() {
+      return this.$t("index").login;
+    },
+    registerT() {
+      return this.$t("index").register;
+    },
+    profileT() {
+      return this.$t("index").profile;
+    },
+    logoutT() {
+      return this.$t("index").logout;
+    },
+    joinT() {
+      return this.$t("index").join;
+    },
+    createT() {
+      return this.$t("index").create;
     }
   }
 };

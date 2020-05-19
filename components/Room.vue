@@ -5,7 +5,7 @@
       <div class="roomInputContainer">
         <input
           type="text"
-          placeholder="Team A's name"
+          :placeholder="anameT"
           v-model="team1Name"
           :disabled="!admin"
           @input="teamName()"
@@ -13,7 +13,7 @@
         />
         <input
           type="text"
-          placeholder="Team B's name"
+          :placeholder="bnameT"
           v-model="team2Name"
           :disabled="!admin"
           @input="teamName()"
@@ -24,7 +24,7 @@
           @change="changeDraftMode()"
           :disabled="!admin"
           class="teamInputSelect"
-          placeholder="Choisir un mode"
+          :placeholder="chooseT"
         >
           <option
             v-for="(option, index) in draftMode.optionsDraftMode"
@@ -33,7 +33,7 @@
           </option>
         </select>
         <button @click="startDraft()" class="startLockBtn">
-          START
+          {{ startT }}
         </button>
       </div>
     </div>
@@ -98,6 +98,18 @@ export default {
       set(val) {
         this.$store.commit("draft/changeDraftName", val);
       }
+    },
+    anameT() {
+      return this.$t("room").aname;
+    },
+    bnameT() {
+      return this.$t("room").bname;
+    },
+    chooseT() {
+      return this.$t("room").choose;
+    },
+    startT() {
+      return this.$t("room").start;
     }
   }
 };

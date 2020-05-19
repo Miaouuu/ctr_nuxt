@@ -1,1 +1,43 @@
-{}
+{
+  "index": {
+    "login": "LOGIN",
+    "register": "REGISTER",
+    "profile": "PROFILE",
+    "logout": "LOGOUT",
+    "join": "JOIN",
+    "create": "CREATE"
+  },
+  "login": {
+    "email": "Email",
+    "password": "Password",
+    "login": "Log in"
+  },
+  "register": {
+    "name": "Username",
+    "email": "Email",
+    "password": "Password",
+    "confirm": "Confirm password",
+    "register": "Register"
+  },
+  "join": {
+    "select": "Choose a team",
+    "afull": "Team A is full !",
+    "bfull": "Team B is full !",
+    "spectator": "Spectator",
+    "next": "Next"
+  },
+  "room": {
+    "aname": "Team A's name",
+    "bname": "Team B's name",
+    "choose": "Choose a gamemode",
+    "start": "Start"
+  },
+  "search": {
+    "all": "All"
+  },
+  "spectator": {
+    "picked": "Picks",
+    "banned": "Bans",
+    "save": "Save"
+  }
+}

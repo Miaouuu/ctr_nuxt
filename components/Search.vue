@@ -3,7 +3,7 @@
     <div class="draftContainerTopFilters computer">
       <ul class="filters">
         <li @click="researchByMapType('')" :class="{ active: mapType === '' }">
-          TOUT VOIR
+          {{ allT }}
         </li>
         <li
           @click="researchByMapType('CTR')"
@@ -38,7 +38,7 @@
         > -->
       <ul class="filters">
         <li @click="researchByMapType('')" :class="{ active: mapType === '' }">
-          TOUT VOIR
+          {{ allT }}
         </li>
         <li
           @click="researchByMapType('CTR')"
@@ -107,6 +107,11 @@ export default {
           }
         })
       );
+    }
+  },
+  computed: {
+    allT() {
+      return this.$t("search").all;
     }
   }
 };
