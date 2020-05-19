@@ -112,6 +112,13 @@ button.btnPin:active {
 
       .filters {
         padding-left: 0;
+        overflow-x: scroll;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
 
         li {
           display: inline-block;
@@ -122,7 +129,6 @@ button.btnPin:active {
           font-weight: 500;
           cursor: pointer;
         }
-
         .active {
           border: 2px solid $textColor;
           box-shadow: none;
@@ -409,6 +415,9 @@ button.btnPin:active {
       height: 100%;
       object-fit: cover;
     }
+    .owl-stage {
+      margin: 0px auto;
+    }
   }
 }
 
@@ -572,7 +581,7 @@ button.btnPin:active {
     left: 20px;
     padding: 10px 5px;
     height: 3rem;
-    min-width: 125px;
+    width: calc(100px + 7vw);
     background-color: $inputColor;
     border: none;
 
