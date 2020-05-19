@@ -21,7 +21,9 @@
       <h1 class="timerTxt">{{ timeLeft }}</h1>
     </div>
     <div class="specContainer">
-      <div class="specCategoryName"><p>PICKED</p></div>
+      <div class="specCategoryName">
+        <p>{{ pickedT }}</p>
+      </div>
       <div class="topContainer">
         <client-only>
           <carousel
@@ -105,7 +107,9 @@
         </client-only>
       </div>
 
-      <div class="specCategoryName"><p>BANNED</p></div>
+      <div class="specCategoryName">
+        <p>{{ bannedT }}</p>
+      </div>
       <div class="bottomContainer">
         <client-only>
           <carousel
@@ -176,14 +180,29 @@
         </client-only>
       </div>
     </div>
+    <range-slider
+      class="slider"
+      min="0"
+      max="100"
+      step="1"
+      v-model="volume"
+    >
+    </range-slider>
+    <div>Volume : {{ volume }}%</div>
     <div v-if="this.$auth.loggedIn && this.endGame">
-      <p @click="saveDraft()">Save</p>
+      <p @click="saveDraft()">{{ saveT }}</p>
     </div>
   </div>
 </template>
 
 <script>
+import RangeSlider from "vue-range-slider";
+import "vue-range-slider/dist/vue-range-slider.css";
+
 export default {
+  beforeDestroy() {
+    this.$shutdownSoundSystem()
+  },
   mounted() {
     if (this.endGame) this.$playMusic("end");
   },
@@ -198,13 +217,22 @@ export default {
       this.$store.commit("draft/nextRound", [ele.round, ele.turn, ele.maps]);
     }
   },
+  components: {
+    RangeSlider
+  },
   data() {
     return {
-      timeLeft: 30
+      timeLeft: 30,
+      volume: 100
     };
   },
   props: {
     endGame: Boolean
+  },
+  watch: {
+    volume: function(newVol, oldVol) {
+      this.$updateVolume(newVol / 100)
+    }
   },
   methods: {
     saveDraft() {
@@ -231,6 +259,17 @@ export default {
         picks: this.$store.state.draft.draft.maps.picked,
         client_name: "ctr-api"
       });
+    }
+  },
+  computed: {
+    pickedT() {
+      return this.$t("spectator").picked;
+    },
+    bannedT() {
+      return this.$t("spectator").banned;
+    },
+    saveT() {
+      return this.$t("spectator").save;
     }
   }
 };

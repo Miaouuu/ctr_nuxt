@@ -46,14 +46,14 @@
           class="teamInputSelect shadowPermanent"
           name="name"
           v-model="name"
-          placeholder="Pseudo"
+          :placeholder="nameT"
           required
         />
         <input
           type="email"
           class="teamInputSelect shadowPermanent"
           name="email"
-          placeholder="Email"
+          :placeholder="emailT"
           v-model="email"
           required
         />
@@ -61,7 +61,7 @@
           type="password"
           class="teamInputSelect shadowPermanent"
           name="password"
-          placeholder="Password"
+          :placeholder="passwordT"
           v-model="password"
           required
         />
@@ -69,12 +69,12 @@
           type="password"
           class="teamInputSelect shadowPermanent"
           name="cPassword"
-          placeholder="Confirm password"
+          :placeholder="confirmT"
           v-model="cPassword"
           required
         />
         <button type="submit" class="startLockBtn">
-          Register
+          {{ registerT }}
         </button>
       </form>
     </div>
@@ -111,6 +111,23 @@ export default {
       } catch (e) {
         console.log(e);
       }
+    }
+  },
+  computed: {
+    nameT() {
+      return this.$t("register").name;
+    },
+    emailT() {
+      return this.$t("register").email;
+    },
+    passwordT() {
+      return this.$t("register").password;
+    },
+    confirmT() {
+      return this.$t("register").confirm;
+    },
+    registerT() {
+      return this.$t("register").register;
     }
   }
 };

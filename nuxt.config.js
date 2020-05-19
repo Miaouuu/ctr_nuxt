@@ -33,7 +33,8 @@ module.exports = {
   plugins: [
     { src: "~/plugins/socket.client.js" },
     { src: "~/plugins/owl.js", ssr: false },
-    { src: "~/plugins/sounds.js", ssr: false }
+    { src: "~/plugins/sounds.js", ssr: false },
+    { src: "~/plugins/i18n.js" }
   ],
   buildModules: [],
   modules: ["@nuxtjs/pwa", "@nuxtjs/axios", "@nuxtjs/auth"],
@@ -68,6 +69,23 @@ module.exports = {
         globalToken: true,
         autoFetchUser: false
       }
+    }
+  },
+  pwa: {
+    meta: {
+      title: "CTR Draft",
+      author: "DevLab"
+    },
+    manifest: {
+      name: "Crash Team Racing Draft",
+      short_name: "CTR Draft",
+      lang: "en",
+      background_color: "white",
+      categories: ["games", "entertainment"],
+      description:
+        "Crash Team Racing Draft is a website which allows you to easily create CTR Draft between two teams.",
+      display: "fullscreen",
+      orientation: "portrait"
     }
   }
 };

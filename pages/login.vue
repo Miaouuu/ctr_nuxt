@@ -7,18 +7,18 @@
             type="email"
             class="teamInputSelect shadowPermanent"
             name="email"
-            placeholder="Email"
+            :placeholder="emailT"
             v-model="email"
           />
           <input
             type="password"
             class="teamInputSelect shadowPermanent"
             name="password"
-            placeholder="Password"
+            :placeholder="passwordT"
             v-model="password"
           />
           <button type="submit" class="startLockBtn">
-            Log In
+            {{ loginT }}
           </button>
         </form>
       </div>
@@ -65,6 +65,17 @@ export default {
       } catch (e) {
         console.log(e);
       }
+    }
+  },
+  computed: {
+    emailT() {
+      return this.$t("login").email;
+    },
+    passwordT() {
+      return this.$t("login").password;
+    },
+    loginT() {
+      return this.$t("login").login;
     }
   }
 };

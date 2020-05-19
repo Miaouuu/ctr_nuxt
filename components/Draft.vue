@@ -104,7 +104,13 @@
       <Search @update="$emit('update', $event)" />
 
       <div class="wrapper">
-        <div class="cardMapContainer" @click="randomMapSelect()">
+        <div
+          class="cardMapContainer"
+          @click="
+            randomMapSelect();
+            $playSFX('select_map');
+          "
+        >
           <img :src="require(`../assets/img/circuits/Random.png`)" />
         </div>
 
@@ -212,6 +218,17 @@
           </div>
         </carousel>
       </client-only>
+      <div class="sound">
+        <range-slider
+          class="slider"
+          min="0"
+          max="100"
+          step="1"
+          v-model="volume"
+        >
+        </range-slider>
+        <div>Volume : {{ volume }}%</div>
+      </div>
       <button
         class="startLockBtn"
         @click="
@@ -227,7 +244,14 @@
 
 <script>
 import Search from "~/components/Search.vue";
+
+import RangeSlider from "vue-range-slider";
+import "vue-range-slider/dist/vue-range-slider.css";
+
 export default {
+  beforeDestroy() {
+    this.$shutdownSoundSystem();
+  },
   mounted() {
     this.$playMusic("ban");
   },
@@ -241,8 +265,6 @@ export default {
         this.$store.commit("map/selectMap", [ele.banOrPick, ele.idMap]);
       }
       this.$store.commit("draft/nextRound", [ele.round, ele.turn, ele.maps]);
-
-      // TODO : ET ICI ON MET LE TOUT PREMIER PICK GENRE
 
       if (
         !(
@@ -267,28 +289,36 @@ export default {
         this.$playSFX("picked");
       }
 
-      // TODO : METTRE LA MUSIQUE POUR SAVOIR C'EST A QUI DE PICK
-
-      if(ele.banOrPick == 1) {
-        if (ele.turn == 0 && ele.round) {
+      if (ele.banOrPick == 1) {
+        if (ele.turn == 0 && this.$store.state.draft.room.team == "TEAM A") {
           this.$playSFX("turn");
-        } else if (ele.turn == 1) {
+        } else if (
+          ele.turn == 1 &&
+          this.$store.state.draft.room.team == "TEAM B"
+        ) {
           this.$playSFX("turn");
         }
       }
     }
   },
   components: {
-    Search
+    Search,
+    RangeSlider
   },
   props: {
     maps: Array
+  },
+  watch: {
+    volume: function(newVol, oldVol) {
+      this.$updateVolume(newVol / 100);
+    }
   },
   data() {
     return {
       timeLeft: 30,
       selected: -1,
-      lock: false
+      lock: false,
+      volume: 100
     };
   },
   methods: {

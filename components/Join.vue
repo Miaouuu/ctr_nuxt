@@ -1,7 +1,7 @@
 <template>
   <div class="roomContainer">
     <div class="pin">PIN : {{ this.$route.params.pin }}</div>
-    <h1>SELECT YOUR TEAM</h1>
+    <h1>{{ selectT }}</h1>
     <div class="roomInputContainer">
       <input
         class="teamJoinSelect shadowPermanent"
@@ -15,7 +15,7 @@
       />
       <label
         v-if="team[0] === true && $store.state.draft.room.team !== 'TEAM A'"
-        >L'équipe A est pleine !
+        >{{ afullT }}
       </label>
       <input
         class="teamJoinSelect shadowPermanent"
@@ -29,7 +29,7 @@
       />
       <label
         v-if="team[1] === true && $store.state.draft.room.team !== 'TEAM B'"
-        >L'équipe B est pleine !
+        >{{ bfullT }}
       </label>
       <input
         class="teamJoinSelect shadowPermanent"
@@ -37,10 +37,15 @@
           active: $store.state.draft.room.team === 'SPECTATOR'
         }"
         type="button"
-        value="Spectator"
+        :value="spectatorT"
         @click="changeSpectator()"
       />
-      <input class="teamNext" type="button" value="Next" @click="nextRoom()" />
+      <input
+        class="teamNext"
+        type="button"
+        :value="nextT"
+        @click="nextRoom()"
+      />
     </div>
   </div>
 </template>
@@ -66,6 +71,23 @@ export default {
     },
     nextRoom() {
       this.$socket.emit("NEXT_ROOM", this.$route.params.pin);
+    }
+  },
+  computed: {
+    selectT() {
+      return this.$t("join").select;
+    },
+    afullT() {
+      return this.$t("join").afull;
+    },
+    bfullT() {
+      return this.$t("join").bfull;
+    },
+    spectatorT() {
+      return this.$t("join").spectator;
+    },
+    nextT() {
+      return this.$t("join").next;
     }
   }
 };

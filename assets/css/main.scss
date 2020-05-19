@@ -67,6 +67,16 @@ button.btnPin:active {
 .owl-carousel {
   width: calc(100% - 10px);
 }
+
+.range-slider-fill {
+  background-color: $yellow !important;
+}
+
+.langSelector {
+  position: absolute;
+  top: -2px;
+  right: calc(15px + 3vw);
+}
 .logs {
   display: flex;
   flex-direction: column;
@@ -402,9 +412,14 @@ button.btnPin:active {
     }
   }
 
-  .soundContainer {
-    width: 200px;
-    height: 136px;
+  .sound {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    position: absolute;
+    bottom: calc(15px + 5vh);
+    left: calc(15px + 5vh);
   }
 
   .banContainer {
@@ -777,7 +792,11 @@ button.btnPin:active {
 }
 
 // Responsive maps wrapper
-
+@media (max-width: 850px) {
+  .bottomContainer .sound {
+    display: none;
+  }
+}
 @media (max-width: 500px) {
   .draftContainer .cardMapContainer {
     width: calc(50% - 10px);
