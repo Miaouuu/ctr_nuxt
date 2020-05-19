@@ -9,6 +9,21 @@ const music_format = "mp3"
 Vue.prototype.$playSFX = name => _playSFX(name)
 Vue.prototype.$playMusic = name => _playMusic(name)
 Vue.prototype.$updateVolume = volume => _updateVolume(volume)
+Vue.prototype.$shutdownSoundSystem = () => _shutdownSoundSystem()
+
+function _shutdownSoundSystem() {
+  // Shutdown la musique
+  music_channel.pause()
+  music_channel.removeAttribute('src')
+  music_channel.load()
+  // Shutdown les sons en cours
+  sfx_channels.forEach(sfx => {
+    sfx.pause()
+    sfx.removeAttribute('src')
+    sfx.load()
+  });
+  sfx_channels.splice(0, sfx_channels.length)
+}
 
 function _playSFX(name) {
   let sfx = new Audio()

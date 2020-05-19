@@ -241,6 +241,9 @@ import RangeSlider from "vue-range-slider";
 import "vue-range-slider/dist/vue-range-slider.css";
 
 export default {
+  beforeDestroy() {
+    this.$shutdownSoundSystem()
+  },
   mounted() {
     this.$playMusic("ban");
   },

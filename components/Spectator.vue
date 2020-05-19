@@ -180,6 +180,15 @@
         </client-only>
       </div>
     </div>
+    <range-slider
+      class="slider"
+      min="0"
+      max="100"
+      step="1"
+      v-model="volume"
+    >
+    </range-slider>
+    <div>Volume : {{ volume }}%</div>
     <div v-if="this.$auth.loggedIn && this.endGame">
       <p @click="saveDraft()">{{ saveT }}</p>
     </div>
@@ -187,7 +196,13 @@
 </template>
 
 <script>
+import RangeSlider from "vue-range-slider";
+import "vue-range-slider/dist/vue-range-slider.css";
+
 export default {
+  beforeDestroy() {
+    this.$shutdownSoundSystem()
+  },
   mounted() {
     if (this.endGame) this.$playMusic("end");
   },
@@ -202,13 +217,22 @@ export default {
       this.$store.commit("draft/nextRound", [ele.round, ele.turn, ele.maps]);
     }
   },
+  components: {
+    RangeSlider
+  },
   data() {
     return {
-      timeLeft: 30
+      timeLeft: 30,
+      volume: 100
     };
   },
   props: {
     endGame: Boolean
+  },
+  watch: {
+    volume: function(newVol, oldVol) {
+      this.$updateVolume(newVol / 100)
+    }
   },
   methods: {
     saveDraft() {
