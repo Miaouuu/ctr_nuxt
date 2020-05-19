@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <Language></Language>
     <div class="topContainer">
       <client-only>
         <!-- :responsive="{
@@ -244,7 +245,7 @@
 
 <script>
 import Search from "~/components/Search.vue";
-
+import Language from "~/components/Language.vue";
 import RangeSlider from "vue-range-slider";
 import "vue-range-slider/dist/vue-range-slider.css";
 
@@ -303,7 +304,8 @@ export default {
   },
   components: {
     Search,
-    RangeSlider
+    RangeSlider,
+    Language
   },
   props: {
     maps: Array

@@ -1,5 +1,6 @@
 <template>
   <div class="roomContainer">
+    <Language></Language>
     <div class="pin">PIN : {{ this.$route.params.pin }}</div>
     <h1>{{ selectT }}</h1>
     <div class="roomInputContainer">
@@ -51,6 +52,7 @@
 </template>
 
 <script>
+import Language from "~/components/Language.vue";
 export default {
   sockets: {},
   props: {
@@ -58,6 +60,9 @@ export default {
   },
   data() {
     return {};
+  },
+  components: {
+    Language
   },
   methods: {
     changeTeamA() {

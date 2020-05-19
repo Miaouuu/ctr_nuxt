@@ -1,8 +1,6 @@
 <template>
   <div class="container">
     <Language></Language>
-    <p @click="changeLang('fr')">FR</p>
-    <p @click="changeLang('en')">EN</p>
     <div class="logs">
       <nuxt-link to="/login" v-if="!$auth.loggedIn">
         <button class="btnPin effect3D shadow">
@@ -83,9 +81,6 @@ export default {
     logOut: async function() {
       await this.$axios.get("/v1/token/revoke");
       await this.$auth.logout();
-    },
-    changeLang(lang) {
-      this.$i18n.locale = lang;
     }
   },
   computed: {

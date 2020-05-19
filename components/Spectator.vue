@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <Language></Language>
     <div class="specHeader">
       <div class="teamName">
         <p>{{ $store.state.draft.draft.teamName[0] }}</p>
@@ -180,15 +181,11 @@
         </client-only>
       </div>
     </div>
-    <range-slider
-      class="slider"
-      min="0"
-      max="100"
-      step="1"
-      v-model="volume"
-    >
-    </range-slider>
-    <div>Volume : {{ volume }}%</div>
+    <div class="sound">
+      <range-slider class="slider" min="0" max="100" step="1" v-model="volume">
+      </range-slider>
+      <p>Volume : {{ volume }}%</p>
+    </div>
     <div v-if="this.$auth.loggedIn && this.endGame">
       <p @click="saveDraft()">{{ saveT }}</p>
     </div>
@@ -197,11 +194,12 @@
 
 <script>
 import RangeSlider from "vue-range-slider";
+import Language from "~/components/Language.vue";
 import "vue-range-slider/dist/vue-range-slider.css";
 
 export default {
   beforeDestroy() {
-    this.$shutdownSoundSystem()
+    this.$shutdownSoundSystem();
   },
   mounted() {
     if (this.endGame) this.$playMusic("end");
@@ -218,7 +216,8 @@ export default {
     }
   },
   components: {
-    RangeSlider
+    RangeSlider,
+    Language
   },
   data() {
     return {
@@ -231,7 +230,7 @@ export default {
   },
   watch: {
     volume: function(newVol, oldVol) {
-      this.$updateVolume(newVol / 100)
+      this.$updateVolume(newVol / 100);
     }
   },
   methods: {

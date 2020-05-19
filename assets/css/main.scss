@@ -72,11 +72,6 @@ button.btnPin:active {
   background-color: $yellow !important;
 }
 
-.langSelector {
-  position: absolute;
-  top: -2px;
-  right: calc(15px + 3vw);
-}
 .logs {
   display: flex;
   flex-direction: column;
@@ -104,6 +99,43 @@ button.btnPin:active {
     top: 20px;
     right: 20px;
   }
+}
+
+.sound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+.langSelector {
+  position: absolute;
+  right: calc(50px + 2vw);
+  top: -5px;
+  display: flex;
+  width: 90px;
+  height: 3em;
+  line-height: 3;
+  background: $yellow;
+  overflow: hidden;
+  border-radius: 0.25em;
+
+  select {
+    outline: 0;
+    border: 0 !important;
+    background: $yellow;
+    background-image: none;
+    flex: 1;
+    color: $textColor;
+    cursor: pointer;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0 0.5em;
+  }
+}
+
+.langSelector select option :active {
+  background-color: red !important;
 }
 
 .draftContainer {
