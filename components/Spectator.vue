@@ -177,7 +177,7 @@
       </div>
     </div>
     <div v-if="this.$auth.loggedIn && this.endGame">
-      <p>Save</p>
+      <p @click="saveDraft()">Save</p>
     </div>
   </div>
 </template>
@@ -206,7 +206,33 @@ export default {
   props: {
     endGame: Boolean
   },
-  methods: {}
+  methods: {
+    saveDraft() {
+      let typeDraft;
+      switch (this.$store.state.draft.draft.draftMode.name) {
+        case "Classic":
+          typeDraft = "CLASSIC_6_BANS_10_PICKS";
+          break;
+        case "Light":
+          typeDraft = "LIGHT_4_BANS_6_PICKS";
+          break;
+        case "League":
+          typeDraft = "LEAGUE_6_BANS_8_PICKS";
+          break;
+        case "No":
+          typeDraft = "NO_BANS_0_BANS_10_PICKS";
+          break;
+      }
+      this.$axios.post("/v1/draft/save", {
+        teama: this.$store.state.draft.draft.teamName[0],
+        teamb: this.$store.state.draft.draft.teamName[1],
+        gamemode_type: typeDraft,
+        bans: this.$store.state.draft.draft.maps.banned,
+        picks: this.$store.state.draft.draft.maps.picked,
+        client_name: "ctr-api"
+      });
+    }
+  }
 };
 </script>
 
