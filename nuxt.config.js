@@ -1,10 +1,20 @@
 module.exports = {
   mode: "universal",
   head: {
-    title: "Crash Team Racing Draft",
+    title: process.env.npm_package_name || "Crash Team Racing Draft",
     meta: [
+      {
+        property: "og:title",
+        content: "Crash Team Racing Draft"
+      },
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
+      {
+        hid: "og:description",
+        name: "og:description",
+        content:
+          "Crash Team Racing Draft is a website which allows you to easily create CTR Draft between two teams."
+      },
       {
         hid: "description",
         name: "description",
