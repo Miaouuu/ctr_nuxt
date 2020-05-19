@@ -38,7 +38,6 @@ body {
   background-size: cover;
   height: 100vh;
 }
-
 .effect3D {
   transform: perspective(50px) rotateX(-8deg) rotateY(-3deg) rotateZ(-3deg);
   transition: all 0.3s ease-out;
@@ -65,7 +64,9 @@ button.btnPin:active {
     translateX(-4px) translateY(4px);
   box-shadow: -4px 4px 0px $textColor;
 }
-
+.owl-carousel {
+  width: calc(100% - 10px);
+}
 .logs {
   display: flex;
   flex-direction: column;
@@ -96,14 +97,14 @@ button.btnPin:active {
 }
 
 .draftContainer {
-  width: 86vw;
-  margin: 0 auto 3vh auto;
+  width: calc(90vw - 50px);
+  margin-bottom: 3vh;
 
   .draftContainerTop {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: calc(100% - 70px);
+    width: calc(90vw - 50px);
     margin: 10px auto 16px auto;
 
     .draftContainerTopFilters {
@@ -111,7 +112,6 @@ button.btnPin:active {
       display: flex;
 
       .filters {
-        padding-left: 0;
         overflow-x: scroll;
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
@@ -141,6 +141,9 @@ button.btnPin:active {
 
     .mobile {
       display: none;
+      .filters {
+        text-align: center;
+      }
     }
 
     .draftContainerTopSearch {
@@ -174,7 +177,7 @@ button.btnPin:active {
     flex-wrap: wrap;
     align-content: flex-start;
     overflow-y: auto;
-    width: calc(100% - 50px);
+    width: 100%;
     margin: 0 auto;
   }
 
@@ -182,7 +185,7 @@ button.btnPin:active {
     border: 2px solid #3366cc;
     width: calc(50% - 29px);
     height: 140px;
-    margin: 0 10px 15px 10px;
+    margin: 0px 15px 15px 0px;
     cursor: pointer;
     position: relative;
 
@@ -238,7 +241,7 @@ button.btnPin:active {
 }
 
 .topContainer {
-  width: 82vw;
+  width: calc(90vw - 50px);
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -249,7 +252,7 @@ button.btnPin:active {
     width: 140px;
     height: 80px;
     /*TEMPO*/
-    margin: 0 10px 15px 10px;
+    margin: 0px 15px 15px 0px;
 
     .cornerNumber {
       position: absolute;
@@ -317,13 +320,13 @@ button.btnPin:active {
 }
 
 .bottomContainer {
-  width: 82vw;
+  width: calc(90vw - 50px);
   display: flex;
   flex-direction: column;
   align-items: center;
 
   .borderBan {
-    margin: 0 10px 15px 10px;
+    margin: 0px 15px 15px 0px;
 
     .cornerNumber {
       position: absolute;
@@ -714,12 +717,6 @@ button.btnPin:active {
   .container {
     padding-top: 20px;
   }
-  .topContainer {
-    width: 92vw;
-  }
-  .bottomContainer {
-    width: 92vw;
-  }
   .draftContainer {
     .draftContainerTop {
       display: flex;
@@ -773,7 +770,6 @@ button.btnPin:active {
     margin: 20px 20px 20px -23px;
   }
   .draftContainer {
-    width: 100vw;
     .draftContainerTop {
       display: flex;
     }
