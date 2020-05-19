@@ -70,5 +70,22 @@ module.exports = {
         autoFetchUser: false
       }
     }
+  },
+  pwa: {
+    meta: {
+      title: "CTR Draft",
+      author: "DevLab"
+    },
+    manifest: {
+      name: "Crash Team Racing Draft",
+      short_name: "CTR Draft",
+      lang: "en",
+      background_color: "cyan",
+      categories: ["games", "entertainment"],
+      description:
+        "Crash Team Racing Draft is a website which allows you to easily create CTR Draft between two teams.",
+      display: "fullscreen",
+      orientation: "portrait"
+    }
   }
 };
