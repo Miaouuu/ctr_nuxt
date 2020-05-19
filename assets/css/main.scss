@@ -724,6 +724,12 @@ button.btnPin:active {
           padding: 4px calc(15px + 3.8vw);
         }
       }
+      .computer {
+        display: none;
+      }
+      .mobile {
+        display: inline-block;
+      }
 
       .draftContainerTopSearch {
         margin-right: 0;
@@ -731,12 +737,6 @@ button.btnPin:active {
           width: 100%;
         }
       }
-    }
-    .computer {
-      display: none;
-    }
-    .mobile {
-      display: inline-block;
     }
   }
   .specContainer .topContainer {
