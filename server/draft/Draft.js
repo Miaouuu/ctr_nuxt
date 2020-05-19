@@ -123,7 +123,6 @@ class Draft {
       if (this.orderPick[this.round - this.draftMode.bans - 1] == indexUser) {
         clearInterval(this.timer);
         this.maps.picked.push(idMap);
-        this.startTimer(pin, io);
         this.round++;
         io.to(pin.toUpperCase()).emit("RES_NEXT_ROUND", {
           banOrPick: 1,
@@ -134,6 +133,8 @@ class Draft {
         });
         if (this.round > this.draftMode.picks + this.draftMode.bans) {
           io.to(pin.toUpperCase()).emit("RES_END_GAME", (this.state = 3));
+        } else {
+          this.startTimer(pin, io);
         }
 
         console.log(this.maps, this.round);
