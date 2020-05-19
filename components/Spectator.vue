@@ -11,13 +11,7 @@
     </div>
     <div class="timer">
       <svg height="40px">
-        <polygon fill="#3867d8" points="257.5,36.5 42.5,36.5 22.5,0 237.5,0 " />
-      </svg>
-      <svg height="40px">
         <polygon fill="#FAC600" points="257.5,36.5 42.5,36.5 22.5,0 277.5,0 " />
-      </svg>
-      <svg height="40px">
-        <polygon fill="#d63031" points="277.5,0 62.5,0 42.5,36.5 257.5,36.5 " />
       </svg>
       <h1 class="timerTxt">{{ timeLeft }}</h1>
     </div>
@@ -111,7 +105,7 @@
       <div class="specCategoryName">
         <p>{{ bannedT }}</p>
       </div>
-      <div class="bottomContainer">
+      <div class="bottomContainer spec">
         <client-only>
           <carousel
             class="banContainer"
