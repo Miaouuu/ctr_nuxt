@@ -252,6 +252,11 @@ export default {
       ) {
         if (!this.lock) {
           this.$playMusic("pick");
+          if (ele.turn == 0) {
+            this.$playSFX("first");
+          } else if (ele.turn == 1) {
+            this.$playSFX("first");
+          }
         }
         this.lock = true;
       }
@@ -264,8 +269,12 @@ export default {
 
       // TODO : METTRE LA MUSIQUE POUR SAVOIR C'EST A QUI DE PICK
 
-      if (ele.turn == 0) {
-      } else if (ele.turn == 1) {
+      if(ele.banOrPick == 1) {
+        if (ele.turn == 0 && ele.round) {
+          this.$playSFX("turn");
+        } else if (ele.turn == 1) {
+          this.$playSFX("turn");
+        }
       }
     }
   },
