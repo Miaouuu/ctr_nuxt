@@ -130,6 +130,13 @@ button.btnPin:active {
         }
       }
     }
+    .computer {
+      display: inline-block;
+    }
+
+    .mobile {
+      display: none;
+    }
 
     .draftContainerTopSearch {
       align-items: center;
@@ -705,20 +712,31 @@ button.btnPin:active {
   .bottomContainer {
     width: 92vw;
   }
-  .draftContainer .draftContainerTop {
-    display: flex;
-    flex-direction: column;
-    margin-top: 0;
-    margin-bottom: 10px;
-    .draftContainerTopFilters .filters li {
-      margin-bottom: 5px;
-      padding: 4px calc(15px + 3.8vw);
-    }
-    .draftContainerTopSearch {
-      margin-right: 0;
-      .searchBar {
-        width: 100%;
+  .draftContainer {
+    .draftContainerTop {
+      display: flex;
+      flex-direction: column;
+      margin-top: 0;
+      margin-bottom: 10px;
+      .draftContainerTopFilters {
+        .filters li {
+          margin-bottom: 5px;
+          padding: 4px calc(15px + 3.8vw);
+        }
       }
+
+      .draftContainerTopSearch {
+        margin-right: 0;
+        .searchBar {
+          width: 100%;
+        }
+      }
+    }
+    .computer {
+      display: none;
+    }
+    .mobile {
+      display: inline-block;
     }
   }
   .specContainer .topContainer {

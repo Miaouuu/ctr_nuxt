@@ -1,6 +1,6 @@
 <template>
   <div class="draftContainerTop">
-    <div class="draftContainerTopFilters">
+    <div class="draftContainerTopFilters computer">
       <ul class="filters">
         <li @click="researchByMapType('')" :class="{ active: mapType === '' }">
           TOUT VOIR
@@ -25,6 +25,48 @@
         </li>
       </ul>
     </div>
+    <client-only>
+      <!-- :responsive="{
+              0: { items: 1 },
+              600: { items: 3 },
+              1000: {items: 6}
+            }" -->
+      <carousel
+        class="draftContainerTopFilters mobile"
+        :loop="false"
+        :nav="false"
+        :dots="false"
+        :margin="0"
+        :autoWidth="true"
+      >
+        <ul class="filters">
+          <li
+            @click="researchByMapType('')"
+            :class="{ active: mapType === '' }"
+          >
+            TOUT VOIR
+          </li>
+          <li
+            @click="researchByMapType('CTR')"
+            :class="{ active: mapType === 'CTR' }"
+          >
+            CTR
+          </li>
+          <li
+            @click="researchByMapType('CNK')"
+            :class="{ active: mapType === 'CNK' }"
+          >
+            CNK
+          </li>
+          <li
+            @click="researchByMapType('BONUS')"
+            :class="{ active: mapType === 'BONUS' }"
+          >
+            BONUS
+          </li>
+        </ul>
+      </carousel>
+    </client-only>
     <div class="draftContainerTopSearch">
       <div class="searchBar">
         <div class="searchBarIcon">

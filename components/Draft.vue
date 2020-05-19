@@ -105,7 +105,7 @@
 
       <div class="wrapper">
         <div class="cardMapContainer" @click="randomMapSelect()">
-          <!-- <img :src="require(`../assets/img/circuits/${map.src}.jpg`)" /> -->
+          <img :src="require(`../assets/img/circuits/Random.png`)" />
         </div>
 
         <div
