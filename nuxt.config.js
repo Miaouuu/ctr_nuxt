@@ -20,6 +20,10 @@ module.exports = {
         name: "description",
         content:
           "Crash Team Racing Draft is a website which allows you to easily create CTR Draft between two teams."
+      },
+      {
+        property: "og:image",
+        content: "/favicon.ico"
       }
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
