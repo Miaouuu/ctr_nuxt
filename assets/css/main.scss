@@ -121,7 +121,6 @@ button.btnPin:active {
           color: $textColor;
           font-weight: 500;
           cursor: pointer;
-          box-shadow: -1px 1px 3px $shadowColor;
         }
 
         .active {
@@ -724,6 +723,12 @@ button.btnPin:active {
           padding: 4px calc(15px + 3.8vw);
         }
       }
+      .computer {
+        display: none;
+      }
+      .mobile {
+        display: inline-block;
+      }
 
       .draftContainerTopSearch {
         margin-right: 0;
@@ -731,12 +736,6 @@ button.btnPin:active {
           width: 100%;
         }
       }
-    }
-    .computer {
-      display: none;
-    }
-    .mobile {
-      display: inline-block;
     }
   }
   .specContainer .topContainer {
