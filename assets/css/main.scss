@@ -798,6 +798,18 @@ button.btnPin:active {
   .bottomContainer .banOverlay .banOverlayImg .banIcon {
     height: 36px;
   }
+  .draftContainer {
+    width: calc(90vw - 20px);
+    .draftContainerTop {
+      width: calc(90vw - 20px);
+    }
+  }
+  .topContainer {
+    width: calc(90vw - 20px);
+  }
+  .bottomContainer {
+    width: calc(90vw - 20px);
+  }
 }
 
 @media (max-width: 370px) {
