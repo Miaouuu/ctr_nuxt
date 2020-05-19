@@ -212,6 +212,15 @@
           </div>
         </carousel>
       </client-only>
+    <range-slider
+      class="slider"
+      min="0"
+      max="100"
+      step="1"
+      v-model="volume"
+    >
+    </range-slider>
+    <div>Volume : {{ volume }}%</div>
       <button
         class="startLockBtn"
         @click="
@@ -227,6 +236,10 @@
 
 <script>
 import Search from "~/components/Search.vue";
+
+import RangeSlider from "vue-range-slider";
+import "vue-range-slider/dist/vue-range-slider.css";
+
 export default {
   mounted() {
     this.$playMusic("ban");
@@ -275,16 +288,23 @@ export default {
     }
   },
   components: {
-    Search
+    Search,
+    RangeSlider
   },
   props: {
     maps: Array
+  },
+  watch: {
+    volume: function(newVol, oldVol) {
+      this.$updateVolume(newVol / 100)
+    }
   },
   data() {
     return {
       timeLeft: 30,
       selected: -1,
-      lock: false
+      lock: false,
+      volume: 100
     };
   },
   methods: {

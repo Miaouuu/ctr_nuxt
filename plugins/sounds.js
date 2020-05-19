@@ -14,7 +14,7 @@ function _playSFX(name) {
   let sfx = new Audio()
   sfx.src = require("@/assets/sounds/sfx/" + name + "." + sfx_format)
   let index = sfx_channels.push(sfx) - 1
-  sfx.addEventListener('ended', () => { console.log('Suppression du son : ' + sfx_channels[index].src); sfx_channels.splice(index, 1) })
+  sfx.addEventListener('ended', () => { console.log('Suppression du son : ' + sfx_channels[index].src); sfx_channels.splice(index, 1); console.log(sfx_channels) })
   sfx.play()
 }
 
