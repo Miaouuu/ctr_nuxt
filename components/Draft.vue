@@ -104,7 +104,13 @@
       <Search @update="$emit('update', $event)" />
 
       <div class="wrapper">
-        <div class="cardMapContainer" @click="randomMapSelect(); $playSFX('select_map');">
+        <div
+          class="cardMapContainer"
+          @click="
+            randomMapSelect();
+            $playSFX('select_map');
+          "
+        >
           <img :src="require(`../assets/img/circuits/Random.png`)" />
         </div>
 
@@ -212,15 +218,17 @@
           </div>
         </carousel>
       </client-only>
-    <range-slider
-      class="slider"
-      min="0"
-      max="100"
-      step="1"
-      v-model="volume"
-    >
-    </range-slider>
-    <div>Volume : {{ volume }}%</div>
+      <div class="sound">
+        <range-slider
+          class="slider"
+          min="0"
+          max="100"
+          step="1"
+          v-model="volume"
+        >
+        </range-slider>
+        <div>Volume : {{ volume }}%</div>
+      </div>
       <button
         class="startLockBtn"
         @click="
@@ -242,7 +250,7 @@ import "vue-range-slider/dist/vue-range-slider.css";
 
 export default {
   beforeDestroy() {
-    this.$shutdownSoundSystem()
+    this.$shutdownSoundSystem();
   },
   mounted() {
     this.$playMusic("ban");
@@ -281,10 +289,13 @@ export default {
         this.$playSFX("picked");
       }
 
-      if(ele.banOrPick == 1) {
+      if (ele.banOrPick == 1) {
         if (ele.turn == 0 && this.$store.state.draft.room.team == "TEAM A") {
           this.$playSFX("turn");
-        } else if (ele.turn == 1 && this.$store.state.draft.room.team == "TEAM B") {
+        } else if (
+          ele.turn == 1 &&
+          this.$store.state.draft.room.team == "TEAM B"
+        ) {
           this.$playSFX("turn");
         }
       }
@@ -299,7 +310,7 @@ export default {
   },
   watch: {
     volume: function(newVol, oldVol) {
-      this.$updateVolume(newVol / 100)
+      this.$updateVolume(newVol / 100);
     }
   },
   data() {
