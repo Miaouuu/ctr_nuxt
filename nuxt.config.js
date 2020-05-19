@@ -1,17 +1,19 @@
 module.exports = {
   mode: "universal",
   head: {
-    title: process.env.npm_package_name || "",
+    title: process.env.npm_package_name || "Crash Team Racing Draft",
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       {
         hid: "description",
         name: "description",
-        content: process.env.npm_package_description || "",
-      },
+        content:
+          process.env.npm_package_description ||
+          "Crash Team Racing Draft is a website which allows you to easily create CTR Draft between two teams."
+      }
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
   },
   loading: { color: "#fff" },
   css: ["@/assets/css/main.css", "@/assets/css/main.scss"],
@@ -23,18 +25,18 @@ module.exports = {
   buildModules: [],
   modules: ["@nuxtjs/pwa", "@nuxtjs/axios", "@nuxtjs/auth"],
   build: {
-    extend (config, ctx) {
+    extend(config, ctx) {
       config.module.rules.push({
         test: /\.(ogg|mp3|wav|mpe?g)$/i,
-        loader: 'file-loader',
+        loader: "file-loader",
         options: {
-          name: '[path][name].[ext]'
+          name: "[path][name].[ext]"
         }
-      })
+      });
     }
   },
   axios: {
-    baseURL: "https://ctr-api.herokuapp.com/api",
+    baseURL: "https://ctr-api.herokuapp.com/api"
   },
   auth: {
     strategies: {
@@ -43,16 +45,16 @@ module.exports = {
           login: {
             url: "/v1/login",
             method: "post",
-            propertyName: false,
+            propertyName: false
           },
           user: { url: "/v1/user", method: "get", propertyName: false },
-          logout: false,
+          logout: false
         },
         tokenRequired: true,
         tokenType: "bearer",
         globalToken: true,
-        autoFetchUser: false,
-      },
-    },
-  },
+        autoFetchUser: false
+      }
+    }
+  }
 };
