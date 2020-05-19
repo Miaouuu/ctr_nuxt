@@ -27,7 +27,7 @@
     </div>
 
     <div class="draftContainerTopFilters mobile">
-      <client-only>
+      <!-- <client-only>
         <carousel
           :loop="false"
           :nav="false"
@@ -35,35 +35,32 @@
           :items="4"
           :margin="0"
           :autoWidth="true"
+        > -->
+      <ul class="filters">
+        <li @click="researchByMapType('')" :class="{ active: mapType === '' }">
+          TOUT VOIR
+        </li>
+        <li
+          @click="researchByMapType('CTR')"
+          :class="{ active: mapType === 'CTR' }"
         >
-          <ul class="filters">
-            <li
-              @click="researchByMapType('')"
-              :class="{ active: mapType === '' }"
-            >
-              TOUT VOIR
-            </li>
-            <li
-              @click="researchByMapType('CTR')"
-              :class="{ active: mapType === 'CTR' }"
-            >
-              CTR
-            </li>
-            <li
-              @click="researchByMapType('CNK')"
-              :class="{ active: mapType === 'CNK' }"
-            >
-              CNK
-            </li>
-            <li
-              @click="researchByMapType('BONUS')"
-              :class="{ active: mapType === 'BONUS' }"
-            >
-              BONUS
-            </li>
-          </ul>
-        </carousel>
-      </client-only>
+          CTR
+        </li>
+        <li
+          @click="researchByMapType('CNK')"
+          :class="{ active: mapType === 'CNK' }"
+        >
+          CNK
+        </li>
+        <li
+          @click="researchByMapType('BONUS')"
+          :class="{ active: mapType === 'BONUS' }"
+        >
+          BONUS
+        </li>
+      </ul>
+      <!-- </carousel>
+      </client-only> -->
     </div>
 
     <div class="draftContainerTopSearch">
