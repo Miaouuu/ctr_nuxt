@@ -64,8 +64,9 @@ button.btnPin:active {
     translateX(-4px) translateY(4px);
   box-shadow: -4px 4px 0px $textColor;
 }
+
 .owl-carousel {
-  width: calc(100% - 10px);
+  width: calc(100% - 10px) !important;
 }
 
 .range-slider-fill {

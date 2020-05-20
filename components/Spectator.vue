@@ -17,12 +17,11 @@
       <div class="topContainer">
         <client-only>
           <carousel
-            class="pickContainer spec"
+            class="pickContainer"
             :loop="false"
             :nav="false"
             :dots="false"
-            :margin="0"
-            :autoWidth="false"
+            :autoWidth="true"
           >
             <div
               class="borderPick"
