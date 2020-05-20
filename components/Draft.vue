@@ -213,19 +213,9 @@
             <div
               class="mapName"
               :class="{
-                redName:
-                  index == 1 ||
-                  index == 2 ||
-                  index == 5 ||
-                  index == 6 ||
-                  index == 9,
+                redName: index == 1 || index == 3 || index == 5,
 
-                blueName:
-                  index == 0 ||
-                  index == 3 ||
-                  index == 4 ||
-                  index == 7 ||
-                  index == 8
+                blueName: index == 0 || index == 2 || index == 4
               }"
               v-if="
                 $store.state.map.maps[
