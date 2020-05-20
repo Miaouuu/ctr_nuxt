@@ -2,7 +2,7 @@
   <div class="langSelector">
     <select v-model="lang" @change="changeLang()">
       <option value="fr">Français</option>
-      <option value="en" selected>English</option>
+      <option value="en">English</option>
     </select>
   </div>
 </template>
@@ -11,7 +11,7 @@
 export default {
   data() {
     return {
-      lang: "en"
+      lang: this.$i18n.locale || "en"
     };
   },
   methods: {
