@@ -1,14 +1,6 @@
 <template>
   <div class="container">
     <Language></Language>
-    <div class="specHeader">
-      <div class="teamName">
-        <p>{{ $store.state.draft.draft.teamName[0] }}</p>
-      </div>
-      <div class="teamName">
-        <p>{{ $store.state.draft.draft.teamName[1] }}</p>
-      </div>
-    </div>
     <div class="timer" v-if="!this.endGame">
       <svg height="40px" v-if="this.$store.state.draft.draft.turn == 0">
         <polygon fill="#3867d8" points="257.5,36.5 42.5,36.5 22.5,0 277.5,0 " />
@@ -30,7 +22,7 @@
             :nav="false"
             :dots="false"
             :margin="0"
-            :autoWidth="true"
+            :autoWidth="false"
           >
             <div
               class="borderPick"
