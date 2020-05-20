@@ -1,6 +1,7 @@
 <template>
   <section>
     <div class="roomContainer">
+      <p>{{ error }}</p>
       <div class="roomInputContainer">
         <form method="post" @submit.prevent="login">
           <input
@@ -63,7 +64,11 @@ export default {
         let user = await this.$axios.get("/v1/user");
         this.$auth.setUser(user.data);
       } catch (e) {
-        console.log(e);
+        if (this.$i18n.locale == "fr") {
+          this.error = "Mauvais mot de passe ou email";
+        } else if (this.$i18n.locale == "en") {
+          this.error = "Wrong password or mail";
+        }
       }
     }
   },
