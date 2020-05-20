@@ -3,7 +3,7 @@ import Vue from 'vue'
 let sfx_channels = []
 let music_channel = new Audio()
 
-let global_volume = 0.5
+let global_volume = 0.3
 
 const sfx_format = "mp3"
 const music_format = "mp3"

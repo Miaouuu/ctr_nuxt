@@ -220,7 +220,7 @@ export default {
   data() {
     return {
       timeLeft: 30,
-      volume: 50
+      volume: 30
     };
   },
   props: {
