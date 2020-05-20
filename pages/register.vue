@@ -1,6 +1,7 @@
 <template>
   <div class="roomContainer">
     <Language></Language>
+    <p>{{ error }}</p>
     <div class="roomInputContainer">
       <form method="post" @submit.prevent="register">
         <input
@@ -51,7 +52,8 @@ export default {
       name: "",
       email: "",
       password: "",
-      cPassword: ""
+      cPassword: "",
+      error: null
     };
   },
   components: {
@@ -72,10 +74,23 @@ export default {
           c_password: this.cPassword,
           client_name: "ctr-api"
         });
-
-        console.log(token);
+        this.$auth.setToken("local", "Bearer " + token.data.success.token);
+        this.$axios.setHeader(
+          "Authorization",
+          "Bearer " + token.data.success.token
+        );
+        this.$auth.ctx.app.$axios.setHeader(
+          "Authorization",
+          "Bearer " + token.data.success.token
+        );
+        let user = await this.$axios.get("/v1/user");
+        this.$auth.setUser(user.data);
       } catch (e) {
-        console.log(e);
+        if (this.$i18n.locale == "fr") {
+          this.error = "Erreur";
+        } else if (this.$i18n.locale == "en") {
+          this.error = "Error";
+        }
       }
     }
   },

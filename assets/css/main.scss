@@ -64,8 +64,9 @@ button.btnPin:active {
     translateX(-4px) translateY(4px);
   box-shadow: -4px 4px 0px $textColor;
 }
+
 .owl-carousel {
-  width: calc(100% - 10px);
+  width: calc(100% - 10px) !important;
 }
 
 .range-slider-fill {
@@ -250,7 +251,7 @@ button.btnPin:active {
       .banIcon {
         object-fit: contain;
         margin-top: 10px;
-        height: 75px;
+        height: 55%;
       }
     }
 
@@ -291,10 +292,8 @@ button.btnPin:active {
 
   .borderPick {
     position: relative;
-    /*TEMPO*/
-    width: 140px;
-    height: 80px;
-    /*TEMPO*/
+    width: 180px;
+    height: 100px;
     margin: 0px 15px 15px 0px;
 
     .cornerNumber {
@@ -396,8 +395,8 @@ button.btnPin:active {
     }
   }
   .banOverlay {
-    width: 238px;
-    height: 101px;
+    width: 200px;
+    height: 100px;
     position: relative;
 
     .sizeDiv {
@@ -418,7 +417,7 @@ button.btnPin:active {
 
       .banIcon {
         object-fit: contain;
-        height: 60px;
+        height: 55%;
         margin-top: 6px;
       }
     }
@@ -731,6 +730,9 @@ button.btnPin:active {
   margin: auto;
   width: 100%;
 }
+.disabled {
+  background-color: rgb(214, 214, 214);
+}
 
 .carouselProfil {
   .borderPick {
@@ -832,15 +834,6 @@ button.btnPin:active {
 }
 
 // Responsive
-// .wrapper {
-//   display: flex;
-//   flex-wrap: wrap;
-//   align-content: flex-start;
-//   overflow-y: auto;
-//   width: calc(100% - 50px);
-//   margin: 0 auto;
-//   height: 50vh;
-// }
 @media (max-width: 1050px) {
   .container {
     padding-top: 20px;
@@ -904,34 +897,91 @@ button.btnPin:active {
   }
 }
 
-// Responsive maps wrapper
+// Responsive wrapper
+@media (min-width: 1400px) {
+  .draftContainer .cardMapContainer {
+    width: calc(16.66% - 15px);
+  }
+  .draftContainer .wrapper {
+    height: calc(100vh - 500px);
+  }
+}
+
+@media (max-width: 1400px) {
+  .draftContainer .cardMapContainer {
+    width: calc(20% - 15px);
+  }
+  .draftContainer .wrapper {
+    height: calc(100vh - 470px);
+  }
+  .topContainer .borderPick {
+    width: 180px;
+    height: 100px;
+  }
+  .bottomContainer .banOverlay {
+    width: 180px;
+    height: 100px;
+  }
+}
+
+@media (max-width: 992px) {
+  .draftContainer .cardMapContainer {
+    width: calc(25% - 15px);
+    height: 120px;
+  }
+
+  .draftContainer .wrapper {
+    height: calc(100vh - 420px);
+  }
+  .bottomContainer .banOverlay {
+    width: 128px;
+    height: 70px;
+  }
+  .topContainer .borderPick {
+    width: 128px;
+    height: 70px;
+  }
+}
+
 @media (max-width: 850px) {
+  .draftContainer .cardMapContainer {
+    width: calc(33.33% - 15px);
+    height: 100px;
+  }
+  .draftContainer .wrapper {
+    height: calc(100vh - 410px);
+  }
   .bottomContainer .sound {
     display: none;
   }
 }
+
+@media (max-width: 650px) {
+  .draftContainer .cardMapContainer {
+    width: calc(33.33% - 10px);
+    height: 100px;
+    margin: 0 10px 10px 0;
+  }
+  .draftContainer .wrapper {
+    height: calc(100vh - 400px);
+  }
+  .bottomContainer .banOverlay {
+    width: 110px;
+    height: 64px;
+  }
+  .topContainer .borderPick {
+    width: 110px;
+    height: 64px;
+  }
+}
+
 @media (max-width: 500px) {
   .draftContainer .cardMapContainer {
     width: calc(50% - 10px);
     height: 90px;
-    margin: 0 10px 10px 0;
   }
   .draftContainer .wrapper {
     height: calc(100vh - 390px);
-  }
-  .bottomContainer .banOverlay {
-    width: 100px;
-    height: 60px;
-  }
-  .topContainer .borderPick {
-    width: 100px;
-    height: 60px;
-  }
-  .bottomContainer .banOverlay .banOverlayImg .banIcon {
-    height: 36px;
-  }
-  .draftContainer .cardMapContainer .banOverlayImg .banIcon {
-    height: 36px;
   }
   .draftContainer {
     width: calc(90vw - 20px);
@@ -952,129 +1002,5 @@ button.btnPin:active {
     width: calc(50% - 10px);
     height: 80px;
     margin: 0 7px 7px 0;
-  }
-}
-
-@media (min-width: 500px) {
-  .draftContainer .cardMapContainer {
-    width: calc(33.33% - 15px);
-    height: 100px;
-  }
-  .draftContainer .wrapper {
-    height: calc(100vh - 400px);
-  }
-  .bottomContainer .banOverlay {
-    width: 110px;
-    height: 64px;
-  }
-  .topContainer .borderPick {
-    width: 110px;
-    height: 64px;
-  }
-  .bottomContainer .banOverlay .banOverlayImg .banIcon {
-    height: 36px;
-  }
-  .draftContainer .cardMapContainer .banOverlayImg .banIcon {
-    height: 44px;
-  }
-}
-
-@media (min-width: 650px) {
-  .draftContainer .cardMapContainer {
-    width: calc(33.33% - 15px);
-    height: 100px;
-  }
-  .draftContainer .wrapper {
-    height: calc(100vh - 410px);
-  }
-  .bottomContainer .banOverlay {
-    width: 122px;
-    height: 68px;
-  }
-  .topContainer .borderPick {
-    width: 122px;
-    height: 68px;
-  }
-  .bottomContainer .banOverlay .banOverlayImg .banIcon {
-    height: 36px;
-  }
-  .draftContainer .cardMapContainer .banOverlayImg .banIcon {
-    height: 50px;
-  }
-}
-
-@media (min-width: 850px) {
-  .draftContainer .cardMapContainer {
-    width: calc(33.33% - 15px);
-    height: 120px;
-  }
-  .draftContainer .wrapper {
-    height: calc(100vh - 420px);
-  }
-  .bottomContainer .banOverlay {
-    width: 128px;
-    height: 70px;
-  }
-  .topContainer .borderPick {
-    width: 128px;
-    height: 70px;
-  }
-  .bottomContainer .banOverlay .banOverlayImg .banIcon {
-    height: 38px;
-  }
-  .draftContainer .cardMapContainer .banOverlayImg .banIcon {
-    height: 60px;
-  }
-}
-
-@media (min-width: 992px) {
-  .draftContainer .cardMapContainer {
-    width: calc(25% - 15px);
-  }
-  .bottomContainer .banOverlay {
-    width: 140px;
-    height: 80px;
-  }
-  .topContainer .borderPick {
-    width: 140px;
-    height: 80px;
-  }
-  .bottomContainer .banOverlay .banOverlayImg .banIcon {
-    height: 44px;
-  }
-  .draftContainer .cardMapContainer .banOverlayImg .banIcon {
-    height: 66px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .draftContainer .cardMapContainer {
-    width: calc(20% - 15px);
-  }
-  .draftContainer .wrapper {
-    height: calc(100vh - 440px);
-  }
-}
-
-@media (min-width: 1400px) {
-  .draftContainer .cardMapContainer {
-    width: calc(16.66% - 15px);
-  }
-  .draftContainer .wrapper {
-    height: calc(100vh - 500px);
-  }
-  .bottomContainer .banOverlay {
-    width: 180px;
-    height: 100px;
-  }
-  .topContainer .borderPick {
-    width: 180px;
-    height: 100px;
-  }
-  .bottomContainer .banOverlay .banOverlayImg .banIcon {
-    height: 54px;
-  }
-  .draftContainer .cardMapContainer .banOverlayImg .banIcon {
-    height: 70px;
   }
 }

@@ -53,6 +53,11 @@ class Room extends Draft {
     let actualRoom = new Room(pin, socket.id);
     this.ROOMS.push(actualRoom);
     socket.emit("RES_CREATE_ROOM", actualRoom);
+    setTimeout(() => {
+      let index = this.ROOMS.findIndex(data => data.pin === pin.toUpperCase());
+      clearInterval(this.ROOMS[index].timer);
+      this.ROOMS.splice(index, 1);
+    }, 7200000);
     return pin;
   }
 

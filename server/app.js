@@ -12,7 +12,6 @@ io.on("connection", socket => {
   socket.on("CHECK_ROOM", ele => Room.checkRoom(ele, socket));
   socket.on("DISCONNECT_ROOM", ele => Room.disconnectRoom(ele, socket));
   socket.on("disconnect", ele => Room.disconnectRoom(ele, socket));
-  // socket.on("DELETE_ROOM"); CHECK SI ADMIN EST DANS USER
 
   socket.on("CHANGE_TEAM_A", ele => Controller.changeTeamA(ele, socket, io));
   socket.on("CHANGE_TEAM_B", ele => Controller.changeTeamB(ele, socket, io));

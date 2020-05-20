@@ -27,15 +27,6 @@
     </div>
 
     <div class="draftContainerTopFilters mobile">
-      <!-- <client-only>
-        <carousel
-          :loop="false"
-          :nav="false"
-          :dots="false"
-          :items="4"
-          :margin="0"
-          :autoWidth="true"
-        > -->
       <ul class="filters">
         <li @click="researchByMapType('')" :class="{ active: mapType === '' }">
           {{ allT }}
@@ -59,8 +50,6 @@
           BONUS
         </li>
       </ul>
-      <!-- </carousel>
-      </client-only> -->
     </div>
 
     <div class="draftContainerTopSearch">
