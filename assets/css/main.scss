@@ -396,8 +396,8 @@ button.btnPin:active {
     }
   }
   .banOverlay {
-    width: 238px;
-    height: 101px;
+    width: 200px;
+    height: 100px;
     position: relative;
 
     .sizeDiv {
@@ -830,14 +830,6 @@ button.btnPin:active {
   .draftContainer .wrapper {
     height: calc(100vh - 500px);
   }
-  .bottomContainer .banOverlay {
-    width: 180px;
-    height: 100px;
-  }
-  .topContainer .borderPick {
-    width: 180px;
-    height: 100px;
-  }
 }
 
 @media (max-width: 1400px) {
@@ -846,6 +838,14 @@ button.btnPin:active {
   }
   .draftContainer .wrapper {
     height: calc(100vh - 470px);
+  }
+  .topContainer .borderPick {
+    width: 180px;
+    height: 100px;
+  }
+  .bottomContainer .banOverlay {
+    width: 180px;
+    height: 100px;
   }
 }
 
