@@ -65,6 +65,21 @@
             </div>
             <div
               class="mapName"
+              :class="{
+                redName:
+                  index == 1 ||
+                  index == 2 ||
+                  index == 5 ||
+                  index == 6 ||
+                  index == 9,
+
+                blueName:
+                  index == 0 ||
+                  index == 3 ||
+                  index == 4 ||
+                  index == 7 ||
+                  index == 8
+              }"
               v-if="
                 $store.state.map.maps[
                   $store.state.draft.draft.maps.picked[index] - 1
@@ -197,6 +212,21 @@
 
             <div
               class="mapName"
+              :class="{
+                redName:
+                  index == 1 ||
+                  index == 2 ||
+                  index == 5 ||
+                  index == 6 ||
+                  index == 9,
+
+                blueName:
+                  index == 0 ||
+                  index == 3 ||
+                  index == 4 ||
+                  index == 7 ||
+                  index == 8
+              }"
               v-if="
                 $store.state.map.maps[
                   $store.state.draft.draft.maps.banned[index] - 1

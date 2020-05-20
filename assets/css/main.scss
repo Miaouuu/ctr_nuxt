@@ -281,6 +281,12 @@ button.btnPin:active {
     .banned {
       background-color: rgb(160, 46, 46);
     }
+    .redName {
+      background-color: #d63031;
+    }
+    .blueName {
+      background-color: #3867d6;
+    }
   }
 }
 
@@ -358,6 +364,12 @@ button.btnPin:active {
     align-items: center;
     overflow: hidden;
     white-space: nowrap;
+  }
+  .redName {
+    background-color: #d63031;
+  }
+  .blueName {
+    background-color: #3867d6;
   }
 }
 
@@ -441,6 +453,12 @@ button.btnPin:active {
       align-items: center;
       overflow: hidden;
       white-space: nowrap;
+    }
+    .redName {
+      background-color: #d63031;
+    }
+    .blueName {
+      background-color: #3867d6;
     }
   }
 
