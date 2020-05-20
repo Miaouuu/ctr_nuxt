@@ -10,8 +10,11 @@
       </div>
     </div>
     <div class="timer" v-if="!this.endGame">
-      <svg height="40px">
-        <polygon fill="#FAC600" points="257.5,36.5 42.5,36.5 22.5,0 277.5,0 " />
+      <svg height="40px" v-if="this.$store.state.draft.draft.turn == 0">
+        <polygon fill="#3867d8" points="257.5,36.5 42.5,36.5 22.5,0 277.5,0 " />
+      </svg>
+      <svg v-else height="40px">
+        <polygon fill="#d63031" points="257.5,36.5 42.5,36.5 22.5,0 277.5,0 " />
       </svg>
       <h1 class="timerTxt">{{ timeLeft }}</h1>
     </div>
@@ -35,28 +38,29 @@
               :key="index"
               :class="{
                 red:
-                  index == 0 ||
-                  index == 3 ||
-                  index == 4 ||
-                  index == 7 ||
-                  index == 8,
-                blue:
                   index == 1 ||
                   index == 2 ||
                   index == 5 ||
                   index == 6 ||
-                  index == 9
+                  index == 9,
+
+                blue:
+                  index == 0 ||
+                  index == 3 ||
+                  index == 4 ||
+                  index == 7 ||
+                  index == 8
               }"
             >
               <div class="corner">
                 <div
                   class="cornerImage"
                   v-if="
-                    index == 0 ||
-                      index == 3 ||
-                      index == 4 ||
-                      index == 7 ||
-                      index == 8
+                    index == 1 ||
+                      index == 2 ||
+                      index == 5 ||
+                      index == 6 ||
+                      index == 9
                   "
                 >
                   <img src="../assets/img/corner-red.png" />
@@ -120,14 +124,14 @@
               v-for="(item, index) in $store.state.draft.draft.draftMode.bans"
               :key="index"
               :class="{
-                red: index == 0 || index == 2 || index == 4,
-                blue: index == 1 || index == 3 || index == 5
+                red: index == 1 || index == 3 || index == 5,
+                blue: index == 0 || index == 2 || index == 4
               }"
             >
               <div class="corner">
                 <div
                   class="cornerImage"
-                  v-if="index == 0 || index == 2 || index == 4"
+                  v-if="index == 1 || index == 3 || index == 5"
                 >
                   <img src="../assets/img/corner-red.png" />
                 </div>
@@ -224,7 +228,7 @@ export default {
   },
   watch: {
     volume: function(newVol, oldVol) {
-      this.$updateVolume(newVol)
+      this.$updateVolume(newVol);
     }
   },
   methods: {

@@ -90,7 +90,13 @@
     </div>
 
     <div class="timer">
-      <svg v-if="$store.state.draft.room.team === 'TEAM A'" height="40px">
+      <svg
+        v-if="
+          this.$store.state.draft.draft.turn == 0 &&
+            this.$store.state.draft.room.team == 'TEAM A'
+        "
+        height="40px"
+      >
         <polygon fill="#3867d8" points="257.5,36.5 42.5,36.5 22.5,0 277.5,0 " />
       </svg>
       <svg v-else height="40px">
@@ -232,9 +238,30 @@
       </div>
       <button
         class="startLockBtn"
+        :class="{
+          disabled:
+            !(
+              this.$store.state.draft.draft.turn == 0 &&
+              this.$store.state.draft.room.team == 'TEAM A'
+            ) &&
+            !(
+              this.$store.state.draft.draft.turn == 1 &&
+              this.$store.state.draft.room.team == 'TEAM B'
+            )
+        }"
         @click="
           banOrPick();
           $playSFX('click');
+        "
+        :disabled="
+          !(
+            this.$store.state.draft.draft.turn == 0 &&
+            this.$store.state.draft.room.team == 'TEAM A'
+          ) &&
+            !(
+              this.$store.state.draft.draft.turn == 1 &&
+              this.$store.state.draft.room.team == 'TEAM B'
+            )
         "
       >
         {{ buttonBanOrPick() }}
@@ -312,7 +339,7 @@ export default {
   },
   watch: {
     volume: function(newVol, oldVol) {
-      this.$updateVolume(newVol)
+      this.$updateVolume(newVol);
     }
   },
   data() {

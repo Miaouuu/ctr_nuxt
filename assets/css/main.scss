@@ -704,6 +704,9 @@ button.btnPin:active {
     transition: all 0.1s ease-out;
   }
 }
+.disabled {
+  background-color: rgb(214, 214, 214);
+}
 
 // Page spectator
 
