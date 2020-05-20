@@ -9,7 +9,7 @@
         <p>{{ $store.state.draft.draft.teamName[1] }}</p>
       </div>
     </div>
-    <div class="timer">
+    <div class="timer" v-if="!this.endGame">
       <svg height="40px">
         <polygon fill="#FAC600" points="257.5,36.5 42.5,36.5 22.5,0 277.5,0 " />
       </svg>

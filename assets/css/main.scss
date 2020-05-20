@@ -110,11 +110,12 @@ button.btnPin:active {
 
 .langSelector {
   position: absolute;
-  right: calc(50px + 2vw);
-  top: -5px;
+  z-index: 1000;
+  right: calc(5px + 5.5vw);
+  top: -3px;
   display: flex;
   width: 90px;
-  height: 3em;
+  height: 2.2em;
   line-height: 3;
   background: $yellow;
   overflow: hidden;
