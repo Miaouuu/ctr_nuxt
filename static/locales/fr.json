@@ -1,9 +1,9 @@
 {
   "index": {
-    "login": "SE CONNECTER",
-    "register": "S'INSCRIRE",
-    "profile": "PROFILE",
-    "logout": "SE DECONNECTER",
+    "login": "CONNEXION",
+    "register": "INSCRIPTION",
+    "profile": "PROFIL",
+    "logout": "DECONNEXION",
     "join": "REJOINDRE",
     "create": "CREER"
   },
@@ -27,8 +27,8 @@
     "next": "Suivant"
   },
   "room": {
-    "aname": "Nom de la team A",
-    "bname": "Nom de la team B",
+    "aname": "Nom de l'équipe A",
+    "bname": "Nom de l'équipe B",
     "choose": "Choisir un mode",
     "start": "Commencer"
   },
@@ -36,7 +36,7 @@
     "all": "Tout voir"
   },
   "spectator": {
-    "picked": "Picks",
+    "picked": "Choix",
     "banned": "Bans",
     "save": "Sauvegarder"
   }

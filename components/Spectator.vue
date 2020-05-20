@@ -1,22 +1,12 @@
 <template>
   <div class="container">
-    <div class="specHeader">
-      <div class="teamName">
-        <p>{{ $store.state.draft.draft.teamName[0] }}</p>
-      </div>
-      <div class="teamName">
-        <p>{{ $store.state.draft.draft.teamName[1] }}</p>
-      </div>
-    </div>
-    <div class="timer">
-      <svg height="40px">
-        <polygon fill="#3867d8" points="257.5,36.5 42.5,36.5 22.5,0 237.5,0 " />
+    <Language></Language>
+    <div class="timer" v-if="!this.endGame">
+      <svg height="40px" v-if="this.$store.state.draft.draft.turn == 0">
+        <polygon fill="#3867d8" points="257.5,36.5 42.5,36.5 22.5,0 277.5,0 " />
       </svg>
-      <svg height="40px">
-        <polygon fill="#FAC600" points="257.5,36.5 42.5,36.5 22.5,0 277.5,0 " />
-      </svg>
-      <svg height="40px">
-        <polygon fill="#d63031" points="277.5,0 62.5,0 42.5,36.5 257.5,36.5 " />
+      <svg v-else height="40px">
+        <polygon fill="#d63031" points="257.5,36.5 42.5,36.5 22.5,0 277.5,0 " />
       </svg>
       <h1 class="timerTxt">{{ timeLeft }}</h1>
     </div>
@@ -32,7 +22,7 @@
             :nav="false"
             :dots="false"
             :margin="0"
-            :autoWidth="true"
+            :autoWidth="false"
           >
             <div
               class="borderPick"
@@ -40,28 +30,29 @@
               :key="index"
               :class="{
                 red:
-                  index == 0 ||
-                  index == 3 ||
-                  index == 4 ||
-                  index == 7 ||
-                  index == 8,
-                blue:
                   index == 1 ||
                   index == 2 ||
                   index == 5 ||
                   index == 6 ||
-                  index == 9
+                  index == 9,
+
+                blue:
+                  index == 0 ||
+                  index == 3 ||
+                  index == 4 ||
+                  index == 7 ||
+                  index == 8
               }"
             >
               <div class="corner">
                 <div
                   class="cornerImage"
                   v-if="
-                    index == 0 ||
-                      index == 3 ||
-                      index == 4 ||
-                      index == 7 ||
-                      index == 8
+                    index == 1 ||
+                      index == 2 ||
+                      index == 5 ||
+                      index == 6 ||
+                      index == 9
                   "
                 >
                   <img src="../assets/img/corner-red.png" />
@@ -110,7 +101,7 @@
       <div class="specCategoryName">
         <p>{{ bannedT }}</p>
       </div>
-      <div class="bottomContainer">
+      <div class="bottomContainer spec">
         <client-only>
           <carousel
             class="banContainer"
@@ -125,14 +116,14 @@
               v-for="(item, index) in $store.state.draft.draft.draftMode.bans"
               :key="index"
               :class="{
-                red: index == 0 || index == 2 || index == 4,
-                blue: index == 1 || index == 3 || index == 5
+                red: index == 1 || index == 3 || index == 5,
+                blue: index == 0 || index == 2 || index == 4
               }"
             >
               <div class="corner">
                 <div
                   class="cornerImage"
-                  v-if="index == 0 || index == 2 || index == 4"
+                  v-if="index == 1 || index == 3 || index == 5"
                 >
                   <img src="../assets/img/corner-red.png" />
                 </div>
@@ -180,15 +171,11 @@
         </client-only>
       </div>
     </div>
-    <range-slider
-      class="slider"
-      min="0"
-      max="100"
-      step="1"
-      v-model="volume"
-    >
-    </range-slider>
-    <div>Volume : {{ volume }}%</div>
+    <div class="sound">
+      <range-slider class="slider" min="0" max="100" step="1" v-model="volume">
+      </range-slider>
+      <p>Volume : {{ volume }}%</p>
+    </div>
     <div v-if="this.$auth.loggedIn && this.endGame">
       <p @click="saveDraft()">{{ saveT }}</p>
     </div>
@@ -197,11 +184,12 @@
 
 <script>
 import RangeSlider from "vue-range-slider";
+import Language from "~/components/Language.vue";
 import "vue-range-slider/dist/vue-range-slider.css";
 
 export default {
   beforeDestroy() {
-    this.$shutdownSoundSystem()
+    this.$shutdownSoundSystem();
   },
   mounted() {
     if (this.endGame) this.$playMusic("end");
@@ -218,12 +206,13 @@ export default {
     }
   },
   components: {
-    RangeSlider
+    RangeSlider,
+    Language
   },
   data() {
     return {
       timeLeft: 30,
-      volume: 100
+      volume: 30
     };
   },
   props: {
@@ -231,7 +220,7 @@ export default {
   },
   watch: {
     volume: function(newVol, oldVol) {
-      this.$updateVolume(newVol / 100)
+      this.$updateVolume(newVol);
     }
   },
   methods: {

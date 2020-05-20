@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <Language></Language>
     <div class="topContainer">
       <client-only>
         <!-- :responsive="{
@@ -89,7 +90,13 @@
     </div>
 
     <div class="timer">
-      <svg v-if="$store.state.draft.room.team === 'TEAM A'" height="40px">
+      <svg
+        v-if="
+          this.$store.state.draft.draft.turn == 0 &&
+            this.$store.state.draft.room.team == 'TEAM A'
+        "
+        height="40px"
+      >
         <polygon fill="#3867d8" points="257.5,36.5 42.5,36.5 22.5,0 277.5,0 " />
       </svg>
       <svg v-else height="40px">
@@ -231,9 +238,30 @@
       </div>
       <button
         class="startLockBtn"
+        :class="{
+          disabled:
+            !(
+              this.$store.state.draft.draft.turn == 0 &&
+              this.$store.state.draft.room.team == 'TEAM A'
+            ) &&
+            !(
+              this.$store.state.draft.draft.turn == 1 &&
+              this.$store.state.draft.room.team == 'TEAM B'
+            )
+        }"
         @click="
           banOrPick();
           $playSFX('click');
+        "
+        :disabled="
+          !(
+            this.$store.state.draft.draft.turn == 0 &&
+            this.$store.state.draft.room.team == 'TEAM A'
+          ) &&
+            !(
+              this.$store.state.draft.draft.turn == 1 &&
+              this.$store.state.draft.room.team == 'TEAM B'
+            )
         "
       >
         {{ buttonBanOrPick() }}
@@ -244,7 +272,7 @@
 
 <script>
 import Search from "~/components/Search.vue";
-
+import Language from "~/components/Language.vue";
 import RangeSlider from "vue-range-slider";
 import "vue-range-slider/dist/vue-range-slider.css";
 
@@ -303,14 +331,15 @@ export default {
   },
   components: {
     Search,
-    RangeSlider
+    RangeSlider,
+    Language
   },
   props: {
     maps: Array
   },
   watch: {
     volume: function(newVol, oldVol) {
-      this.$updateVolume(newVol / 100);
+      this.$updateVolume(newVol);
     }
   },
   data() {
@@ -318,7 +347,7 @@ export default {
       timeLeft: 30,
       selected: -1,
       lock: false,
-      volume: 100
+      volume: 30
     };
   },
   methods: {

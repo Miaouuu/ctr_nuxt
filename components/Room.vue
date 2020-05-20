@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="roomContainer">
+      <Language></Language>
       <div class="pin">PIN : {{ this.$route.params.pin }}</div>
       <div class="roomInputContainer">
         <input
@@ -41,6 +42,7 @@
 </template>
 
 <script>
+import Language from "~/components/Language.vue";
 export default {
   sockets: {
     RES_CHANGE_TEAM_NAME: function(ele) {
@@ -51,6 +53,9 @@ export default {
     RES_CHANGE_DRAFT_MODE: function(ele) {
       this.$store.commit("draft/changeDraftMode", ele);
     }
+  },
+  components: {
+    Language
   },
   props: {
     admin: Boolean

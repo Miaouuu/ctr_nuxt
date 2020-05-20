@@ -1,5 +1,6 @@
 <template>
   <section>
+    <Language></Language>
     <div class="roomContainer">
       <p>{{ error }}</p>
       <div class="roomInputContainer">
@@ -28,6 +29,7 @@
 </template>
 
 <script>
+import Language from "~/components/Language.vue";
 export default {
   data() {
     return {
@@ -35,6 +37,9 @@ export default {
       password: "",
       error: null
     };
+  },
+  components: {
+    Language
   },
   mounted() {
     if (this.$auth.loggedIn) {
