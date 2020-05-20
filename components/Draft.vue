@@ -3,11 +3,6 @@
     <Language></Language>
     <div class="topContainer">
       <client-only>
-        <!-- :responsive="{
-              0: { items: 1 },
-              600: { items: 3 },
-              1000: {items: 6}
-            }" -->
         <carousel
           class="pickContainer"
           :loop="false"
@@ -152,13 +147,7 @@
     </div>
 
     <div class="bottomContainer">
-      <!-- <div class="soundContainer"></div> -->
       <client-only>
-        <!-- :responsive="{
-              0: { items: 1 },
-              600: { items: 3 },
-              1000: {items: 6}
-            }" -->
         <carousel
           class="banContainer"
           :loop="false"
