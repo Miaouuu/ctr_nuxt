@@ -704,9 +704,85 @@ button.btnPin:active {
     transition: all 0.1s ease-out;
   }
 }
+//Page profile
+.containerDropdown {
+  margin-top: 1.5rem;
+  border-top: 2px solid black;
+  p {
+    padding: 1.5rem;
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
+.card {
+  width: 80vw;
+  background: white;
+  margin: 10px auto;
+  padding: 1.5rem;
+  border-radius: 10px;
+}
+.cardTitle {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cardContent {
+  margin: auto;
+  width: 100%;
+}
+
+.carouselProfil {
+  .borderPick {
+    position: relative;
+    width: 140px;
+    height: 80px;
+    margin: 0px 15px 15px 0px;
+
+    .cornerNumber {
+      position: absolute;
+      font-size: 12px;
+      color: #fff;
+    }
+  }
+  .blue {
+    border: 2px solid #3867d6;
+  }
+  .red {
+    border: 2px solid #d63031;
+  }
+  .corner {
+    .cornerImage {
+      position: absolute;
+      z-index: 50;
+    }
+    .cornerNumber {
+      color: white;
+      z-index: 51;
+    }
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .mapName {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 25px;
+    background-color: rgba(0, 0, 0, 0.85);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}
 
 // Page spectator
-
 .specContainer {
   .topContainer {
     width: 82vw;
