@@ -10,186 +10,179 @@
       </svg>
       <h1 class="timerTxt">{{ timeLeft }}</h1>
     </div>
-    <div class="specContainer">
-      <div class="specCategoryName">
-        <p>{{ pickedT }}</p>
-      </div>
-      <div class="topContainer">
-        <client-only>
-          <carousel
-            class="pickContainer"
-            :loop="false"
-            :nav="false"
-            :dots="false"
-            :autoWidth="true"
-          >
+    <div class="specCategoryName">
+      <p>{{ pickedT }}</p>
+    </div>
+
+    <client-only>
+      <carousel
+        class="carouselProfil"
+        :loop="false"
+        :nav="false"
+        :dots="false"
+        :autoWidth="true"
+      >
+        <div
+          class="borderPick"
+          v-for="(item, index) in $store.state.draft.draft.draftMode.picks"
+          :key="index"
+          :class="{
+            red:
+              index == 1 ||
+              index == 2 ||
+              index == 5 ||
+              index == 6 ||
+              index == 9,
+
+            blue:
+              index == 0 || index == 3 || index == 4 || index == 7 || index == 8
+          }"
+        >
+          <div class="corner">
             <div
-              class="borderPick"
-              v-for="(item, index) in $store.state.draft.draft.draftMode.picks"
-              :key="index"
-              :class="{
-                red:
-                  index == 1 ||
+              class="cornerImage"
+              v-if="
+                index == 1 ||
                   index == 2 ||
                   index == 5 ||
                   index == 6 ||
-                  index == 9,
-
-                blue:
-                  index == 0 ||
-                  index == 3 ||
-                  index == 4 ||
-                  index == 7 ||
-                  index == 8
-              }"
+                  index == 9
+              "
             >
-              <div class="corner">
-                <div
-                  class="cornerImage"
-                  v-if="
-                    index == 1 ||
-                      index == 2 ||
-                      index == 5 ||
-                      index == 6 ||
-                      index == 9
-                  "
-                >
-                  <img src="../assets/img/corner-red.png" />
-                </div>
-                <div class="cornerImage" v-else>
-                  <img src="../assets/img/corner-blue.png" />
-                </div>
-                <div class="cornerNumber spectator">{{ index + 1 }}</div>
-              </div>
-              <div
-                class="pickee"
-                v-if="$store.state.draft.draft.maps.picked[index]"
-              >
-                <img
-                  v-if="$store.state.draft.draft.maps.picked[index] != -1"
-                  :src="
-                    require(`../assets/img/circuits/${
-                      $store.state.map.maps[
-                        $store.state.draft.draft.maps.picked[index] - 1
-                      ].src
-                    }.jpg`)
-                  "
-                />
-              </div>
-              <div
-                class="mapName"
-                :class="{
-                  redName:
-                    index == 1 ||
-                    index == 2 ||
-                    index == 5 ||
-                    index == 6 ||
-                    index == 9,
-
-                  blueName:
-                    index == 0 ||
-                    index == 3 ||
-                    index == 4 ||
-                    index == 7 ||
-                    index == 8
-                }"
-                v-if="
+              <img src="../assets/img/corner-red.png" />
+            </div>
+            <div class="cornerImage" v-else>
+              <img src="../assets/img/corner-blue.png" />
+            </div>
+            <div class="cornerNumber spectator">{{ index + 1 }}</div>
+          </div>
+          <div
+            class="pickee"
+            v-if="$store.state.draft.draft.maps.picked[index]"
+          >
+            <img
+              v-if="$store.state.draft.draft.maps.picked[index] != -1"
+              :src="
+                require(`../assets/img/circuits/${
                   $store.state.map.maps[
                     $store.state.draft.draft.maps.picked[index] - 1
-                  ]
-                "
-              >
-                <h4>
-                  {{
-                    $store.state.map.maps[
-                      $store.state.draft.draft.maps.picked[index] - 1
-                    ].title
-                  }}
-                </h4>
-              </div>
-            </div>
-          </carousel>
-        </client-only>
-      </div>
+                  ].src
+                }.jpg`)
+              "
+            />
+          </div>
+          <div
+            class="mapName"
+            :class="{
+              redName:
+                index == 1 ||
+                index == 2 ||
+                index == 5 ||
+                index == 6 ||
+                index == 9,
 
-      <div class="specCategoryName">
-        <p>{{ bannedT }}</p>
-      </div>
-      <div class="bottomContainer spec">
-        <client-only>
-          <carousel
-            class="banContainer"
-            :loop="false"
-            :nav="false"
-            :dots="false"
-            :margin="0"
-            :autoWidth="true"
+              blueName:
+                index == 0 ||
+                index == 3 ||
+                index == 4 ||
+                index == 7 ||
+                index == 8
+            }"
+            v-if="
+              $store.state.map.maps[
+                $store.state.draft.draft.maps.picked[index] - 1
+              ]
+            "
           >
-            <div
-              class="banOverlay borderBan"
-              v-for="(item, index) in $store.state.draft.draft.draftMode.bans"
-              :key="index"
-              :class="{
-                red: index == 1 || index == 3 || index == 5,
-                blue: index == 0 || index == 2 || index == 4
-              }"
-            >
-              <div class="corner">
-                <div
-                  class="cornerImage"
-                  v-if="index == 1 || index == 3 || index == 5"
-                >
-                  <img src="../assets/img/corner-red.png" />
-                </div>
-                <div class="cornerImage" v-else>
-                  <img src="../assets/img/corner-blue.png" />
-                </div>
-                <div class="cornerNumber">{{ index + 1 }}</div>
-              </div>
-              <div
-                v-if="$store.state.draft.draft.maps.banned[index]"
-                class="sizeDiv"
-              >
-                <img
-                  v-if="$store.state.draft.draft.maps.banned[index] != -1"
-                  :src="
-                    require(`../assets/img/circuits/${
-                      $store.state.map.maps[
-                        $store.state.draft.draft.maps.banned[index] - 1
-                      ].src
-                    }.jpg`)
-                  "
-                />
-                <div class="banOverlayImg">
-                  <img class="banIcon" src="../assets/img/banned-icon.png" />
-                </div>
-              </div>
-              <div
-                class="mapName"
-                :class="{
-                  redName: index == 1 || index == 3 || index == 5,
+            <h4>
+              {{
+                $store.state.map.maps[
+                  $store.state.draft.draft.maps.picked[index] - 1
+                ].title
+              }}
+            </h4>
+          </div>
+        </div>
+      </carousel>
+    </client-only>
 
-                  blueName: index == 0 || index == 2 || index == 4
-                }"
-                v-if="
+    <div class="specCategoryName">
+      <p>{{ bannedT }}</p>
+    </div>
+
+    <client-only>
+      <carousel
+        class="carouselProfil"
+        :loop="false"
+        :nav="false"
+        :dots="false"
+        :margin="0"
+        :autoWidth="true"
+      >
+        <div
+          class="borderPick banOverlay borderBan"
+          v-for="(item, index) in $store.state.draft.draft.draftMode.bans"
+          :key="index"
+          :class="{
+            red: index == 1 || index == 3 || index == 5,
+            blue: index == 0 || index == 2 || index == 4
+          }"
+        >
+          <div class="corner">
+            <div
+              class="cornerImage"
+              v-if="index == 1 || index == 3 || index == 5"
+            >
+              <img src="../assets/img/corner-red.png" />
+            </div>
+            <div class="cornerImage" v-else>
+              <img src="../assets/img/corner-blue.png" />
+            </div>
+            <div class="cornerNumber">{{ index + 1 }}</div>
+          </div>
+          <div
+            v-if="$store.state.draft.draft.maps.banned[index]"
+            class="sizeDiv"
+          >
+            <img
+              v-if="$store.state.draft.draft.maps.banned[index] != -1"
+              :src="
+                require(`../assets/img/circuits/${
                   $store.state.map.maps[
                     $store.state.draft.draft.maps.banned[index] - 1
-                  ]
-                "
-              >
-                <h5>
-                  {{
-                    $store.state.map.maps[
-                      $store.state.draft.draft.maps.banned[index] - 1
-                    ].title
-                  }}
-                </h5>
-              </div>
+                  ].src
+                }.jpg`)
+              "
+            />
+            <div class="banOverlayImg">
+              <img class="banIcon" src="../assets/img/banned-icon.png" />
             </div>
-          </carousel>
-        </client-only>
-      </div>
-    </div>
+          </div>
+          <div
+            class="mapName"
+            :class="{
+              redName: index == 1 || index == 3 || index == 5,
+
+              blueName: index == 0 || index == 2 || index == 4
+            }"
+            v-if="
+              $store.state.map.maps[
+                $store.state.draft.draft.maps.banned[index] - 1
+              ]
+            "
+          >
+            <h5>
+              {{
+                $store.state.map.maps[
+                  $store.state.draft.draft.maps.banned[index] - 1
+                ].title
+              }}
+            </h5>
+          </div>
+        </div>
+      </carousel>
+    </client-only>
+
     <div class="sound">
       <range-slider class="slider" min="0" max="100" step="1" v-model="volume">
       </range-slider>
