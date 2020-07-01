@@ -23,7 +23,7 @@
         :autoWidth="true"
       >
         <div
-          class="borderPick"
+          class="borderPick pick-overlay"
           v-for="(item, index) in $store.state.draft.draft.draftMode.picks"
           :key="index"
           :class="{
@@ -120,7 +120,7 @@
         :autoWidth="true"
       >
         <div
-          class="borderPick banOverlay borderBan"
+          class=" banOverlay borderBan"
           v-for="(item, index) in $store.state.draft.draft.draftMode.bans"
           :key="index"
           :class="{
